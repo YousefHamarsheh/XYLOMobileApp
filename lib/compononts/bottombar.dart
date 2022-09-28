@@ -8,7 +8,6 @@ class BottomBar extends StatelessWidget {
   bool isEdit;
   BottomBar({Key key, @required this.addButtonAction, this.isEdit = false})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
