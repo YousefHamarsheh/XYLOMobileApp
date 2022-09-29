@@ -99,4 +99,23 @@ class CustActions extends ActionScreen {
           "txtVatno": null
         }));
   }
+
+  Future getCustTransData() async {
+    //
+    const api = 'cust';
+    var response = await http.get(Uri.http(url, api));
+    var jsonData = jsonDecode(response.body);
+
+    for (var cust in jsonData) {
+      customerItem.add(CustomerItem(
+          cust['txtCode'].toString(),
+          cust['txtName'].toString(),
+          cust['txtTel1'].toString(),
+          cust['txtEmail'].toString(),
+          cust['txtAddress'].toString(),
+          cust['txtCitya'].toString(),
+          cust['txtAddress'].toString(),
+          cust['txtAreacode'].toString()));
+    }
+  }
 }
