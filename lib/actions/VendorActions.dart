@@ -9,7 +9,7 @@ class VendorActions extends ActionScreen {
 
   Future getVendorData() async {
     const url = '5.161.97.142:9001';
-    const api = 'cust';
+    const api = 'supplier';
     var response = await http.get(Uri.http(url, api));
     var jsonData = jsonDecode(response.body);
 
