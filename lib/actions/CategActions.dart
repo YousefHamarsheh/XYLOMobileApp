@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:xid/xid.dart';
 import 'package:xylo/actions/ActionScreen.dart';
 
 import '../model/category_data .dart';
@@ -25,6 +26,24 @@ class CategActions extends ActionScreen {
     }
   }
 
-  Future
-      insertingCategoryData() async {} //Here the method that will save the payment data
+  Future insertingCategoryData(
+      String code, String name, double categValue, bool percent) async {
+    const api = 'taxcategory/save';
+    var xid = Xid();
+    var perc = 0;
+    if (percent) {
+      perc = 1;
+    }
+    final response = await http.post(Uri.http(url, api),
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: json.encode({
+          "txtKey": xid.toString(),
+          "txtname": name,
+          "ispercent": perc,
+          "dblPercent": categValue
+        }));
+  } //Here the method that will save the payment data
 }

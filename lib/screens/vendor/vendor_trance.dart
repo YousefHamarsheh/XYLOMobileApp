@@ -1,60 +1,71 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/actions/CustActions.dart';
+import 'package:xylo/actions/UserActions.dart';
+import 'package:xylo/actions/VendorActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/filtter_btn.dart';
 import 'package:xylo/compononts/searchfeild.dart';
+import 'package:xylo/compononts/side_menu.dart';
 import 'package:xylo/compononts/sort_button.dart';
 import 'package:xylo/compononts/trans_card.dart';
-import 'package:xylo/config.dart';
 
-import '../../compononts/side_menu.dart';
-import '../../model/transactions/vendor_trance_data.dart';
+import '../../config.dart';
+import '../../model/transactions/Transaction.dart';
 
 class VendorTrance extends StatefulWidget {
   final String title, value;
-  const VendorTrance({Key key, @required this.title, @required this.value})
-      : super(key: key);
+  const VendorTrance({
+    Key key,
+    @required this.title,
+    @required this.value,
+    // @required this.user_id
+  }) : super(key: key);
+
   @override
-  State<VendorTrance> createState() => _VendorTranceState();
+  State<VendorTrance> createState() => _VendorTrance();
 }
 
-class _VendorTranceState extends State<VendorTrance> {
+class _VendorTrance extends State<VendorTrance> {
   TextEditingController textEditingControllerSearch = TextEditingController();
 
-  List<VendorTran> vendorItem = [
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-    const VendorTran("22/01/2022", "65875246", "10.0"),
-  ];
+  VendorActions vendorActions = VendorActions();
 
   Padding buildList() {
-    double screenHeight = MediaQuery.of(context).size.height;
-    print(screenHeight); //Get device height for grid responsive
+    double screenHeight = MediaQuery.of(context)
+        .size
+        .height; //Get device height for grid responsive
     return Padding(
-      padding: const EdgeInsets.only(top: 25),
-      child: SizedBox(
-        height: screenHeight * 0.50,
-        child: ListView.builder(
-          itemCount: vendorItem.length,
-          itemBuilder: (context, index) {
-            return TransCard(
-              date: vendorItem[index].date,
-              number: vendorItem[index].number,
-              amount: vendorItem[index].amount,
-            );
-          },
-        ),
+      padding: const EdgeInsets.only(
+        top: 25,
       ),
+      child: SizedBox(
+          height: screenHeight * 0.66,
+          child: FutureBuilder(
+            future: vendorActions.geUserTransData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return ListView.builder(
+                  itemCount: vendorActions.vendor_trans_item.length,
+                  itemBuilder: (context, index) {
+                    return TransCard(
+                      date: vendorActions.vendor_trans_item[index].datTransdate,
+                      number: vendorActions
+                          .vendor_trans_item[index].txtWarehousecode,
+                      amount:
+                          vendorActions.vendor_trans_item[index].txtCurrency,
+                    );
+                  },
+                );
+              } else {
+                return ListView();
+              }
+            },
+          )),
     );
   }
 
-  Container buildVendorTitle() {
+  Container buildTopCard() {
     return Container(
       margin: const EdgeInsets.only(bottom: 20, top: kPadding),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
@@ -93,52 +104,73 @@ class _VendorTranceState extends State<VendorTrance> {
     );
   }
 
+  Widget closebtn() {
+    double width = ((MediaQuery.of(context).size.width) - 100);
+    return Center(
+      child: SizedBox(
+        width: width,
+        height: 50,
+        // ignore: deprecated_member_use
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          color: Colors.white,
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+          child: Text(
+            "CLOSE",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget bottom() {
+    return Container(
+      height: 100,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(5.0)),
+      ),
+      child: closebtn(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
-      appBar: CustomAppBar(titles: "Vendors"),
-      //bottomSheet: closebtn(),
-
+      appBar: CustomAppBar(titles: "Customer"),
+      bottomSheet: bottom(),
       body: Padding(
         padding: const EdgeInsets.all(kPadding),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              buildVendorTitle(),
+              buildTopCard(),
               Row(
                 children: [
                   SearchFeild(
                       controller: null,
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      hint: "Search by Document Number"),
-                  FiltterButton(onPress: () {}),
-                  SortButton(onPress: () {})
+                      width: ((MediaQuery.of(context).size.width) * 0.6),
+                      hint: 'Search'),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  SortButton(onPress: () {}),
+                  FiltterButton(onPress: () {})
                 ],
               ),
               buildList(),
             ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: InkWell(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Container(
-          height: 50,
-          width: 100,
-          margin: const EdgeInsets.all(16),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 2),
-              borderRadius: BorderRadius.circular(6)),
-          child: Text(
-            "CLOSE",
-            style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.bold,
-                fontSize: ResponsiveFlutter.of(context).fontSize(2.4)),
           ),
         ),
       ),

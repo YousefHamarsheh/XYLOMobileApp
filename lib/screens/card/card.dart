@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/CardActions.dart';
 import 'package:xylo/model/shift_data.dart';
 import 'package:xylo/screens/card/add_card.dart';
 import 'package:xylo/screens/shift/compononts/shiftCard.dart';
@@ -19,12 +20,7 @@ import 'compononts/crditCard.dart';
 class CardPage extends StatelessWidget {
   CardPage({Key key}) : super(key: key);
 
-  List<CardData> cardData = [
-    const CardData("Visa Card", "C01", "0.1", true),
-    const CardData("Visa Card", "C01", "0.2", true),
-    const CardData("Visa Card", "C01", "0.3", true),
-    const CardData("Visa Card", "C01", "0.3", true),
-  ];
+  CardActions cardActions = CardActions();
 
   @override
   Widget build(BuildContext context) {
@@ -57,18 +53,26 @@ class CardPage extends StatelessWidget {
               height: 24,
             ),
             SizedBox(
-              height: screenHeight * 0.75,
-              child: ListView.builder(
-                  itemCount: cardData.length,
-                  itemBuilder: (context, index) {
-                    return CreditCard(
-                      cardData: cardData[index],
-                      optionOnTap: () => buildOptionPopup(context),
-                      screenHeight: screenHeight,
-                      optionButton: true,
-                    );
-                  }),
-            ),
+                height: screenHeight * 0.75,
+                child: FutureBuilder(
+                  future: cardActions.getCardData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return ListView.builder(
+                          itemCount: cardActions.cardData.length,
+                          itemBuilder: (context, index) {
+                            return CreditCard(
+                              cardData: cardActions.cardData[index],
+                              optionOnTap: () => buildOptionPopup(context),
+                              screenHeight: screenHeight,
+                              optionButton: true,
+                            );
+                          });
+                    } else {
+                      return ListView();
+                    }
+                  },
+                )),
           ],
         ),
       ),

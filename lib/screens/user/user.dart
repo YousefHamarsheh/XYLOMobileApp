@@ -9,6 +9,7 @@ import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
 import 'package:xylo/screens/user/edit_user.dart';
+import 'package:xylo/screens/user/user_trans.dart';
 import 'package:xylo/screens/user/view_user.dart';
 import 'package:http/http.dart' as http;
 
@@ -90,7 +91,11 @@ class _UserPageState extends State<UserPage> {
                     return CustomCard(
                       text: userActions.userItem[index].txtName,
                       value: userActions.userItem[index].txtPhone.toString(),
-                      option: () => buildOptionPopup(context),
+                      option: () => buildOptionPopup(
+                          context,
+                          userActions.userItem[index].txtName,
+                          userActions.userItem[index].txtPhone,
+                          userActions.userItem[index].txtCode),
                     );
                   },
                 );
@@ -102,7 +107,8 @@ class _UserPageState extends State<UserPage> {
     );
   }
 
-  void buildOptionPopup(context) {
+  void buildOptionPopup(
+      context, String name, String phonenumber, String userId) {
     showBarModalBottomSheet(
         context: context,
         builder: (context) {
@@ -116,7 +122,15 @@ class _UserPageState extends State<UserPage> {
                 ),
               ),
             },
-            tranceactionOnTap: () {},
+            tranceactionOnTap: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UserTrans(
+                          name: name,
+                          phonenumber: phonenumber,
+                          user_id: userId)))
+            },
             editOnTap: () => {
               Navigator.push(
                 context,

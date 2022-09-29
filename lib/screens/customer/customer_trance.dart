@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/filtter_btn.dart';
 import 'package:xylo/compononts/searchfeild.dart';
@@ -8,11 +9,15 @@ import 'package:xylo/compononts/sort_button.dart';
 import 'package:xylo/compononts/trans_card.dart';
 
 import '../../config.dart';
-import '../../model/transactions/customer_trance_data.dart';
+import '../../model/transactions/Transaction.dart';
 
 class CustomerTrance extends StatefulWidget {
-  final String title, value;
-  const CustomerTrance({Key key, @required this.title, @required this.value})
+  final String title, value, cust_id;
+  const CustomerTrance(
+      {Key key,
+      @required this.title,
+      @required this.value,
+      @required this.cust_id})
       : super(key: key);
 
   @override
@@ -22,15 +27,7 @@ class CustomerTrance extends StatefulWidget {
 class _CustomerTranceState extends State<CustomerTrance> {
   TextEditingController textEditingControllerSearch = TextEditingController();
 
-  List<CustomerTran> dashboardItem = [
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-    const CustomerTran("22/01/2022", "65875246", "10.0"),
-  ];
+  CustActions custActions = CustActions();
 
   Padding buildList() {
     double screenHeight = MediaQuery.of(context)
@@ -41,18 +38,26 @@ class _CustomerTranceState extends State<CustomerTrance> {
         top: 25,
       ),
       child: SizedBox(
-        height: screenHeight * 0.66,
-        child: ListView.builder(
-          itemCount: dashboardItem.length,
-          itemBuilder: (context, index) {
-            return TransCard(
-              date: dashboardItem[index].date,
-              number: dashboardItem[index].number,
-              amount: dashboardItem[index].amount,
-            );
-          },
-        ),
-      ),
+          height: screenHeight * 0.66,
+          child: FutureBuilder(
+            future: custActions.getCustTransData(widget.cust_id),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return ListView.builder(
+                  itemCount: custActions.dashboardItem.length,
+                  itemBuilder: (context, index) {
+                    return TransCard(
+                      date: custActions.dashboardItem[index].datTransdate,
+                      number: custActions.dashboardItem[index].txtWarehousecode,
+                      amount: custActions.dashboardItem[index].txtCurrency,
+                    );
+                  },
+                );
+              } else {
+                return ListView();
+              }
+            },
+          )),
     );
   }
 

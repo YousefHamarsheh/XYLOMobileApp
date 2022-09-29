@@ -45,6 +45,9 @@ class PaymentActions extends ActionScreen {
   }
 
   //Insert Payments
-  Future
-      insertingPaymentData() async {} //Here the method that will save the payment data
+  Future insertingPaymentData() async {
+    const api = 'paymenttypes';
+    var response = await http.get(Uri.http(url, api));
+    // var jsonData = jsonDecode(response.body);
+  } //Here the method that will save the payment data
 }

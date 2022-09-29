@@ -95,9 +95,7 @@ class _CustomerPageState extends State<CustomerPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CustomerTrance(
-                    title: name,
-                    value: phonenumber,
-                  ),
+                      title: name, value: phonenumber, cust_id: id),
                 ),
               ),
             },

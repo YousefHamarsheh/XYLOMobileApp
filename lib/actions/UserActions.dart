@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:xylo/actions/ActionScreen.dart';
+import 'package:xylo/model/transactions/Transaction.dart';
 import 'package:xylo/model/user_data.dart';
 import 'package:http/http.dart' as http;
 
@@ -50,6 +51,55 @@ class UserActions extends ActionScreen {
       ));
 
       // print(user['txtName'] + " " + user['txtCode'].toString() + "\n");
+    }
+  }
+
+  List<Transaction> user_trans_item = [];
+  Future geUserTransData(String id) async {
+    var api = 'invoice/user/$id';
+    var response = await http.get(Uri.http(url, api));
+    var jsonData = jsonDecode(response.body);
+
+    for (var cust in jsonData) {
+      user_trans_item.add(Transaction(
+          cust['txtHdrkey'].toString(),
+          cust['bolPrinted'],
+          cust['bolReserved'],
+          cust['bolReversed'],
+          cust['datTransdate'],
+          cust['dblGroupdiscount'],
+          cust['dblOtherdiscount'],
+          cust['dblPrevcustpoint'],
+          cust['dblTotal'],
+          cust['dblTotalcustpoint'],
+          cust['dblTotaldiscount1'],
+          cust['dblTotaldiscount2'],
+          cust['dblTotaldiscount3'],
+          cust['intSeqnum'],
+          cust['intStatus'],
+          cust['intType'],
+          cust['timTranstime'],
+          cust['txtBranchcode'].toString(),
+          cust['txtCurrency'].toString(),
+          cust['txtCustpointrefkey'].toString(),
+          cust['txtDaykey'].toString(),
+          cust['txtEmployeecode'].toString(),
+          cust['txtJcode'].toString(),
+          cust['txtManagerpincode'].toString(),
+          cust['txtManagerusercode'].toString(),
+          cust['txtNotes'].toString(),
+          cust['txtReference3'].toString(),
+          cust['txtReference4'].toString(),
+          cust['txtRefrence1'].toString(),
+          cust['txtRefrence2'].toString(),
+          cust['txtTranscustomer'].toString(),
+          cust['txtTranscustomername'].toString(),
+          cust['txtTransuser'].toString(),
+          cust['txtWarehousecode'].toString(),
+          cust['refKey'],
+          cust['orderStatus'],
+          cust['totTaxAmt'],
+          cust['ebtAmt']));
     }
   }
 }

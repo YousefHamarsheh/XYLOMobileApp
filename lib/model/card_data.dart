@@ -1,10 +1,10 @@
 class CardData {
-  final String decription;
-  final String ref;
-  final String percentage;
+  final String key;
+  final String description;
+  final String reference;
+  final double commissionPercentage;
+  final bool merchantAfford;
 
-  final bool merchent;
-
-const  CardData(this.decription, this.ref, this.percentage, this.merchent);
-  
+  CardData(this.key, this.description, this.reference,
+      this.commissionPercentage, this.merchantAfford);
 }

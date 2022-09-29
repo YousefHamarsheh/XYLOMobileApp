@@ -42,7 +42,7 @@ class CreditCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    cardData.decription,
+                    cardData.description,
                     style: const TextStyle(
                         fontSize: 20,
                         color: kPrymeryColor2,
@@ -82,7 +82,7 @@ class CreditCard extends StatelessWidget {
                     fontWeight: FontWeight.w500),
               ),
               Text(
-                cardData.percentage,
+                cardData.commissionPercentage.toString(),
                 style: TextStyle(
                     fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
@@ -103,7 +103,7 @@ class CreditCard extends StatelessWidget {
                   height: 24,
                   width: 24,
                   child: Checkbox(
-                    value: cardData.merchent,
+                    value: cardData.merchantAfford,
                     onChanged: null,
                   ))
             ],
