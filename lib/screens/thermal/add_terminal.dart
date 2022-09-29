@@ -16,8 +16,21 @@ class AddTerminal extends StatefulWidget {
 }
 
 class _AddTerminalState extends State<AddTerminal> {
+  String key = "key";
+  String merch_id = "merch_id";
+  String description = "description";
+  bool active = false;
+  final _keyForm = GlobalKey<FormState>();
 
-  bool val1 = false;
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +45,25 @@ class _AddTerminalState extends State<AddTerminal> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "KEY", paddingOn: true),
-                CustomTextFeild(hint: "002"),
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "002"),
+                  onSaved: (value) {
+                    key = value;
+                  },
+                ),
                 Label(text: "MERCHANT ID", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Tax 02",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Tax 02"),
+                  onSaved: (value) {
+                    merch_id = value;
+                  },
                 ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Dec...",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Dec..."),
+                  onSaved: (value) {
+                    description = value;
+                  },
                 ),
                 const SizedBox(
                   height: 30,
@@ -47,10 +71,10 @@ class _AddTerminalState extends State<AddTerminal> {
                 Row(
                   children: [
                     Checkbox(
-                        value: val1,
+                        value: active,
                         onChanged: (val) {
                           setState(() {
-                            val1 = val;
+                            active = val;
                           });
                         }),
                     const Text(

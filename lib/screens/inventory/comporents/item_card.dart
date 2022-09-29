@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
@@ -56,8 +58,8 @@ class ItemCard extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8.0),
-          child: Image.asset(
-            itemData.imagePath,
+          child: Image.memory(
+            base64Decode(itemData.imagePath),
             height: 60.0,
             width: 60.0,
           ),
@@ -77,7 +79,7 @@ class ItemCard extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              itemData.txtBarcode,
+              itemData.txtBarcode.toString(),
               style: const TextStyle(fontSize: 13, color: textheadlinecolor),
             ),
           ],

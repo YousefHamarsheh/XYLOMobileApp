@@ -16,9 +16,22 @@ class AddOrder extends StatefulWidget {
 }
 
 class _AddOrderState extends State<AddOrder> {
-  String selectedCityValue = "Califonia";
-  String selectedStateValue = "Califonia";
-  bool val1 = false;
+  String order_type_code = "order_type_code";
+  String order_type_name = "order_type_name";
+  bool active = false;
+  final _keyForm = GlobalKey<FormState>();
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
+
+  Future
+      _insertingOrderData() async {} //Here the method that will save the payment data
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +46,18 @@ class _AddOrderState extends State<AddOrder> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "ORDER TYPE CODE", paddingOn: true),
-                CustomTextFeild(hint: "Type"),
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Type"),
+                  onSaved: (value) {
+                    order_type_code = value;
+                  },
+                ),
                 Label(text: "ORDER TYPE NAME", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Name",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Name"),
+                  onSaved: (value) {
+                    order_type_name = value;
+                  },
                 ),
                 const SizedBox(
                   height: 30,
@@ -44,10 +65,10 @@ class _AddOrderState extends State<AddOrder> {
                 Row(
                   children: [
                     Checkbox(
-                        value: val1,
+                        value: active,
                         onChanged: (val) {
                           setState(() {
-                            val1 = val;
+                            active = val;
                           });
                         }),
                     const Text(

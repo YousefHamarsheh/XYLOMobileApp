@@ -16,15 +16,32 @@ class AddCategory extends StatefulWidget {
 }
 
 class _AddCategoryState extends State<AddCategory> {
-  String selectedCityValue = "Califonia";
-  String selectedStateValue = "Califonia";
-  bool val1 = false;
+  // String selectedCityValue = "Califonia";
+  // String selectedStateValue = "Califonia";
+  String code = "code";
+  String name = "name";
+  String value = "value";
+  bool percent = false;
+  final _keyForm = GlobalKey<FormState>();
+
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
+
+  Future
+      _insertingCategoryData() async {} //Here the method that will save the payment data
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(addButtonAction: () => _insertingCategoryData()),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
@@ -33,14 +50,25 @@ class _AddCategoryState extends State<AddCategory> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "CODE", paddingOn: true),
-                CustomTextFeild(hint: "002"),
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "002"),
+                  onSaved: (value) {
+                    code = value;
+                  },
+                ),
                 Label(text: "NAME", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Name",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Name"),
+                  onSaved: (value) {
+                    name = value;
+                  },
                 ),
                 Label(text: "VALUE", paddingOn: true),
-                CustomTextFeild(
-                  hint: "2",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Value"),
+                  onSaved: (value) {
+                    value = value;
+                  },
                 ),
                 const SizedBox(
                   height: 30,
@@ -48,10 +76,10 @@ class _AddCategoryState extends State<AddCategory> {
                 Row(
                   children: [
                     Checkbox(
-                        value: val1,
+                        value: percent,
                         onChanged: (val) {
                           setState(() {
-                            val1 = val;
+                            percent = val;
                           });
                         }),
                     const Text(

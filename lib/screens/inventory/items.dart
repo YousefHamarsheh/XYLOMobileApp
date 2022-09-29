@@ -30,19 +30,51 @@ class ItemPage extends StatelessWidget {
     //     "1257896", "1458"),
   ];
 
+  Future<String> getImage(String id) async {
+    // print(id);
+    // print(url + api);
+    var response =
+        await http.get(Uri.http('x1002.asdnova.com:9001', 'productimage/$id'));
+    // print(response.statusCode);
+    if (response.statusCode != 204) {
+      //Json Object
+      String image = "";
+      var jsonData = jsonDecode(response.body);
+      // print(jsonData);
+      // var imageObj = jsonData[0];
+
+      // image = obj['blobImage'];
+
+      // print(image);
+      // print(image);
+      return jsonData['blobImage'].toString();
+    } else {
+      return await getImage("123");
+    }
+  }
+
   Future _getItemsData() async {
-    const url = '5.161.97.142:9001';
+    const url = 'x1002.asdnova.com:9001';
     const api = 'products';
     var response = await http.get(Uri.http(url, api));
     var jsonData = jsonDecode(response.body);
 
+    int counter = 0;
     for (var item in jsonData) {
       var active = false;
       if (item['bolActive'] == 1) {
         active = true;
       }
+      print(itemData.length);
+      // print(await getImage(item['txtCode'].toString()));
+      // print(item['productcatTbl']['txtCode']);
+      String image_path = "";
+      image_path =
+          await getImage(item['txtCode'].toString()).catchError((error) {
+        print(error);
+      });
       itemData.add(ItemData(
-        "assets/images/burger.png",
+        image_path,
         item['txtCode'],
         active,
         item['bolBatchable'],
@@ -51,7 +83,7 @@ class ItemPage extends StatelessWidget {
         item['bolLocal'],
         item['bolPriceincludevat'],
         item['dblCostprice'],
-        item['dblCurrentqty'],
+        item['dblCurrentqty'].toString(),
         item['dblDefaultvatrate'],
         item['dblEqv'],
         item['dblSellprice'],
@@ -108,6 +140,10 @@ class ItemPage extends StatelessWidget {
         item['printTo'],
         item['express'],
       ));
+      counter++;
+      if (counter == 5) {
+        break;
+      }
     }
   }
 

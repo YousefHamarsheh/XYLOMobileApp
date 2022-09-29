@@ -8,7 +8,7 @@ class ItemData {
   final int bolLocal;
   final int bolPriceincludevat;
   final double dblCostprice;
-  final double dblCurrentqty;
+  final String dblCurrentqty;
   final double dblDefaultvatrate;
   final double dblEqv;
   final double dblSellprice;
@@ -31,8 +31,8 @@ class ItemData {
   final String txtUnit;
   final String adult;
   final String ebt;
-  final int byWeight; //
-  final int itemSize; //
+  final int byWeight; //??
+  final int itemSize; //??
   final double feeMultiplier;
   final int addToPos;
   final String color;

@@ -17,40 +17,76 @@ class AddPayment extends StatefulWidget {
 }
 
 class _AddPaymentState extends State<AddPayment> {
-  String selectedCityValue = "Califonia";
-  String selectedStateValue = "Califonia";
-  bool val1 = false, val2 = false;
+  // String selectedCityValue = "Califonia";
+  // String selectedStateValue = "Califonia";
+
+  String type_no = "type_no";
+  String description = "description";
+  String note = "note";
+  final _keyForm = GlobalKey<FormState>();
+
+  bool active = false, pay_out = false;
+
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
+
+  Future
+      _insertingPaymentData() async {} //Here the method that will save the payment data
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(addButtonAction: () => _insertingPaymentData()),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
           child: SingleChildScrollView(
+              child: Form(
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "TYPE NO", paddingOn: true),
-                CustomTextFeild(hint: "Type"),
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Type"),
+                  onSaved: (value) {
+                    type_no = value;
+                  },
+                ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Desc....",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Desc...."),
+                  onSaved: (value) {
+                    description = value;
+                  },
                 ),
                 Label(text: "Note", visibleStar: false, paddingOn: true),
-                CustomTextFeild(
-                  hint: "Note...",
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Note..."),
+                  onSaved: (value) {
+                    note = value;
+                  },
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 Row(
                   children: [
-                    Checkbox(value: val1, onChanged: (val) {setState(() {
-                            val1 = val;
-                          });}),
+                    Checkbox(
+                        value: active,
+                        onChanged: (val) {
+                          setState(() {
+                            active = val;
+                          });
+                        }),
                     const Text(
                       "Active",
                       style: TextStyle(
@@ -62,10 +98,10 @@ class _AddPaymentState extends State<AddPayment> {
                       width: 16,
                     ),
                     Checkbox(
-                        value: val2,
+                        value: pay_out,
                         onChanged: (val) {
                           setState(() {
-                            val2 = val;
+                            pay_out = val;
                           });
                         }),
                     const Text(
@@ -82,7 +118,7 @@ class _AddPaymentState extends State<AddPayment> {
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );
