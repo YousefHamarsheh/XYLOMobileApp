@@ -10,7 +10,7 @@ import 'package:xylo/compononts/trans_card.dart';
 import 'package:xylo/config.dart';
 
 import '../../compononts/side_menu.dart';
-import '../../model/vendor_trance_data.dart';
+import '../../model/transactions/vendor_trance_data.dart';
 
 class VendorTrance extends StatefulWidget {
   final String title, value;
@@ -73,7 +73,9 @@ class _VendorTranceState extends State<VendorTrance> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Text(widget.title,
                   style: TextStyle(
                       color: kPrymeryColor2,

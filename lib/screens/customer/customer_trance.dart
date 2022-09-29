@@ -8,7 +8,7 @@ import 'package:xylo/compononts/sort_button.dart';
 import 'package:xylo/compononts/trans_card.dart';
 
 import '../../config.dart';
-import '../../model/customer_trance_data.dart';
+import '../../model/transactions/customer_trance_data.dart';
 
 class CustomerTrance extends StatefulWidget {
   final String title, value;
