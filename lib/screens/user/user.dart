@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/UserActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
@@ -31,54 +32,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   TextEditingController textEditingControllerSearch = TextEditingController();
 
-  List<UserItem> userItem = [];
-
-  Future _getUsersData() async {
-    // print("object");
-    const url = '5.161.97.142:9001';
-    const api = 'user';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var user in jsonData) {
-      var active = false;
-      if (user['bolActive'] == 1) {
-        active = true;
-      }
-      userItem.add(UserItem(
-        user['txtCode'],
-        user['dblMaxdiscountrate'],
-        user['intAllowopen'],
-        user['intType'],
-        user['txtName'],
-        user['txtPincode'],
-        user['txtPincodetype'],
-        user['txtPwd'],
-        user['bolManagement'],
-        user['bolShiftReport'],
-        user['bolShiftsReports'],
-        user['bolCreateSales'],
-        user['bolSalesList'],
-        user['bolSalesEditVoid'],
-        user['bolEditItems'],
-        user['bolCashOut'],
-        user['bolCashIn'],
-        user['bolInvMngmnt'],
-        user['bolAddeditItems'],
-        user['bolAddeditDeps'],
-        user['bolBarcodeGen'],
-        user['bolStoreInf'],
-        user['bolAdvanceReport'],
-        active,
-        user['bolClockInOut'],
-        user['txtPhone'],
-        user['txtEmail'],
-        user['notes'],
-      ));
-
-      // print(user['txtName'] + " " + user['txtCode'].toString() + "\n");
-    }
-  }
+  UserActions userActions = UserActions();
 
   @override
   Widget build(BuildContext context) {
@@ -126,16 +80,16 @@ class _UserPageState extends State<UserPage> {
       child: SizedBox(
           height: screenHeight * 0.75,
           child: FutureBuilder(
-            future: _getUsersData(),
+            future: userActions.getUsersData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 // print("object");
                 return ListView.builder(
-                  itemCount: userItem.length,
+                  itemCount: userActions.userItem.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
-                      text: userItem[index].txtName,
-                      value: userItem[index].txtPhone.toString(),
+                      text: userActions.userItem[index].txtName,
+                      value: userActions.userItem[index].txtPhone.toString(),
                       option: () => buildOptionPopup(context),
                     );
                   },

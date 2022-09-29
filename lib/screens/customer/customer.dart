@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/custom_card.dart';
@@ -30,33 +31,9 @@ class CustomerPage extends StatefulWidget {
 }
 
 class _CustomerPageState extends State<CustomerPage> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getCustomerData();
-  // }
-
   TextEditingController textEditingControllerSearch = TextEditingController();
-  List<CustomerItem> customerItem = [];
-  Future _getCustomerData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'cust';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
 
-    for (var cust in jsonData) {
-      customerItem.add(CustomerItem(
-          cust['txtCode'].toString(),
-          cust['txtName'].toString(),
-          cust['txtTel1'].toString(),
-          cust['txtEmail'].toString(),
-          cust['txtAddress'].toString(),
-          cust['txtCitya'].toString(),
-          cust['txtAddress'].toString(),
-          cust['txtAreacode'].toString()));
-      // print(cust['txtName'] + " " + cust['txtCode'].toString() + "\n");
-    }
-  }
+  CustActions custActions = CustActions();
 
   Padding buildList() {
     double screenHeight = MediaQuery.of(context)
@@ -67,20 +44,20 @@ class _CustomerPageState extends State<CustomerPage> {
       child: SizedBox(
           height: screenHeight * 0.75,
           child: FutureBuilder(
-            future: _getCustomerData(),
+            future: custActions.getCustomerData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(
-                  itemCount: customerItem.length,
+                  itemCount: custActions.customerItem.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
-                      text: customerItem[index].name,
-                      value: customerItem[index].phonenumber,
+                      text: custActions.customerItem[index].name,
+                      value: custActions.customerItem[index].phonenumber,
                       option: () => buildOptionPopup(
                           context,
-                          customerItem[index].name,
-                          customerItem[index].phonenumber,
-                          customerItem[index].id),
+                          custActions.customerItem[index].name,
+                          custActions.customerItem[index].phonenumber,
+                          custActions.customerItem[index].id),
                     );
                   },
                 );

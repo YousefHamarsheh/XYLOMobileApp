@@ -79,6 +79,7 @@ flutter:
       - assets/images/reports.png
       - assets/images/amestrdam.jpg
       - assets/images/trash.png
+      - assets/images/temp-image/productimage-123.txt
       
   
   #   - images/a_dot_ham.jpeg

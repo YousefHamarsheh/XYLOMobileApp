@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/CategActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom,_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
@@ -18,6 +19,9 @@ class AddCategory extends StatefulWidget {
 class _AddCategoryState extends State<AddCategory> {
   // String selectedCityValue = "Califonia";
   // String selectedStateValue = "Califonia";
+
+  CategActions categActions = CategActions();
+
   String code = "code";
   String name = "name";
   String value = "value";
@@ -33,15 +37,14 @@ class _AddCategoryState extends State<AddCategory> {
     }
   }
 
-  Future
-      _insertingCategoryData() async {} //Here the method that will save the payment data
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => _insertingCategoryData()),
+      bottomSheet: BottomBar(
+          addButtonAction: () => _savingData()
+              .then((value) => categActions.insertingCategoryData())),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(

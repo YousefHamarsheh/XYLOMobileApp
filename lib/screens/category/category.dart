@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/CategActions.dart';
 import 'package:xylo/screens/category/add_cat.dart';
 import 'package:xylo/screens/category/compononts/categoryCard.dart';
 import 'package:http/http.dart' as http;
@@ -20,29 +21,7 @@ import '../../model/category_data .dart';
 class CategoryPage extends StatelessWidget {
   CategoryPage({Key key}) : super(key: key);
 
-  List<CategoryData> categoryData = [
-    // const CategoryData("002", "Tax 02", "2", true),
-    // const CategoryData("002", "Tax 02", "2", true),
-    // const CategoryData("002", "Tax 02", "2", true),
-    // const CategoryData("002", "Tax 02", "2", true),
-    // const CategoryData("002", "Tax 02", "2", true),
-  ];
-
-  Future _getTaxCatData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'taxcategory';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var pay in jsonData) {
-      bool is_percent = false;
-      if (pay['ispercent'] == 1) {
-        is_percent = true;
-      }
-      categoryData.add(CategoryData(
-          pay['txtKey'], pay['txtname'], is_percent, pay['dblPercent']));
-    }
-  }
+  CategActions categActions = CategActions();
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +56,14 @@ class CategoryPage extends StatelessWidget {
             SizedBox(
                 height: screenHeight * 0.75,
                 child: FutureBuilder(
-                  future: _getTaxCatData(),
+                  future: categActions.getTaxCatData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
-                          itemCount: categoryData.length,
+                          itemCount: categActions.categoryData.length,
                           itemBuilder: (context, index) {
                             return CategoryCard(
-                              categoryData: categoryData[index],
+                              categoryData: categActions.categoryData[index],
                               optionOnTap: () => buildOptionPopup(context),
                               screenHeight: screenHeight,
                               optionButton: true,

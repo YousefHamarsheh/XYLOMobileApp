@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/OrderActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom,_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
@@ -16,6 +17,7 @@ class AddOrder extends StatefulWidget {
 }
 
 class _AddOrderState extends State<AddOrder> {
+  OrderActions orderActions = OrderActions();
   String order_type_code = "order_type_code";
   String order_type_name = "order_type_name";
   bool active = false;
@@ -29,15 +31,14 @@ class _AddOrderState extends State<AddOrder> {
     }
   }
 
-  Future
-      _insertingOrderData() async {} //Here the method that will save the payment data
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(
+          addButtonAction: () => _savingData().then((value) => _savingData()
+              .then((value) => orderActions.insertingOrderData()))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(

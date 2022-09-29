@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/actions/VendorActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
@@ -36,30 +37,7 @@ class _VendorState extends State<Vender> {
   TextEditingController textEditingControllerForm = TextEditingController();
   TextEditingController textEditingControllerTo = TextEditingController();
   TextEditingController textEditingControllerAmount = TextEditingController();
-
-  List<VendorItem> vendorItem = [];
-
-  Future _getVendorData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'cust';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var ven in jsonData) {
-      vendorItem.add(VendorItem(
-          ven['txtCscode'].toString(),
-          ven['txtNamea'].toString(),
-          ven['txtNamee'].toString(),
-          ven['txtTel1'].toString(),
-          ven['txtEmail'].toString(),
-          ven['txtAddressa'].toString(),
-          ven['txtCitya'].toString(),
-          ven['txtAddresse'].toString(),
-          ven['txtAreacode'].toString()));
-      // print(cust['txtName'] + " " + cust['txtCode'].toString() + "\n");
-    }
-  }
-
+  VendorActions vendorActions = VendorActions();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -318,19 +296,19 @@ class _VendorState extends State<Vender> {
       child: SizedBox(
           height: screenHeight * 0.66,
           child: FutureBuilder(
-            future: _getVendorData(),
+            future: vendorActions.getVendorData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(
-                  itemCount: vendorItem.length,
+                  itemCount: vendorActions.vendorItem.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
-                      text: vendorItem[index].vendor_name,
-                      value: vendorItem[index].phonenumber,
+                      text: vendorActions.vendorItem[index].vendor_name,
+                      value: vendorActions.vendorItem[index].phonenumber,
                       option: () => buildOptionPopup(
                           context,
-                          vendorItem[index].vendor_name,
-                          vendorItem[index].phonenumber),
+                          vendorActions.vendorItem[index].vendor_name,
+                          vendorActions.vendorItem[index].phonenumber),
                     );
                   },
                 );

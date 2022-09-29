@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/TermActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom,_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
@@ -16,6 +17,8 @@ class AddTerminal extends StatefulWidget {
 }
 
 class _AddTerminalState extends State<AddTerminal> {
+  TermActions termActions = TermActions();
+
   String key = "key";
   String merch_id = "merch_id";
   String description = "description";
@@ -36,7 +39,9 @@ class _AddTerminalState extends State<AddTerminal> {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(
+          addButtonAction: () =>
+              _savingData().then((value) => termActions.insertingTermData())),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(

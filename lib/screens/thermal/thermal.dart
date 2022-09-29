@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/TermActions.dart';
 import 'package:xylo/screens/category/compononts/categoryCard.dart';
 import 'package:xylo/screens/thermal/add_terminal.dart';
 import 'package:http/http.dart' as http;
@@ -21,30 +22,7 @@ import 'compononts/thermal.dart';
 class ThermalPage extends StatelessWidget {
   ThermalPage({Key key}) : super(key: key);
 
-  List<ThermalData> thermalData = [
-    // const ThermalData("002", "Tax 02", "2", true),
-    // const ThermalData("002", "Tax 02", "2", true),
-    // const ThermalData("002", "Tax 02", "2", true),
-    // const ThermalData("002", "Tax 02", "2", true),
-    // const ThermalData("002", "Tax 02", "2", true),
-  ];
-
-  Future _getTerminalData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'terminals';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var term in jsonData) {
-      var active = false;
-      if (term['active'] == 1) {
-        active = true;
-      }
-      thermalData.add(ThermalData(term['terminalKey'], term['merchantId'],
-          term['description'], active));
-    }
-  }
-
+  TermActions termActions = TermActions();
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -78,14 +56,14 @@ class ThermalPage extends StatelessWidget {
             SizedBox(
                 height: screenHeight * 0.75,
                 child: FutureBuilder(
-                  future: _getTerminalData(),
+                  future: termActions.getTerminalData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
-                          itemCount: thermalData.length,
+                          itemCount: termActions.thermalData.length,
                           itemBuilder: (context, index) {
                             return ThermalCard(
-                              thermalData: thermalData[index],
+                              thermalData: termActions.thermalData[index],
                               optionOnTap: () => buildOptionPopup(context),
                               screenHeight: screenHeight,
                               optionButton: true,
