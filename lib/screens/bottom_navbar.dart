@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'dashboard.dart';
 import 'deal/deals.dart';
-
 import 'inventory/inventory.dart';
 import 'vendor/vendors.dart';
 
@@ -18,7 +17,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int currentIndex = 0;
   final List<Widget> children = [
-    const Inventory(),
+    const Vender(),
     const Deals(),
     const Inventory(),
     const Dashboard(),

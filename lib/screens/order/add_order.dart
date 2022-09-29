@@ -16,7 +16,6 @@ class AddOrder extends StatefulWidget {
 }
 
 class _AddOrderState extends State<AddOrder> {
-  String order_type_code = "order_type_code";
   String order_type_name = "order_type_name";
   bool active = false;
   final _keyForm = GlobalKey<FormState>();
@@ -45,13 +44,6 @@ class _AddOrderState extends State<AddOrder> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Label(text: "ORDER TYPE CODE", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Type"),
-                  onSaved: (value) {
-                    order_type_code = value;
-                  },
-                ),
                 Label(text: "ORDER TYPE NAME", paddingOn: true),
                 TextFormField(
                   decoration: const InputDecoration(hintText: "Name"),

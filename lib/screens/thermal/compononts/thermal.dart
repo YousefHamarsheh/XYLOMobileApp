@@ -39,7 +39,7 @@ class ThermalCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                thermalData.terminalKey,
+                thermalData.description,
                 style: const TextStyle(
                     fontSize: 20,
                     color: kPrymeryColor2,
@@ -75,24 +75,6 @@ class ThermalCard extends StatelessWidget {
               ),
               Text(
                 thermalData.merchantId,
-                style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
-                    color: textheadlinecolor),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Description",
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
-                    fontWeight: FontWeight.w500),
-              ),
-              Text(
-                thermalData.description,
                 style: TextStyle(
                     fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),

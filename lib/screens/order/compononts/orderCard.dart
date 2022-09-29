@@ -38,9 +38,9 @@ class OrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Call In",
-                style: TextStyle(
+              Text(
+                orderData.namee,
+                style: const TextStyle(
                     fontSize: 20,
                     color: kPrymeryColor2,
                     fontWeight: FontWeight.bold),

@@ -20,7 +20,6 @@ class _AddPaymentState extends State<AddPayment> {
   // String selectedCityValue = "Califonia";
   // String selectedStateValue = "Califonia";
 
-  String type_no = "type_no";
   String description = "description";
   String note = "note";
   final _keyForm = GlobalKey<FormState>();
@@ -54,13 +53,6 @@ class _AddPaymentState extends State<AddPayment> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Label(text: "TYPE NO", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Type"),
-                  onSaved: (value) {
-                    type_no = value;
-                  },
-                ),
                 Label(text: "DESCRIPTION", paddingOn: true),
                 TextFormField(
                   decoration: const InputDecoration(hintText: "Desc...."),

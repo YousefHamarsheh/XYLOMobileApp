@@ -60,7 +60,10 @@ class _InventoryState extends State<Inventory> {
             ),
             Row(
               children: [
-               SearchFeild(controller: null, width: ((MediaQuery.of(context).size.width) * 0.6), hint: "Search"),
+                SearchFeild(
+                    controller: null,
+                    width: ((MediaQuery.of(context).size.width) * 0.6),
+                    hint: "Search"),
                 FiltterButton(onPress: () {
                   if (index == 0) {
                     filterpopup(context);
@@ -82,8 +85,6 @@ class _InventoryState extends State<Inventory> {
     );
   }
 
-
-
   void filterpopup(context) {
     showBarModalBottomSheet(
         context: context,
@@ -96,11 +97,12 @@ class _InventoryState extends State<Inventory> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                   Padding(
+                  Padding(
                     padding: const EdgeInsets.only(top: 20, left: 10),
                     child: Text("Apply Filters",
                         style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(3), fontWeight: FontWeight.w500)),
+                            fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                            fontWeight: FontWeight.w500)),
                   ),
                   const SizedBox(
                     height: 15,
@@ -129,10 +131,12 @@ class _InventoryState extends State<Inventory> {
 
   Widget check1() {
     return CheckboxListTile(
-      title:  Text(
+      title: Text(
         "Have Expired Items",
         style: TextStyle(
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4), fontWeight: FontWeight.w500, color: Colors.grey),
+            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            fontWeight: FontWeight.w500,
+            color: Colors.grey),
       ),
       controlAffinity: ListTileControlAffinity.leading,
       value: isActive1,
@@ -146,10 +150,12 @@ class _InventoryState extends State<Inventory> {
 
   Widget check2() {
     return CheckboxListTile(
-      title:  Text(
+      title: Text(
         "Has No Items",
         style: TextStyle(
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4), fontWeight: FontWeight.w500, color: Colors.grey),
+            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            fontWeight: FontWeight.w500,
+            color: Colors.grey),
       ),
       controlAffinity: ListTileControlAffinity.leading,
       value: isActive2,
@@ -170,10 +176,11 @@ class _InventoryState extends State<Inventory> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding:const EdgeInsets.only(top: 20, left: 10),
+                    padding: const EdgeInsets.only(top: 20, left: 10),
                     child: Text("Sort By",
                         style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(3), fontWeight: FontWeight.w500)),
+                            fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                            fontWeight: FontWeight.w500)),
                   ),
                   const SizedBox(
                     height: 15,
@@ -202,7 +209,7 @@ class _InventoryState extends State<Inventory> {
 
   Widget radio1() {
     return RadioListTile<bool>(
-        title:  Text(
+        title: Text(
           "Last Added",
           style: TextStyle(
             color: Colors.grey,
@@ -222,10 +229,10 @@ class _InventoryState extends State<Inventory> {
   Widget radio2() {
     return RadioListTile(
         title: Text(
-          "Last Modifide",
+          "Last Modified",
           style: TextStyle(
             color: Colors.grey,
-            fontSize:  ResponsiveFlutter.of(context).fontSize(2.4),
+            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -246,7 +253,6 @@ class _InventoryState extends State<Inventory> {
         children: [
           buildDprtButton(screenWidth - 35),
           buildItemButton(screenWidth - 35),
-          buildReportButton(screenWidth - 35),
         ],
       ),
     );
@@ -298,44 +304,15 @@ class _InventoryState extends State<Inventory> {
           elevation: 0,
           color: index == 1 ? kPrymeryColor2 : Colors.white,
           shape: const RoundedRectangleBorder(
-              side: BorderSide(width: 1, color: kPrymeryColor2)),
-          child: Center(
-            child: Text(
-              "Items",
-              style: TextStyle(
-                  color: index == 1 ? Colors.white : textheadlinecolor,
-                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  InkWell buildReportButton(double width) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          index = 2;
-        });
-      },
-      child: SizedBox(
-        width: width * 0.3,
-        height: 50,
-        child: Card(
-          margin: const EdgeInsets.all(0),
-          color: index == 2 ? kPrymeryColor2 : Colors.white,
-          elevation: 0,
-          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(10),
                   topRight: Radius.circular(10)),
               side: BorderSide(width: 1, color: kPrymeryColor2)),
           child: Center(
             child: Text(
-              "Report",
+              "Items",
               style: TextStyle(
-                  color: index == 2 ? Colors.white : textheadlinecolor,
+                  color: index == 1 ? Colors.white : textheadlinecolor,
                   fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),
             ),
           ),

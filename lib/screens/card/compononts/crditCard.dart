@@ -42,17 +42,11 @@ class CreditCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    cardData.ref,
+                    cardData.decription,
                     style: const TextStyle(
                         fontSize: 20,
                         color: kPrymeryColor2,
                         fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    cardData.decription,
-                    style: TextStyle(
-                        fontSize: ResponsiveFlutter.of(context).fontSize(2),
-                        color: textheadlinecolor),
                   ),
                 ],
               ),

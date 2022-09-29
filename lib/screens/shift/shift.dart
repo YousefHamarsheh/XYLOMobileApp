@@ -59,7 +59,7 @@ class ShiftPage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width * 0.6;
     return Scaffold(
       drawer: const SideMenu(),
-      appBar: CustomAppBar(titles: "Shifts", plusButtonPress: () {}),
+      appBar: CustomAppBar(titles: "Shifts"),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(kPadding, 24, kPadding, kPadding),
         child: Column(

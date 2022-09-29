@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 30,
             ),
-            isUserMode ?  buildUerLogin():buildPINLogin() ,
+            isUserMode ? buildUerLogin() : buildPINLogin(),
             login(),
           ],
         ),
@@ -75,23 +75,24 @@ class _LoginState extends State<Login> {
             isUserMode = true;
           });
         },
-        color:isUserMode? kPrymeryColor2: kPrymeryColor1,
+        color: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(7), bottomLeft:  Radius.circular(7))),
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(7), bottomLeft: Radius.circular(7))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:  [
+          children: [
             Icon(
               Icons.keyboard,
-              color: isUserMode?  Colors.white: textheadlinecolor,
+              color: isUserMode ? Colors.white : textheadlinecolor,
             ),
-           const SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text(
               "User",
               style: TextStyle(
-                color: isUserMode? Colors.white : textheadlinecolor,
+                color: isUserMode ? Colors.white : textheadlinecolor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -113,20 +114,24 @@ class _LoginState extends State<Login> {
             isUserMode = false;
           });
         },
-        color: !isUserMode? kPrymeryColor2: kPrymeryColor1,
+        color: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(topRight: Radius.circular(7), bottomRight:  Radius.circular(7))),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(7), bottomRight: Radius.circular(7))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:  [
-            Icon(Icons.keyboard, color: !isUserMode? Colors.white : textheadlinecolor,),
-          const  SizedBox(
+          children: [
+            Icon(
+              Icons.keyboard,
+              color: !isUserMode ? Colors.white : textheadlinecolor,
+            ),
+            const SizedBox(
               width: 10,
             ),
             Text(
               "Pin",
               style: TextStyle(
-                color: !isUserMode? Colors.white : textheadlinecolor,
+                color: !isUserMode ? Colors.white : textheadlinecolor,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

@@ -19,12 +19,7 @@ import 'compononts/orderCard.dart';
 class OrderPage extends StatelessWidget {
   OrderPage({Key key}) : super(key: key);
 
-  List<OrderData> orderData = [
-    // const OrderData("73", "Call In", true),
-    // const OrderData("73", "Call In", true),
-    // const OrderData("73", "Call In", true),
-    // const OrderData("73", "Call In", true),
-  ];
+  List<OrderData> orderData = [];
   Future _getOrderData() async {
     const url = '5.161.97.142:9001';
     const api = 'ordertypes';

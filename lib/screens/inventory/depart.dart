@@ -172,7 +172,7 @@ class Department extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              data.name_display_on_screen,
+              data.id,
               style: TextStyle(
                   fontSize: ResponsiveFlutter.of(context)
                       .fontSize(screenHeight > 890 ? 1.3 : 1.5),
