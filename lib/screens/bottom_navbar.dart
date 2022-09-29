@@ -16,61 +16,53 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-
   int currentIndex = 0;
-  final List<Widget> children=
-  [
-   const Vender(),
-   const Deals(),
-   const Inventory(),
-   const Dashboard(),
+  final List<Widget> children = [
+    const Inventory(),
+    const Deals(),
+    const Inventory(),
+    const Dashboard(),
   ];
-  void onTappedBar(int index){
+  void onTappedBar(int index) {
     setState(() {
       currentIndex = index;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
 
         onTap: onTappedBar,
         currentIndex: currentIndex,
-        
+
         //selectedFontSize: 12.0,
         //unselectedFontSize: 10.0,
-        
-        items: const [
 
+        items: const [
           BottomNavigationBarItem(
-            
             icon: Icon(Icons.chat_bubble_outline),
             activeIcon: Icon(Icons.chat_bubble),
             label: 'Vendors',
           ),
-
-            BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
             label: 'Deals',
-            ),
-
-            BottomNavigationBarItem(
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.assignment_outlined),
             activeIcon: Icon(Icons.assignment),
             label: 'Inventory',
-            ),
-
-            BottomNavigationBarItem(
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             activeIcon: Icon(Icons.person),
             label: 'Dashboard',
-            ),
+          ),
         ],
       ),
     );
