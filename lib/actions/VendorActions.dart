@@ -96,7 +96,7 @@ class VendorActions extends ActionScreen {
           "content-type": "application/json"
         },
         body: json.encode({
-          "txtCscode": xid.toString(),
+          "txtCscode": xid.toString().substring(0, 7),
           "numSeq": 40,
           "bolAllowglacctransaction": null,
           "bolLegalcase": null,
@@ -144,5 +144,6 @@ class VendorActions extends ActionScreen {
           "txtUrl": null,
           "txtVatno": null
         }));
+    // print(xid);
   } //Here the method that will save the payment data
 }

@@ -40,12 +40,14 @@ class _AddTerminalState extends State<AddTerminal> {
       drawer: const SideMenu(),
       appBar: buildAppbar(),
       bottomSheet: BottomBar(
-          addButtonAction: () =>
-              _savingData().then((value) => termActions.insertingTermData())),
+          addButtonAction: () => _savingData().then((value) => termActions
+              .insertingTermData(key, merch_id, description, active))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
           child: SingleChildScrollView(
+              child: Form(
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -96,7 +98,7 @@ class _AddTerminalState extends State<AddTerminal> {
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );

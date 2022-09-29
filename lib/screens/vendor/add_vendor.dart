@@ -58,6 +58,8 @@ class _AddVendorState extends State<AddVendor> {
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(
+            child: Form(
+          key: _keyForm,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -134,7 +136,7 @@ class _AddVendorState extends State<AddVendor> {
               ),
             ],
           ),
-        ),
+        )),
       ),
     );
   }

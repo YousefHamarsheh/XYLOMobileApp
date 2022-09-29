@@ -24,6 +24,18 @@ class OrderActions extends ActionScreen {
   }
 
   //Inserting Order
-  Future
-      insertingOrderData() async {} //Here the method that will save the payment data
+  Future insertingOrderData(String code, String type_name, bool active) async {
+    const api = 'ordertypes/save';
+    var activeFlag = 0;
+    if (active) {
+      activeFlag = 1;
+    }
+    final response = await http.post(Uri.http(url, api),
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: json.encode(
+            {"txtCode": code, "txtNamee": type_name, "bolActive": activeFlag}));
+  } //Here the method that will save the payment data
 }

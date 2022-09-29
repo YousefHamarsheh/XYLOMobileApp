@@ -29,18 +29,19 @@ class CategActions extends ActionScreen {
   Future insertingCategoryData(
       String code, String name, double categValue, bool percent) async {
     const api = 'taxcategory/save';
-    var xid = Xid();
+    // var xid = Xid();
     var perc = 0;
     if (percent) {
       perc = 1;
     }
+    var xid = Xid();
     final response = await http.post(Uri.http(url, api),
         headers: {
           "Accept": "application/json",
           "content-type": "application/json"
         },
         body: json.encode({
-          "txtKey": xid.toString(),
+          "txtKey": xid,
           "txtname": name,
           "ispercent": perc,
           "dblPercent": categValue

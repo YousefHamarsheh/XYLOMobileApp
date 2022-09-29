@@ -42,7 +42,7 @@ class _VendorTrance extends State<VendorTrance> {
       child: SizedBox(
           height: screenHeight * 0.66,
           child: FutureBuilder(
-            future: vendorActions.geUserTransData(),
+            future: vendorActions.getVendorData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(

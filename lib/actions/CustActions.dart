@@ -48,7 +48,7 @@ class CustActions extends ActionScreen {
           "content-type": "application/json"
         },
         body: json.encode({
-          "txtCode": xid.toString(),
+          "txtCode": xid.toString().substring(0, 7),
           "numSeq": 37,
           "bolAllowglacctransaction": 0,
           "bolLegalcase": 0,

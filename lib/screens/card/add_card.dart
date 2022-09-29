@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/CardActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom,_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
@@ -18,31 +19,59 @@ class AddCard extends StatefulWidget {
 class _AddCardState extends State<AddCard> {
   String selectedCityValue = "Califonia";
   String selectedStateValue = "Califonia";
-  bool val1 = false;
+  String ref = "ref";
+  String description = "description";
+  double comPercent = 0.0;
+  bool merch_afford = false;
+  CardActions cardActions = CardActions();
+  final _keyForm = GlobalKey<FormState>();
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(
+          addButtonAction: () => _savingData().then((value) => cardActions
+              .insertCardData(ref, description, comPercent, merch_afford))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
           child: SingleChildScrollView(
+              child: Form(
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "REFFERENCE", paddingOn: true),
-                CustomTextFeild(hint: "Ref"),
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Ref"),
+                  onSaved: (value1) {
+                    ref = value1;
+                  },
+                ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                CustomTextFeild(
-                  hint: "Dec...",
-           
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "Desc..."),
+                  onSaved: (value1) {
+                    description = value1;
+                  },
                 ),
                 Label(text: "Commision Percentage", paddingOn: true),
-                CustomTextFeild(
-                  hint: "0.3",
-           
+                TextFormField(
+                  decoration: const InputDecoration(hintText: "0.3"),
+                  keyboardType: TextInputType.number,
+                  onSaved: (value1) {
+                    comPercent = double.parse(value1);
+                  },
                 ),
                 const SizedBox(
                   height: 30,
@@ -50,10 +79,10 @@ class _AddCardState extends State<AddCard> {
                 Row(
                   children: [
                     Checkbox(
-                        value: val1,
+                        value: merch_afford,
                         onChanged: (val) {
                           setState(() {
-                            val1 = val;
+                            merch_afford = val;
                           });
                         }),
                     const Text(
@@ -70,7 +99,7 @@ class _AddCardState extends State<AddCard> {
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );

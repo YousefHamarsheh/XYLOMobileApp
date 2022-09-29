@@ -38,11 +38,14 @@ class _AddOrderState extends State<AddOrder> {
       appBar: buildAppbar(),
       bottomSheet: BottomBar(
           addButtonAction: () => _savingData().then((value) => _savingData()
-              .then((value) => orderActions.insertingOrderData()))),
+              .then((value) => orderActions.insertingOrderData(
+                  order_type_code, order_type_name, active)))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
           child: SingleChildScrollView(
+              child: Form(
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -86,7 +89,7 @@ class _AddOrderState extends State<AddOrder> {
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );

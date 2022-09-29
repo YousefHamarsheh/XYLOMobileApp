@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:xid/xid.dart';
 import 'package:xylo/actions/ActionScreen.dart';
 import 'package:xylo/model/thermal_data.dart';
 import 'package:http/http.dart' as http;
@@ -23,5 +24,24 @@ class TermActions extends ActionScreen {
     }
   }
 
-  Future insertingTermData() async {} //Here is the insert method
+  Future insertingTermData(
+      String key, String merch_id, String description, bool active) async {
+    const api = 'terminals/save';
+    // var xid = Xid();
+    var activeFlag = 0;
+    if (active) {
+      activeFlag = 1;
+    }
+    final response = await http.post(Uri.http(url, api),
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: json.encode({
+          "terminalKey": key,
+          "merchantId": merch_id,
+          "description": description,
+          "active": activeFlag
+        }));
+  } //Here is the insert method
 }

@@ -50,6 +50,8 @@ class _AddCategoryState extends State<AddCategory> {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
           child: SingleChildScrollView(
+              child: Form(
+            key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -72,6 +74,7 @@ class _AddCategoryState extends State<AddCategory> {
                   decoration: const InputDecoration(hintText: "Value"),
                   keyboardType: TextInputType.number,
                   onSaved: (value1) {
+                    print(value1);
                     categValue = double.parse(value1);
                   },
                 ),
@@ -101,7 +104,7 @@ class _AddCategoryState extends State<AddCategory> {
                 ),
               ],
             ),
-          ),
+          )),
         ),
       ),
     );
