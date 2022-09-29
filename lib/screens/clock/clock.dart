@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:xylo/actions/ClockActions.dart';
 import '../../compononts/custom_appbar.dart';
 import '../../compononts/filtter_btn.dart';
 import '../../compononts/searchfeild.dart';
@@ -16,33 +17,7 @@ import 'compononts/clockCard.dart';
 class ClockPage extends StatelessWidget {
   ClockPage({Key key}) : super(key: key);
 
-  List<ClockData> clockData = [
-    // const ClockData(
-    //     "Adel", "Device IP", "06/30/2022", "07:54 AM", "09:54 AM", "Out"),
-    // const ClockData(
-    //     "Adel", "Device IP", "06/30/2022", "07:54 AM", "09:54 AM", "Out"),
-    // const ClockData(
-    //     "Adel", "Device IP", "06/30/2022", "07:54 AM", "09:54 AM", "In"),
-    // const ClockData(
-    //     "Adel", "Device IP", "06/30/2022", "07:54 AM", "09:54 AM", "In"),
-  ];
-
-  Future _getClockData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'clocks';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var clk in jsonData) {
-      var status = "Out";
-      if (clk['status'] == 1) {
-        status = "In";
-      }
-      
-      clockData.add(ClockData(clk['userCode'], clk['userCode'], clk['fromtime'],
-          clk['date'], clk['deviceName'], status, clk['toTime'], clk['notes']));
-    }
-  }
+  ClockActions clockActions = ClockActions();
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +43,14 @@ class ClockPage extends StatelessWidget {
             SizedBox(
                 height: screenHeight * 0.75,
                 child: FutureBuilder(
-                  future: _getClockData(),
+                  future: clockActions.getClockData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
-                          itemCount: clockData.length,
+                          itemCount: clockActions.clockData.length,
                           itemBuilder: (context, index) {
                             return ClockCard(
-                              clockData: clockData[index],
+                              clockData: clockActions.clockData[index],
                               optionOnTap: () => null,
                               screenHeight: screenHeight,
                               optionButton: true,

@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/ShiftActions.dart';
 import 'package:xylo/model/shift_data.dart';
 import 'package:xylo/screens/shift/compononts/shiftCard.dart';
 import 'package:http/http.dart' as http;
@@ -17,42 +18,7 @@ import '../../config.dart';
 class ShiftPage extends StatelessWidget {
   ShiftPage({Key key}) : super(key: key);
 
-  List<ShiftData> shiftData = [];
-
-  Future _getShiftData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'cashopenclose';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var shift in jsonData) {
-      var status = "Closed";
-      if (shift['intStatus'] == 1) {
-        status = "Opened";
-      }
-      shiftData.add(ShiftData(
-          shift['txtKey'],
-          shift['datClosedate'],
-          shift['datCreationdate'],
-          shift['datOpendate'],
-          shift['dblLeftamount'],
-          shift['dblRevolvils'],
-          shift['dblRevolvjod'],
-          shift['dblRevolvusa'],
-          shift['intClosetype'],
-          shift['intHoldstatus'],
-          shift['intShiftcode'],
-          status,
-          shift['timClosetime'],
-          shift['timOpentime'],
-          shift['txtBranchcode'],
-          shift['txtComments'],
-          shift['txtIpaddress'],
-          shift['txtUsercode'],
-          shift['txtUsername']));
-    }
-  }
-
+  ShiftActions shiftActions = ShiftActions();
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -77,14 +43,14 @@ class ShiftPage extends StatelessWidget {
             SizedBox(
                 height: screenHeight * 0.75,
                 child: FutureBuilder(
-                  future: _getShiftData(),
+                  future: shiftActions.getShiftData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
-                          itemCount: shiftData.length,
+                          itemCount: shiftActions.shiftData.length,
                           itemBuilder: (context, index) {
                             return ShiftCard(
-                              shiftData: shiftData[index],
+                              shiftData: shiftActions.shiftData[index],
                               optionOnTap: () => null,
                               screenHeight: screenHeight,
                               optionButton: true,

@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/custom,_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
@@ -34,6 +35,8 @@ class _AddCustomerState extends State<AddCustomer> {
   String selectedCityValue = "Califonia";
   String selectedStateValue = "Califonia";
 
+  CustActions custActions = CustActions();
+
   Future<void> _savingData() async {
     final validation = _keyForm.currentState.validate();
     if (validation) {
@@ -43,77 +46,15 @@ class _AddCustomerState extends State<AddCustomer> {
     }
   }
 
-  Future insertingData() async {
-    _savingData();
-    const url = "5.161.97.142:9001";
-    const api = 'cust/save';
-    var xid = Xid();
-    final response = await http.post(Uri.http(url, api),
-        headers: {
-          "Accept": "application/json",
-          "content-type": "application/json"
-        },
-        body: json.encode({
-          "txtCode": xid.toString(),
-          "numSeq": 37,
-          "bolAllowglacctransaction": 0,
-          "bolLegalcase": 0,
-          "datBanklgenddate": null,
-          "datBanklgstartdate": null,
-          "datBirthdate": null,
-          "datCreationdate": null,
-          "dblBanklgamt": 0.0,
-          "dblCustpoints": null,
-          "dblDiscountrate": 0.0,
-          "dblInitcustpoints": 0.0,
-          "dblLattercreditamount": 0.0,
-          "dblMaxcreditamt": 0.0,
-          "dblMaxcreditday": 0.0,
-          "dblMaxdebitamt": 0.0,
-          "dblMaxuncollectchequeamt": 0.0,
-          "dblUsedcustpoints": null,
-          "intCsstatus": 0,
-          "intIslocal": 0,
-          "intMaxnouncollectcheque": 0,
-          "intRowid": 0,
-          "intStatus": null,
-          "intType": 0,
-          "txtAcccode": null,
-          "txtAddress": address,
-          "txtAdvertisercode": null,
-          "txtAreacode": zipcode,
-          "txtCardno": null,
-          "txtCategorycode": null,
-          "txtCelltel": null,
-          "txtCitya": selectedCityValue,
-          "txtCollectorcode": null,
-          "txtComment": null,
-          "txtCountrya": selectedStateValue,
-          "txtCreditapplications": null,
-          "txtEmail": email,
-          "txtFax": null,
-          "txtGroup": null,
-          "txtManagera": null,
-          "txtName": name,
-          "txtPassportcopy": null,
-          "txtRank": null,
-          "txtRefercode": null,
-          "txtSalesmancode": null,
-          "txtTel1": phonenumber,
-          "txtTel2": null,
-          "txtTitle": null,
-          "txtUrl": null,
-          "txtVatno": null
-        }));
-    print(response.statusCode);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => insertingData()),
+      bottomSheet: BottomBar(
+          addButtonAction: () => _savingData().then((value) =>
+              custActions.insertingData(address, zipcode, selectedCityValue,
+                  selectedStateValue, email, name, phonenumber))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(

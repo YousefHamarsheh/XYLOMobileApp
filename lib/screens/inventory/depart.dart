@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/actions/DepActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/screens/inventory/edit_depart.dart';
 import 'package:xylo/screens/inventory/view_depat.dart';
@@ -18,43 +19,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 class Department extends StatelessWidget {
   Department({Key key}) : super(key: key);
 
-  //List Data
-  List<DepartItem> departItem = [
-    // const DepartItem("assets/images/burger.png", "651816098", "Grocery",
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium option"),
-    // const DepartItem("assets/images/burger.png", "651816098", "Sanwich",
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium option"),
-    // const DepartItem("assets/images/burger.png", "651816098", "Soda",
-    //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium option"),
-  ];
-
-  Future _getDepartData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'prodcat';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var dep in jsonData) {
-      departItem.add(DepartItem(
-          dep['txtCode'].toString(),
-          dep['txtNamea'].toString(),
-          dep['printTo'].toString(),
-          dep['txtNamee'].toString(),
-          dep['priorityindex'].toString(),
-          dep['txtParentCode'].toString(),
-          dep['age'].toString(),
-          // cust['txtAddresse'].toString(),
-          "assets/images/burger.png",
-          dep['color'].toString(),
-          dep['taxCategory'].toString(),
-          dep['addtopos'],
-          dep['showinmob'],
-          dep['ebt'],
-          dep['smalllinemodifier'],
-          dep['express']));
-      // print(cust['txtName'] + " " + cust['txtCode'].toString() + "\n");
-    }
-  }
+  DepActions depActions = DepActions();
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +31,11 @@ class Department extends StatelessWidget {
           height:
               screenHeight < 690 ? screenHeight * 0.50 : screenHeight * 0.57,
           child: FutureBuilder(
-            future: _getDepartData(),
+            future: depActions.getDepartData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(
-                    itemCount: departItem.length,
+                    itemCount: depActions.departItem.length,
                     itemBuilder: (context, index) {
                       return buildCard(index, context);
                     });
@@ -83,7 +48,7 @@ class Department extends StatelessWidget {
   }
 
   Container buildCard(int index, context) {
-    var data = departItem[index];
+    var data = depActions.departItem[index];
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.all(8),

@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:xylo/actions/OrderActions.dart';
 import 'package:xylo/screens/order/add_order.dart';
 import 'package:http/http.dart' as http;
 import '../../compononts/action_panel.dart';
@@ -19,21 +20,7 @@ import 'compononts/orderCard.dart';
 class OrderPage extends StatelessWidget {
   OrderPage({Key key}) : super(key: key);
 
-  List<OrderData> orderData = [];
-  Future _getOrderData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'ordertypes';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var pay in jsonData) {
-      bool active = false;
-      if (pay['bolActive'] == 1) {
-        active = true;
-      }
-      orderData.add(OrderData(pay['txtCode'], pay['txtNamee'], active));
-    }
-  }
+  OrderActions orderActions = OrderActions();
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +55,14 @@ class OrderPage extends StatelessWidget {
             SizedBox(
                 height: screenHeight * 0.75,
                 child: FutureBuilder(
-                  future: _getOrderData(),
+                  future: orderActions.getOrderData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return ListView.builder(
-                          itemCount: orderData.length,
+                          itemCount: orderActions.orderData.length,
                           itemBuilder: (context, index) {
                             return OrderCard(
-                              orderData: orderData[index],
+                              orderData: orderActions.orderData[index],
                               optionOnTap: () => buildOptionPopup(context),
                               screenHeight: screenHeight,
                               optionButton: true,

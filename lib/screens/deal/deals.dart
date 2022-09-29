@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/actions/DealsActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
 import 'package:xylo/screens/deal/add_deal.dart';
@@ -31,37 +32,7 @@ class _DealsState extends State<Deals> {
   TextEditingController textEditingControllerForm = TextEditingController();
   TextEditingController textEditingControllerTo = TextEditingController();
 
-  List<DealsData> dashboardItem = [
-    // const DealsData("Name", "Super Marcket", "2022-05-17", "2022-07-14"),
-    // const DealsData("Name", "Super Marcket", "2022-05-17", "2022-07-14"),
-    // const DealsData("Name", "Super Marcket", "2022-05-17", "2022-07-14"),
-  ];
-  Future _getDealsData() async {
-    const url = '5.161.97.142:9001';
-    const api = 'discountrules';
-    var response = await http.get(Uri.http(url, api));
-    var jsonData = jsonDecode(response.body);
-
-    for (var pay in jsonData) {
-      bool active = false;
-      if (pay['bolActive'] == 1) {
-        active = true;
-      }
-      dashboardItem.add(DealsData(
-          pay['txtCode'],
-          active,
-          pay['bolOnlyformanager'],
-          pay['datFromdate'],
-          pay['datTodate'],
-          pay['dateCreationdate'],
-          pay['dblDefaultdiscountvalue'],
-          pay['dblMaxdiscountpermanager'],
-          pay['dblMaxdiscountperuser'],
-          pay['intDeleted'],
-          pay['txtName'],
-          pay['txtRelatedacccode']));
-    }
-  }
+  DealsActions dealsActions = DealsActions();
 
   Padding buildList() {
     double screenHeight = MediaQuery.of(context)
@@ -72,14 +43,14 @@ class _DealsState extends State<Deals> {
         child: SizedBox(
             height: screenHeight * 0.68,
             child: FutureBuilder(
-              future: _getDealsData(),
+              future: dealsActions.getDealsData(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return ListView.builder(
-                      itemCount: dashboardItem.length,
+                      itemCount: dealsActions.dashboardItem.length,
                       itemBuilder: (context, index) {
                         return DealCard(
-                          dealData: dashboardItem[index],
+                          dealData: dealsActions.dashboardItem[index],
                           optionOnTap: () => buildOptionPopup(context),
                           screenHeight: screenHeight,
                           optionButton: true,
