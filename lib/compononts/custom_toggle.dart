@@ -4,7 +4,9 @@ import 'package:xylo/config.dart';
 class CustomToggle extends StatefulWidget {
   int index;
   bool enabeld;
-  CustomToggle({Key key, @required this.index, this.enabeld = true})
+  final Function onSaved;
+  CustomToggle(
+      {Key key, @required this.index, this.enabeld = true, this.onSaved})
       : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class _CustomToggleState extends State<CustomToggle> {
                       ? () {
                           setState(() {
                             widget.index = 0;
+                            widget.onSaved("ON");
                           });
                         }
                       : null,
@@ -53,6 +56,7 @@ class _CustomToggleState extends State<CustomToggle> {
                             ? () {
                                 setState(() {
                                   widget.index = 1;
+                                  widget.onSaved("INHERIT");
                                 });
                               }
                             : null,
@@ -73,6 +77,7 @@ class _CustomToggleState extends State<CustomToggle> {
                             ? () {
                                 setState(() {
                                   widget.index = 1;
+                                  widget.onSaved("INHERIT");
                                 });
                               }
                             : null,
@@ -90,6 +95,7 @@ class _CustomToggleState extends State<CustomToggle> {
                       ? () {
                           setState(() {
                             widget.index = 2;
+                            widget.onSaved("OFF");
                           });
                         }
                       : null,

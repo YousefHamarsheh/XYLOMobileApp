@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 import 'package:http/http.dart' as http;
 import 'package:xid/xid.dart';
@@ -30,12 +30,12 @@ class _AddCustomerState extends State<AddCustomer> {
   // String city = "city";
   // String state = "state";
   String zipcode = "zip_code";
-  final _keyForm = GlobalKey<FormState>();
 
   String selectedCityValue = "Califonia";
   String selectedStateValue = "Califonia";
 
   CustActions custActions = CustActions();
+  final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
     final validation = _keyForm.currentState.validate();
@@ -65,50 +65,28 @@ class _AddCustomerState extends State<AddCustomer> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Label(text: "CUSTOMER NAME", paddingOn: true),
-                  TextFormField(
-                    decoration: const InputDecoration(hintText: "Name"),
-                    onSaved: (value) {
-                      name = value;
-                    },
+                  CustomTextFeild(
+                    hint: "12345678920",
+                    onSaved: (value) => name = value,
                   ),
                   Label(text: "PHONE NUMBER", paddingOn: true),
-                  // CustomTextFeild(
-                  //   hint: "12345678920",
-                  //   textInputType: TextInputType.phone,
-                  // ),
-                  TextFormField(
-                    decoration: const InputDecoration(hintText: "12345678920"),
-                    keyboardType: TextInputType.number,
-                    onSaved: (value) {
-                      phonenumber = value;
-                    },
+                  CustomTextFeild(
+                    hint: "12345678920",
+                    textInputType: TextInputType.phone,
+                    onSaved: (value) => phonenumber = value,
                   ),
                   Label(text: "Email", visibleStar: false, paddingOn: true),
-                  // CustomTextFeild(
-                  //   hint: "a.sayed@Xylo.lnc",
-                  //   textInputType: TextInputType.emailAddress,
-                  // ),
-                  TextFormField(
-                    decoration:
-                        const InputDecoration(hintText: "a.sayed@Xylo.lnc"),
-                    keyboardType: TextInputType.emailAddress,
-                    onSaved: (value) {
-                      email = value;
-                    },
+                  CustomTextFeild(
+                    hint: "a.sayed@Xylo.lnc",
+                    textInputType: TextInputType.phone,
+                    onSaved: (value) => email = value,
                   ),
                   Label(text: "ADDRESS", visibleStar: false, paddingOn: true),
-                  // CustomTextFeild(
-                  //   hint: "a.sayed@Xylo.lnc",
-                  //   textInputType: TextInputType.streetAddress,
-                  //   maxLLine: 4,
-                  // ),
-                  TextFormField(
-                    decoration:
-                        const InputDecoration(hintText: "a.sayed@Xylo.lnc"),
-                    keyboardType: TextInputType.streetAddress,
-                    onSaved: (value) {
-                      address = value;
-                    },
+                  CustomTextFeild(
+                    hint: "a.sayed@Xylo.lnc",
+                    textInputType: TextInputType.streetAddress,
+                    maxLLine: 4,
+                    onSaved: (value) => address = value,
                   ),
                   Label(text: "CITY", visibleStar: false, paddingOn: true),
                   CustomDropDown(
@@ -131,16 +109,10 @@ class _AddCustomerState extends State<AddCustomer> {
                     },
                   ),
                   Label(text: "ZIP CODE", visibleStar: false, paddingOn: true),
-                  // CustomTextFeild(
-                  //   hint: "12345263",
-                  //   textInputType: TextInputType.number,
-                  // ),
-                  TextFormField(
-                    decoration: const InputDecoration(hintText: "12345263"),
-                    keyboardType: TextInputType.number,
-                    onSaved: (value) {
-                      zipcode = value;
-                    },
+                  CustomTextFeild(
+                    hint: "0000",
+                    textInputType: TextInputType.number,
+                    onSaved: (value) => zipcode = value,
                   ),
                   const SizedBox(
                     height: 140,

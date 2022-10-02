@@ -36,14 +36,14 @@ class ItemActions extends ActionScreen {
       if (item['bolActive'] == 1) {
         active = true;
       }
-      print(itemData.length);
+      // print(itemData.length);
       String image_path = "";
-      image_path =
-          await getImage(item['txtCode'].toString()).catchError((error) {
-        print(error);
-      });
+      // image_path =
+      //     await getImage(item['txtCode'].toString()).catchError((error) {
+      //   print(error);
+      // });
       itemData.add(ItemData(
-        image_path,
+        "image_path",
         item['txtCode'],
         active,
         item['bolBatchable'],
@@ -115,4 +115,15 @@ class ItemActions extends ActionScreen {
       }
     }
   }
+
+  Future<String> insertItemData(
+    String upc,
+    String itemName,
+    String depName,
+    String initialInventoryQty,
+    String unit,
+    String printTo,
+    String itemColor,
+    String taxCategory,
+  ) {}
 }

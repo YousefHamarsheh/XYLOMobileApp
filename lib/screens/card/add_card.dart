@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:xylo/actions/CardActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/side_menu.dart';
@@ -52,26 +52,20 @@ class _AddCardState extends State<AddCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "REFFERENCE", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Ref"),
-                  onSaved: (value1) {
-                    ref = value1;
-                  },
+                CustomTextFeild(
+                  hint: "Ref",
+                  onSaved: (value) => ref = value,
                 ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Desc..."),
-                  onSaved: (value1) {
-                    description = value1;
-                  },
+                CustomTextFeild(
+                  hint: "Desc...",
+                  onSaved: (value) => description = value,
                 ),
                 Label(text: "Commision Percentage", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "0.3"),
-                  keyboardType: TextInputType.number,
-                  onSaved: (value1) {
-                    comPercent = double.parse(value1);
-                  },
+                CustomTextFeild(
+                  hint: "0.3",
+                  textInputType: TextInputType.number,
+                  onSaved: (value) => comPercent = value,
                 ),
                 const SizedBox(
                   height: 30,

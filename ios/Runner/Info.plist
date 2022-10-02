@@ -4,6 +4,13 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	
+	<!-- Allow for uploading image -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow access to photo library</string>
+	<key>NSCameraUsageDescription</key> 
+	<string>Need to access camera in order to get image.</string>
+
 	<key>CFBundleDisplayName</key>
 	<string>Xylo</string>
 	<key>CFBundleExecutable</key>

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/custom_drpdown.dart';
 import 'package:xylo/compononts/custom_toggle.dart';
 import 'package:xylo/compononts/label.dart';
 import 'package:xylo/compononts/side_menu.dart';
 import 'package:xylo/config.dart';
 
-import '../../compononts/bottombar.dart';
+import '../../../compononts/close_btn.dart';
+import '../../../compononts/bottombar.dart';
 
-class EditItem extends StatefulWidget {
-  const EditItem({Key key}) : super(key: key);
+class ViewItem extends StatefulWidget {
+  const ViewItem({Key key}) : super(key: key);
 
   @override
-  State<EditItem> createState() => _EditItemState();
+  State<ViewItem> createState() => _ViewItemState();
 }
 
-class _EditItemState extends State<EditItem> {
+class _ViewItemState extends State<ViewItem> {
   String depatValue = "Super Market",
       unitValue = "QTY",
       taxValue = "Tax",
@@ -25,13 +27,12 @@ class _EditItemState extends State<EditItem> {
       colorValue;
   int selectedIndex = 0;
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppbar(),
       drawer: const SideMenu(),
-      bottomSheet: BottomBar(isEdit: true,addButtonAction: () => null),
+      bottomSheet: const BottomBackButton(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kPadding),
@@ -40,13 +41,15 @@ class _EditItemState extends State<EditItem> {
             children: [
               Label(text: "UPC"),
               CustomTextFeild(
+                editatbale: false,
                 hint: "123456",
                 textInputType: TextInputType.number,
               ),
               Label(text: "ITEM NAME"),
-              CustomTextFeild(hint: "Name"),
+              CustomTextFeild(editatbale: false, hint: "Name"),
               Label(text: "DEPARTMENT"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["Super Market"],
                 value: depatValue,
                 onChanged: (value) {
@@ -56,11 +59,12 @@ class _EditItemState extends State<EditItem> {
                 },
               ),
               Label(text: "UPC"),
-              buildUploadImage(),
+              buildUPCImage(),
               Label(text: "INITIAL INVENTORY QTY"),
-              CustomTextFeild(hint: "Name"),
+              CustomTextFeild(editatbale: false, hint: "Name"),
               Label(text: "UNIT"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["QTY"],
                 value: unitValue,
                 onChanged: (value) {
@@ -71,68 +75,62 @@ class _EditItemState extends State<EditItem> {
               ),
               Label(text: "PRINT TO"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["HP"],
                 value: printValue,
-                onChanged: (value) {
-                  setState(() {
-                    printValue = value;
-                  });
-                },
+                onChanged: (value) {},
               ),
               Label(text: "ITEM COLOR"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["Red"],
                 value: colorValue,
                 hint: "Select...",
-                onChanged: (value) {
-                  setState(() {
-                    colorValue = value;
-                  });
-                },
+                onChanged: (value) {},
               ),
               Label(text: "TAX CATEGORY"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["Tax"],
                 value: taxValue,
-                onChanged: (value) {
-                  setState(() {
-                    taxValue = value;
-                  });
-                },
+                onChanged: (value) {},
               ),
               Label(text: "PRIORITY INDEX"),
               CustomDropDown(
+                editatbale: false,
                 items: const ["5 is normal"],
                 value: indexValue,
-                onChanged: (value) {
-                  setState(() {
-                    indexValue = value;
-                  });
-                },
+                onChanged: (value) {},
               ),
               Label(text: "EBT ELIGIBLE"),
               CustomToggle(
                 index: 1,
+                enabeld: false,
               ),
               Label(text: "SHOW IN POS"),
               CustomToggle(
                 index: 0,
+                enabeld: false,
               ),
               Label(text: "SMALL LINE MODIFIER"),
               CustomToggle(
                 index: 2,
+                enabeld: false,
               ),
               Label(text: "VALIDATE AGE"),
               CustomToggle(
                 index: 2,
+                enabeld: false,
               ),
               Label(text: "SHOW IN MOB APP"),
               CustomToggle(
                 index: 0,
+                enabeld: false,
               ),
               Label(text: "TRACKABLE"),
               CustomToggle(
                 index: 1,
+                enabeld: false,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -229,48 +227,23 @@ class _EditItemState extends State<EditItem> {
       backgroundColor: kPrymeryColor1,
       foregroundColor: textheadlinecolor,
       title: const Text(
-        "Edit Item",
+        "View Item",
         style: TextStyle(color: textheadlinecolor),
       ),
       elevation: 0,
     );
   }
 
-  Widget buildUploadImage() {
-    return SizedBox(
-      height: 62,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(width: 1, color: Colors.grey),
-          borderRadius: BorderRadius.circular(7.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Upload",
-                style: TextStyle(
-                    color: kPrymeryColor2,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18),
-              ),
-              InkWell(
-                onTap: () async {
-                  final ImagePicker picker = ImagePicker();
-                  // Pick an image
-                  await picker.pickImage(source: ImageSource.gallery);
-                },
-                child: const Icon(
-                  Icons.image,
-                  size: 35,
-                ),
-              ),
-            ],
-          ),
-        ),
+  Widget buildUPCImage() {
+    return Container(
+      height: 100,
+      width: double.maxFinite,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: Colors.grey),
+        borderRadius: BorderRadius.circular(7.0),
       ),
+      child: Image.asset("assets/images/mainLogo.png"),
     );
   }
 
@@ -302,30 +275,22 @@ class _EditItemState extends State<EditItem> {
     );
   }
 
-  InkWell buildTypeButton(String text, int index) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Container(
-        height: 55,
-        width: 160,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            color:
-                selectedIndex == index ? textheadlinecolor : Colors.transparent,
-            border: Border.all(color: textheadlinecolor, width: 2),
-            borderRadius: BorderRadius.circular(6)),
-        child: Text(
-          text,
-          style: TextStyle(
-              color:
-                  selectedIndex == index ? kPrymeryColor2 : textheadlinecolor,
-              fontWeight: FontWeight.bold,
-              fontSize: 28),
-        ),
+  Container buildTypeButton(String text, int index) {
+    return Container(
+      height: 55,
+      width: 160,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          color:
+              selectedIndex == index ? textheadlinecolor : Colors.transparent,
+          border: Border.all(color: textheadlinecolor, width: 2),
+          borderRadius: BorderRadius.circular(6)),
+      child: Text(
+        text,
+        style: TextStyle(
+            color: selectedIndex == index ? kPrymeryColor2 : textheadlinecolor,
+            fontWeight: FontWeight.bold,
+            fontSize: 28),
       ),
     );
   }
@@ -344,6 +309,7 @@ class _EditItemState extends State<EditItem> {
     return SizedBox(
       width: 160,
       child: TextFormField(
+          enabled: false,
           initialValue: text,
           textAlign: TextAlign.center,
           keyboardType: TextInputType.number,

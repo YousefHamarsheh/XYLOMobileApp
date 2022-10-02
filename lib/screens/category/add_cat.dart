@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:xylo/actions/CategActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/side_menu.dart';
@@ -56,27 +56,20 @@ class _AddCategoryState extends State<AddCategory> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "CODE", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "002"),
-                  onSaved: (value) {
-                    code = value;
-                  },
+                CustomTextFeild(
+                  hint: "002",
+                  onSaved: (value) => code = value,
                 ),
                 Label(text: "NAME", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Name"),
-                  onSaved: (value) {
-                    name = value;
-                  },
+                CustomTextFeild(
+                  hint: "Name",
+                  onSaved: (value) => name = value,
                 ),
                 Label(text: "VALUE", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Value"),
-                  keyboardType: TextInputType.number,
-                  onSaved: (value1) {
-                    print(value1);
-                    categValue = double.parse(value1);
-                  },
+                CustomTextFeild(
+                  hint: "Value",
+                  textInputType: TextInputType.number,
+                  onSaved: (value1) => categValue = value1,
                 ),
                 const SizedBox(
                   height: 30,

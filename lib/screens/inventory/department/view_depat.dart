@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
-import '../../compononts/close_btn.dart';
-import '../../compononts/custom_drpdown.dart';
-import '../../compononts/side_menu.dart';
-import '../../compononts/toggle_btn.dart';
-import '../../config.dart';
+import '../../../compononts/close_btn.dart';
+import '../../../compononts/custom_drpdown.dart';
+import '../../../compononts/side_menu.dart';
+import '../../../compononts/toggle_btn.dart';
+import '../../../config.dart';
 
 class ViewDepart extends StatefulWidget {
   const ViewDepart({Key key}) : super(key: key);
@@ -39,37 +39,31 @@ class _ViewDepartState extends State<ViewDepart> {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Label(text: "DEP NAME"),
-            CustomTextFeild(editatbale: false,hint: "Name"),
+            CustomTextFeild(editatbale: false, hint: "Name"),
             Label(text: "PRINT TO"),
             CustomDropDown(
               editatbale: false,
               items: const ["HP Printer"],
               value: selectedPrinterValue,
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
             ),
             Label(text: "DESPLAY ON SCREEN"),
-            CustomTextFeild(editatbale: false,hint: "Name"),
+            CustomTextFeild(editatbale: false, hint: "Name"),
             Label(text: "PRIORITY INDEX"),
             CustomDropDown(
               editatbale: false,
               items: const ["5 is normal"],
               value: selectedIndexValue,
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
             ),
             Label(text: "PARENT DEPARTMENT"),
-            CustomTextFeild(editatbale: false,hint: "Name"),
+            CustomTextFeild(editatbale: false, hint: "Name"),
             Label(text: "RESTRICTED AGE"),
             CustomDropDown(
               editatbale: false,
               items: const ["21 Years Old"],
               value: selectedAgeValue,
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
             ),
             Label(text: "DEPARTMENT IMAGE"),
             buildDepartImage(),
@@ -79,18 +73,14 @@ class _ViewDepartState extends State<ViewDepart> {
               items: const ["Red"],
               value: selectedColorValue,
               hint: "Select...",
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
             ),
             Label(text: "TAX CATEGORY"),
             CustomDropDown(
               editatbale: false,
               items: const ["Tax"],
               value: selectedTaxValue,
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
             ),
             buildToggle(0, "SHOW IN POS"),
             buildToggle(
@@ -148,11 +138,7 @@ class _ViewDepartState extends State<ViewDepart> {
                 text: label,
                 paddingOn: false,
               ),
-              ToggleButton(
-                  value: selected[index],
-                  onToggle: (value) {
-                    
-                  }),
+              ToggleButton(value: selected[index], onToggle: (value) {}),
             ],
           ),
         ),

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:xylo/actions/PaymentActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/custom_drpdown.dart';
@@ -24,10 +24,9 @@ class _AddPaymentState extends State<AddPayment> {
   String type_no = "type_no";
   String description = "description";
   String note = "note";
-  final _keyForm = GlobalKey<FormState>();
 
   bool active = false, pay_out = false;
-
+  final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
     final validation = _keyForm.currentState.validate();
     if (validation) {
@@ -43,8 +42,9 @@ class _AddPaymentState extends State<AddPayment> {
       drawer: const SideMenu(),
       appBar: buildAppbar(),
       bottomSheet: BottomBar(
-          addButtonAction: () => _savingData()
-              .then((value) => paymentActions.insertingPaymentData())),
+          addButtonAction: () => _savingData().then((value) =>
+              paymentActions.insertingPaymentData(
+                  type_no, description, note, active, pay_out))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
@@ -55,25 +55,20 @@ class _AddPaymentState extends State<AddPayment> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "TYPE NO", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Type"),
-                  onSaved: (value) {
-                    type_no = value;
-                  },
+                CustomTextFeild(
+                  hint: "Type",
+                  textInputType: TextInputType.number,
+                  onSaved: (value) => type_no = value,
                 ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Desc...."),
-                  onSaved: (value) {
-                    description = value;
-                  },
+                CustomTextFeild(
+                  hint: "Desc....",
+                  onSaved: (value) => description = value,
                 ),
                 Label(text: "Note", visibleStar: false, paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Note..."),
-                  onSaved: (value) {
-                    note = value;
-                  },
+                CustomTextFeild(
+                  hint: "Note...",
+                  onSaved: (value) => note = value,
                 ),
                 const SizedBox(
                   height: 30,

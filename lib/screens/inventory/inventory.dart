@@ -4,16 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
+import 'package:xylo/screens/inventory/department/add_depart.dart';
+import 'package:xylo/screens/inventory/department/depart.dart';
+// import 'package:xylo/screens/inventory/item/department/add_depart.dart';
+// import 'package:xylo/screens/inventory/item/department/depart.dart';
 
 import '../../compononts/bottombar.dart';
 import '../../compononts/filtter_btn.dart';
 import '../../compononts/side_menu.dart';
 import '../../compononts/sort_button.dart';
 import '../../config.dart';
-import 'add_depart.dart';
-import 'add_item.dart';
-import 'depart.dart';
-import 'items.dart';
+// import 'add_depart.dart';
+import 'item/add_item.dart';
+// import 'depart.dart';
+import 'item/items.dart';
 import 'report.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 

@@ -5,7 +5,7 @@ import 'package:xylo/compononts/label.dart';
 import 'package:xylo/compononts/side_menu.dart';
 
 import '../../compononts/bottombar.dart';
-import '../../compononts/custom,_textfeild.dart';
+import '../../compononts/custom_textfeild.dart';
 import '../../compononts/custom_drpdown.dart';
 import '../../config.dart';
 
@@ -43,7 +43,7 @@ class _EditUserState extends State<EditUser> {
     return Scaffold(
       appBar: buildAppbar(),
       drawer: const SideMenu(),
-      bottomSheet: BottomBar(isEdit: true,addButtonAction: () => null),
+      bottomSheet: BottomBar(isEdit: true, addButtonAction: () => null),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(

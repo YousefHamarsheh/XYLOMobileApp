@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:xylo/compononts/close_btn.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/custom_drpdown.dart';

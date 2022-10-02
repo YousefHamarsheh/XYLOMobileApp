@@ -1,44 +1,87 @@
-// ignore_for_file: unnecessary_new
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:xylo/actions/DepActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
+import 'package:xylo/compononts/custom_drpdown.dart';
 import 'package:xylo/compononts/label.dart';
+import 'package:xylo/compononts/side_menu.dart';
+import 'package:xylo/compononts/toggle_btn.dart';
+import 'package:xylo/config.dart';
 
-import '../../compononts/custom_drpdown.dart';
-import '../../compononts/side_menu.dart';
-import '../../compononts/toggle_btn.dart';
-import '../../config.dart';
+// import '../../../compononts/custom_drpdown.dart';
+// import '../../compononts/side_menu.dart';
+// import '../../compononts/toggle_btn.dart';
+// import '../../config.dart';
 
-class EditDepart extends StatefulWidget {
-  const EditDepart({Key key}) : super(key: key);
+class AddDEpart extends StatefulWidget {
+  const AddDEpart({Key key}) : super(key: key);
 
   @override
-  State<EditDepart> createState() => _EditDepartState();
+  State<AddDEpart> createState() => _AddDEpartState();
 }
 
-class _EditDepartState extends State<EditDepart> {
+class _AddDEpartState extends State<AddDEpart> {
   List<bool> selected = [false, false, false, false, false];
   String selectedTaxValue = "Tax";
   String selectedAgeValue = "21 Years Old";
   String selectedIndexValue = "5 is normal";
   String selectedPrinterValue = "HP Printer";
   String selectedColorValue;
+  String depName = "depName";
+  String depParent = "depParent";
+  String depDisplay = "depDisplay";
+  File imageFile;
+  String imageDataEn;
+  String uploadCheck = "Upload";
+  DepActions depActions = DepActions();
+
+  final _keyForm = GlobalKey<FormState>();
+
+  Future<void> _savingData() async {
+    final validation = _keyForm.currentState.validate();
+    if (validation) {
+      _keyForm.currentState.save();
+    } else {
+      return;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(isEdit: true, addButtonAction: () => null),
+      bottomSheet: BottomBar(
+          addButtonAction: () => _savingData().then((value) => depActions
+              .insertingDepData(
+                  depName,
+                  selectedPrinterValue,
+                  depDisplay,
+                  selectedIndexValue,
+                  depParent,
+                  selectedTaxValue,
+                  selectedAgeValue,
+                  selectedColorValue,
+                  selected)
+              .then((value) => depActions.insertDepImage(value, imageDataEn)))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(
+            child: Form(
+          key: _keyForm,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Label(text: "DEP NAME"),
-            CustomTextFeild(hint: "Name"),
+            CustomTextFeild(
+              hint: "Name",
+              onSaved: (value) {
+                depName = value;
+              },
+            ),
             Label(text: "PRINT TO"),
             CustomDropDown(
               items: const ["HP Printer"],
@@ -50,7 +93,12 @@ class _EditDepartState extends State<EditDepart> {
               },
             ),
             Label(text: "DESPLAY ON SCREEN"),
-            CustomTextFeild(hint: "Name"),
+            CustomTextFeild(
+              hint: "Name",
+              onSaved: (value) {
+                depDisplay = value;
+              },
+            ),
             Label(text: "PRIORITY INDEX"),
             CustomDropDown(
               items: const ["5 is normal"],
@@ -62,7 +110,12 @@ class _EditDepartState extends State<EditDepart> {
               },
             ),
             Label(text: "PARENT DEPARTMENT"),
-            CustomTextFeild(hint: "Name"),
+            CustomTextFeild(
+              hint: "Name",
+              onSaved: (value) {
+                depParent = value;
+              },
+            ),
             Label(text: "RESTRICTED AGE"),
             CustomDropDown(
               items: const ["21 Years Old"],
@@ -117,7 +170,7 @@ class _EditDepartState extends State<EditDepart> {
               height: 120,
             ),
           ]),
-        ),
+        )),
       ),
     );
   }
@@ -127,7 +180,7 @@ class _EditDepartState extends State<EditDepart> {
       backgroundColor: kPrymeryColor1,
       foregroundColor: textheadlinecolor,
       title: const Text(
-        "Edit Department",
+        "Add New Department",
         style: TextStyle(color: textheadlinecolor),
       ),
       elevation: 0,
@@ -157,7 +210,7 @@ class _EditDepartState extends State<EditDepart> {
                   onToggle: (value) {
                     setState(() {
                       selected[index] = value;
-                      print(value);
+                      // print(value);
                     });
                   }),
             ],
@@ -172,7 +225,18 @@ class _EditDepartState extends State<EditDepart> {
       onTap: () async {
         final ImagePicker picker = ImagePicker();
         // Pick an image
-        await picker.pickImage(source: ImageSource.gallery);
+        var picked_image = await picker.pickImage(source: ImageSource.gallery);
+        if (picked_image != null) {
+          setState(() {
+            imageFile = File(picked_image.path);
+            uploadCheck = "Image Uploaded";
+          });
+          imageDataEn = base64Encode(imageFile.readAsBytesSync());
+          // print(imageDataEn);
+        } else {
+          imageFile = File("assets/images/alert.png");
+          imageDataEn = base64Encode(imageFile.readAsBytesSync());
+        }
       },
       child: SizedBox(
         height: 62,
@@ -185,23 +249,39 @@ class _EditDepartState extends State<EditDepart> {
             padding: const EdgeInsets.only(left: 8, right: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 Text(
-                  "Upload",
-                  style: TextStyle(
+                  uploadCheck.toString(),
+                  style: const TextStyle(
                       color: kPrymeryColor2,
                       fontWeight: FontWeight.bold,
                       fontSize: 18),
                 ),
-                Icon(
-                  Icons.image,
-                  size: 35,
-                ),
+                showIsImageUpload(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  showImage(String image) {
+    return Image.memory(base64Decode(image));
+  }
+
+  showIsImageUpload() {
+    if (uploadCheck.compareTo("Upload") == 0) {
+      return const Icon(
+        Icons.image,
+        size: 35,
+      );
+    } else {
+      return Container(
+        child: showImage(imageDataEn),
+        width: 70,
+        height: 70,
+      );
+    }
   }
 }

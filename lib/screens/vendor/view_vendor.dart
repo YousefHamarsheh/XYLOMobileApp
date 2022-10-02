@@ -5,7 +5,7 @@ import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/close_btn.dart';
-import '../../compononts/custom,_textfeild.dart';
+import '../../compononts/custom_textfeild.dart';
 import '../../compononts/custom_drpdown.dart';
 import '../../compononts/side_menu.dart';
 import '../../config.dart';
@@ -68,18 +68,14 @@ class _ViewVendorState extends State<ViewVendor> {
                 editatbale: false,
                 items: const ["Califonia"],
                 value: selectedCityValue,
-                onChanged: (value) {
-                  
-                },
+                onChanged: (value) {},
               ),
               Label(text: "STATE", visibleStar: false),
               CustomDropDown(
                 editatbale: false,
                 items: const ["Califonia"],
                 value: selectedStateValue,
-                onChanged: (value) {
-                  
-                },
+                onChanged: (value) {},
               ),
               Label(text: "ZIP CODE", visibleStar: false),
               CustomTextFeild(

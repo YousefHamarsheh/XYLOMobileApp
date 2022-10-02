@@ -45,9 +45,35 @@ class PaymentActions extends ActionScreen {
   }
 
   //Insert Payments
-  Future insertingPaymentData() async {
-    const api = 'paymenttypes';
-    var response = await http.get(Uri.http(url, api));
-    // var jsonData = jsonDecode(response.body);
+  Future insertingPaymentData(String type_no, String description, String note,
+      bool active, bool pay_out) async {
+    const api = 'paymenttypes/save';
+    var activeFlag = 0;
+    var payOutFlag = 0;
+
+    if (active) {
+      activeFlag = 1;
+    }
+    if (pay_out) {
+      payOutFlag = 1;
+    }
+    final response = await http.post(Uri.http(url, api),
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: json.encode({
+          "intType": int.parse(type_no),
+          "ispayout": 0,
+          "bolActive": 1,
+          "bolExcludefromcashcloserec": 0,
+          "txtComments": note,
+          "txtNamea": null,
+          "txtNamee": description,
+          "txtWebkey": null,
+          "txtWeburl": null,
+          "bolAllowInSales": 0
+        }));
+    // print(response.statusCode);
   } //Here the method that will save the payment data
 }

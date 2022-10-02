@@ -6,23 +6,30 @@ class CustomTextFeild extends StatelessWidget {
   final String hint;
   final TextInputType textInputType;
   final Function onValidator;
+  final Function onSaved;
+  final String initValue;
   TextEditingController controller = TextEditingController();
   bool editatbale;
   int maxLLine;
-  CustomTextFeild(
-      {Key key,
-      this.hint,
-      this.textInputType,
-      this.onValidator,
-      this.maxLLine = 1,
-      this.editatbale = true,
-      this.controller})
-      : super(key: key);
+
+  CustomTextFeild({
+    Key key,
+    this.hint,
+    this.textInputType,
+    this.onValidator,
+    this.maxLLine = 1,
+    this.editatbale = true,
+    this.controller,
+    this.onSaved,
+    this.initValue,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initValue,
       controller: controller,
+      onSaved: (value) => onSaved(value),
       keyboardType: textInputType,
       validator: onValidator == null ? null : onValidator(),
       maxLines: maxLLine,

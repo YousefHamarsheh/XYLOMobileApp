@@ -6,14 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/DepActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
-import 'package:xylo/screens/inventory/edit_depart.dart';
-import 'package:xylo/screens/inventory/view_depat.dart';
+import 'package:xylo/compononts/option.dart';
+import 'package:xylo/config.dart';
+import 'package:xylo/model/depart_data.dart';
+import 'package:xylo/screens/inventory/department/edit_depart.dart';
+// import 'package:xylo/screens/inventory/item/department/edit_depart.dart';
+// import 'package:xylo/screens/inventory/edit_depart.dart';
+import 'package:xylo/screens/inventory/department/view_depat.dart';
 import 'package:http/http.dart' as http;
 
-import '../../compononts/delete_alert.dart';
-import '../../compononts/option.dart';
-import '../../config.dart';
-import '../../model/depart_data.dart';
+// import '../../compononts/delete_alert.dart';
+// import '../../compononts/option.dart';
+// import '../../config.dart';
+// import '../../model/depart_data.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class Department extends StatelessWidget {

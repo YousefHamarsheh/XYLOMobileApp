@@ -3,22 +3,26 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
+import 'package:xylo/compononts/custom_drpdown.dart';
 import 'package:xylo/compononts/label.dart';
+import 'package:xylo/compononts/side_menu.dart';
+import 'package:xylo/compononts/toggle_btn.dart';
+import 'package:xylo/config.dart';
 
-import '../../compononts/custom_drpdown.dart';
-import '../../compononts/side_menu.dart';
-import '../../compononts/toggle_btn.dart';
-import '../../config.dart';
+// import '../../compononts/custom_drpdown.dart';
+// import '../../compononts/side_menu.dart';
+// import '../../compononts/toggle_btn.dart';
+// import '../../config.dart';
 
-class AddDEpart extends StatefulWidget {
-  const AddDEpart({Key key}) : super(key: key);
+class EditDepart extends StatefulWidget {
+  const EditDepart({Key key}) : super(key: key);
 
   @override
-  State<AddDEpart> createState() => _AddDEpartState();
+  State<EditDepart> createState() => _EditDepartState();
 }
 
-class _AddDEpartState extends State<AddDEpart> {
+class _EditDepartState extends State<EditDepart> {
   List<bool> selected = [false, false, false, false, false];
   String selectedTaxValue = "Tax";
   String selectedAgeValue = "21 Years Old";
@@ -31,7 +35,7 @@ class _AddDEpartState extends State<AddDEpart> {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: buildAppbar(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(isEdit: true, addButtonAction: () => null),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(
@@ -127,7 +131,7 @@ class _AddDEpartState extends State<AddDEpart> {
       backgroundColor: kPrymeryColor1,
       foregroundColor: textheadlinecolor,
       title: const Text(
-        "Add New Department",
+        "Edit Department",
         style: TextStyle(color: textheadlinecolor),
       ),
       elevation: 0,

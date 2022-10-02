@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/bottombar.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/custom_drpdown.dart';
 import 'package:xylo/compononts/custom_toggle.dart';
 import 'package:xylo/compononts/label.dart';
 import 'package:xylo/compononts/side_menu.dart';
 import 'package:xylo/config.dart';
 
-import '../../compononts/bottombar.dart';
+import '../../../compononts/bottombar.dart';
 
-class AddItem extends StatefulWidget {
-  const AddItem({Key key}) : super(key: key);
+class EditItem extends StatefulWidget {
+  const EditItem({Key key}) : super(key: key);
 
   @override
-  State<AddItem> createState() => _AddItemState();
+  State<EditItem> createState() => _EditItemState();
 }
 
-class _AddItemState extends State<AddItem> {
+class _EditItemState extends State<EditItem> {
   String depatValue = "Super Market",
       unitValue = "QTY",
       taxValue = "Tax",
@@ -25,13 +26,12 @@ class _AddItemState extends State<AddItem> {
       colorValue;
   int selectedIndex = 0;
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppbar(),
       drawer: const SideMenu(),
-      bottomSheet: BottomBar(addButtonAction: () => null),
+      bottomSheet: BottomBar(isEdit: true, addButtonAction: () => null),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kPadding),
@@ -229,7 +229,7 @@ class _AddItemState extends State<AddItem> {
       backgroundColor: kPrymeryColor1,
       foregroundColor: textheadlinecolor,
       title: const Text(
-        "Add New Item",
+        "Edit Item",
         style: TextStyle(color: textheadlinecolor),
       ),
       elevation: 0,
@@ -303,7 +303,6 @@ class _AddItemState extends State<AddItem> {
   }
 
   InkWell buildTypeButton(String text, int index) {
-    double width = MediaQuery.of(context).size.width /2-50;
     return InkWell(
       onTap: () {
         setState(() {
@@ -312,7 +311,7 @@ class _AddItemState extends State<AddItem> {
       },
       child: Container(
         height: 55,
-        width: width,
+        width: 160,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color:
@@ -342,9 +341,8 @@ class _AddItemState extends State<AddItem> {
   }
 
   SizedBox buildTextFeild(String text) {
-    double width = MediaQuery.of(context).size.width/2 -50;
     return SizedBox(
-      width: width,
+      width: 160,
       child: TextFormField(
           initialValue: text,
           textAlign: TextAlign.center,

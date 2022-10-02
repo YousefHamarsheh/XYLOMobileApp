@@ -35,6 +35,17 @@ class _CustomerPageState extends State<CustomerPage> {
 
   CustActions custActions = CustActions();
 
+  void searchCustomer(String value) {
+    custActions.display_cust = [];
+    setState(() {
+      for (CustomerItem cust in custActions.customerItem) {
+        if (cust.name.toLowerCase().contains(value)) {
+          custActions.display_cust.add(cust);
+        }
+      }
+    });
+  }
+
   Padding buildList() {
     double screenHeight = MediaQuery.of(context)
         .size
@@ -44,20 +55,27 @@ class _CustomerPageState extends State<CustomerPage> {
       child: SizedBox(
           height: screenHeight * 0.75,
           child: FutureBuilder(
-            future: custActions.getCustomerData(),
+            future: custActions
+                .getCustomerData()
+                .then((value) => custActions.displayCustDataArray()),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 return ListView.builder(
-                  itemCount: custActions.customerItem.length,
+                  itemCount: custActions.display_cust.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
-                      text: custActions.customerItem[index].name,
-                      value: custActions.customerItem[index].phonenumber,
+                      text: custActions.display_cust[index].name,
+                      value: custActions.display_cust[index].phonenumber,
                       option: () => buildOptionPopup(
                           context,
-                          custActions.customerItem[index].name,
-                          custActions.customerItem[index].phonenumber,
-                          custActions.customerItem[index].id),
+                          custActions.display_cust[index].name,
+                          custActions.display_cust[index].phonenumber,
+                          custActions.display_cust[index].id,
+                          custActions.display_cust[index].email,
+                          custActions.display_cust[index].address,
+                          custActions.display_cust[index].city,
+                          custActions.display_cust[index].state,
+                          custActions.display_cust[index].zipcode),
                     );
                   },
                 );
@@ -69,7 +87,8 @@ class _CustomerPageState extends State<CustomerPage> {
     );
   }
 
-  void buildOptionPopup(context, String name, String phonenumber, String id) {
+  void buildOptionPopup(context, String name, String phonenumber, String id,
+      String email, String address, String city, String state, String zipcode) {
     showBarModalBottomSheet(
         context: context,
         builder: (context) {
@@ -86,7 +105,16 @@ class _CustomerPageState extends State<CustomerPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const EditCustomer(),
+                  builder: (context) => EditCustomer(
+                    name: name,
+                    id: id,
+                    phonenumber: phonenumber,
+                    email: email,
+                    address: address,
+                    city: city,
+                    state: state,
+                    zipcode: zipcode,
+                  ),
                 ),
               ),
             },
@@ -140,6 +168,7 @@ class _CustomerPageState extends State<CustomerPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SearchFeild(
+                      onChanged: (value) => searchCustomer(value),
                       hint: "Search by name, phone,ID",
                       width: ((MediaQuery.of(context).size.width) - 160),
                       controller: textEditingControllerSearch),

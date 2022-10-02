@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
-import '../../../compononts/option.dart';
-import '../../../config.dart';
-import '../../../model/item_data.dart';
+import '../../../../compononts/option.dart';
+import '../../../../config.dart';
+import '../../../../model/item_data.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemData itemData;
@@ -56,14 +56,14 @@ class ItemCard extends StatelessWidget {
   Row buildCardTitle() {
     return Row(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Image.memory(
-            base64Decode(itemData.imagePath),
-            height: 60.0,
-            width: 60.0,
-          ),
-        ),
+        // ClipRRect(
+        //   borderRadius: BorderRadius.circular(8.0),
+        //   child: Image.asset(
+        //     "name",
+        //     height: 60.0,
+        //     width: 60.0,
+        //   ),
+        // ),
         const SizedBox(
           width: 10,
         ),

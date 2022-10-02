@@ -5,7 +5,7 @@ import 'package:xylo/actions/VendorActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/label.dart';
 
-import '../../compononts/custom,_textfeild.dart';
+import '../../compononts/custom_textfeild.dart';
 import '../../compononts/custom_drpdown.dart';
 import '../../compononts/side_menu.dart';
 import '../../config.dart';
@@ -64,43 +64,33 @@ class _AddVendorState extends State<AddVendor> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Label(text: "VENDOR NAME"),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "Name"),
-                onSaved: (value) {
-                  name = value;
-                },
+              CustomTextFeild(
+                hint: "Name",
+                onSaved: (value) => name = value,
               ),
               Label(text: "CONTACT NAME"),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "Name"),
-                onSaved: (value) {
-                  contactName = value;
-                },
+              CustomTextFeild(
+                hint: "Name",
+                onSaved: (value) => contactName = value,
               ),
               Label(text: "PHONE NUMBER"),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "12345"),
-                keyboardType: TextInputType.number,
-                onSaved: (value) {
-                  phonenumber = value;
-                },
+              CustomTextFeild(
+                hint: "12345",
+                textInputType: TextInputType.number,
+                onSaved: (value) => phonenumber = value,
               ),
               Label(text: "EMAIL", visibleStar: false),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "a.sayed@Xylo.lnc"),
-                keyboardType: TextInputType.emailAddress,
-                onSaved: (value) {
-                  email = value;
-                },
+              CustomTextFeild(
+                hint: "a.sayed@Xylo.lnc",
+                textInputType: TextInputType.emailAddress,
+                onSaved: (value) => email = value,
               ),
               Label(text: "ADDRESS", visibleStar: false),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "a.sayed@Xylo.lnc"),
-                keyboardType: TextInputType.streetAddress,
-                maxLines: 4,
-                onSaved: (value) {
-                  address = value;
-                },
+              CustomTextFeild(
+                hint: "a.sayed@Xylo.lnc",
+                textInputType: TextInputType.streetAddress,
+                maxLLine: 4,
+                onSaved: (value) => address = value,
               ),
               Label(text: "CITY", visibleStar: false),
               const SizedBox(height: 5),
@@ -124,12 +114,10 @@ class _AddVendorState extends State<AddVendor> {
                 },
               ),
               Label(text: "ZIP CODE", visibleStar: false),
-              TextFormField(
-                decoration: const InputDecoration(hintText: "0000"),
-                keyboardType: TextInputType.number,
-                onSaved: (value) {
-                  zipcode = zipcode;
-                },
+              CustomTextFeild(
+                hint: "0000",
+                textInputType: TextInputType.number,
+                onSaved: (value) => zipcode = value,
               ),
               const SizedBox(
                 height: 120,

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:xylo/actions/OrderActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/side_menu.dart';
@@ -50,18 +50,14 @@ class _AddOrderState extends State<AddOrder> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "ORDER TYPE CODE", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Type"),
-                  onSaved: (value) {
-                    order_type_code = value;
-                  },
+                CustomTextFeild(
+                  hint: "Type",
+                  onSaved: (value) => order_type_code = value,
                 ),
                 Label(text: "ORDER TYPE NAME", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Name"),
-                  onSaved: (value) {
-                    order_type_name = value;
-                  },
+                CustomTextFeild(
+                  hint: "Name",
+                  onSaved: (value) => order_type_name = value,
                 ),
                 const SizedBox(
                   height: 30,

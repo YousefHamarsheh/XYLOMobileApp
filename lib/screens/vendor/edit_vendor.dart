@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:xylo/compononts/bottombar.dart';
 import 'package:xylo/compononts/label.dart';
 
-import '../../compononts/custom,_textfeild.dart';
+import '../../compononts/custom_textfeild.dart';
 import '../../compononts/custom_drpdown.dart';
 import '../../compononts/side_menu.dart';
 import '../../config.dart';

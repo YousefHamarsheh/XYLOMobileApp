@@ -4,7 +4,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:xylo/compononts/close_btn.dart';
 import 'package:xylo/compononts/label.dart';
 import 'package:xylo/compononts/side_menu.dart';
-import '../../compononts/custom,_textfeild.dart';
+import '../../compononts/custom_textfeild.dart';
 import '../../compononts/custom_drpdown.dart';
 import '../../config.dart';
 
@@ -16,7 +16,6 @@ class ViewUser extends StatefulWidget {
 }
 
 class _ViewUserState extends State<ViewUser> {
-
   bool selectedUser = false;
   bool selectedClock = false;
   List<bool> radioValue = [
@@ -41,7 +40,7 @@ class _ViewUserState extends State<ViewUser> {
     return Scaffold(
       appBar: buildAppbar(),
       drawer: const SideMenu(),
-      bottomSheet:const BottomBackButton(),
+      bottomSheet: const BottomBackButton(),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SingleChildScrollView(
@@ -49,7 +48,7 @@ class _ViewUserState extends State<ViewUser> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Label(text: "USER NAME"),
-              CustomTextFeild(editatbale: false,hint: "Name"),
+              CustomTextFeild(editatbale: false, hint: "Name"),
               Label(text: "PASSWORD"),
               buildPassword(),
               Label(text: "QUICK PIN"),
@@ -156,7 +155,6 @@ class _ViewUserState extends State<ViewUser> {
     return AppBar(
       backgroundColor: kPrymeryColor1,
       foregroundColor: textheadlinecolor,
-      
       title: const Text(
         "View User",
         style: TextStyle(color: textheadlinecolor),
@@ -170,14 +168,13 @@ class _ViewUserState extends State<ViewUser> {
       obscureText: true,
       controller: textEditingControllerPass,
       enabled: false,
-      decoration:const InputDecoration(
-        hintText: "********",
-        hintStyle:  TextStyle(
-            color: kPrymeryColor2, fontWeight: FontWeight.bold, fontSize: 18),
-        border:  OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(7.0))),
-        suffixIcon:  Icon(Icons.visibility_off)
-      ),
+      decoration: const InputDecoration(
+          hintText: "********",
+          hintStyle: TextStyle(
+              color: kPrymeryColor2, fontWeight: FontWeight.bold, fontSize: 18),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(7.0))),
+          suffixIcon: Icon(Icons.visibility_off)),
     );
   }
 
@@ -186,13 +183,13 @@ class _ViewUserState extends State<ViewUser> {
       obscureText: true,
       controller: textEditingControllerPIN,
       enabled: false,
-      decoration:const InputDecoration(
+      decoration: const InputDecoration(
         hintText: "********",
-        hintStyle:  TextStyle(
+        hintStyle: TextStyle(
             color: kPrymeryColor2, fontWeight: FontWeight.bold, fontSize: 18),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(7.0))),
-        suffixIcon:   Icon(Icons.visibility_off),
+        suffixIcon: Icon(Icons.visibility_off),
       ),
     );
   }
@@ -215,9 +212,7 @@ class _ViewUserState extends State<ViewUser> {
       activeTextColor: Colors.grey,
       inactiveTextColor: Colors.grey,
       showOnOff: true,
-      onToggle: (bool value) {
-        
-      },
+      onToggle: (bool value) {},
     );
   }
 
@@ -320,11 +315,7 @@ class _ViewUserState extends State<ViewUser> {
   Row buildRadioLabled(int index, String text) {
     return Row(
       children: [
-        Checkbox(
-            value: radioValue[index],
-            onChanged: (bool value) {
-              
-            }),
+        Checkbox(value: radioValue[index], onChanged: (bool value) {}),
         Text(
           " $text",
           style: TextStyle(

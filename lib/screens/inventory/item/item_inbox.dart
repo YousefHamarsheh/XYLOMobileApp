@@ -5,9 +5,9 @@ import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/side_menu.dart';
 import 'package:xylo/config.dart';
 import 'package:xylo/model/item_data.dart';
-import 'package:xylo/screens/inventory/comporents/item_card.dart';
+import 'package:xylo/screens/inventory/item/component/item_card.dart';
 
-import '../../model/item_inbox_list_data.dart';
+import '../../../model/item_inbox_list_data.dart';
 
 class ItemInBox extends StatefulWidget {
   final ItemData itemData;
@@ -99,7 +99,7 @@ class _ItemInBoxState extends State<ItemInBox> {
               alignment: Alignment.center,
               margin: const EdgeInsets.only(bottom: 14),
               decoration: buildBoxDecoration(kPrymeryColor2),
-              child:  Text(
+              child: Text(
                 'SHOW CHANGES',
                 style: TextStyle(
                     color: Colors.white,
@@ -219,7 +219,6 @@ class _ItemInBoxState extends State<ItemInBox> {
 
   Container buildCard(String qty, String price) {
     return Container(
-     
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       decoration: buildBoxDecoration(kPrymeryColor1),

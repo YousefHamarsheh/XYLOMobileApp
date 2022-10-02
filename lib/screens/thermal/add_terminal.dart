@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:xylo/actions/TermActions.dart';
 import 'package:xylo/compononts/bottombar.dart';
-import 'package:xylo/compononts/custom,_textfeild.dart';
+import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/label.dart';
 
 import '../../compononts/side_menu.dart';
@@ -19,7 +19,7 @@ class AddTerminal extends StatefulWidget {
 class _AddTerminalState extends State<AddTerminal> {
   TermActions termActions = TermActions();
 
-  String key = "key";
+  String termKey = "key";
   String merch_id = "merch_id";
   String description = "description";
   bool active = false;
@@ -41,7 +41,7 @@ class _AddTerminalState extends State<AddTerminal> {
       appBar: buildAppbar(),
       bottomSheet: BottomBar(
           addButtonAction: () => _savingData().then((value) => termActions
-              .insertingTermData(key, merch_id, description, active))),
+              .insertingTermData(termKey, merch_id, description, active))),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: SafeArea(
@@ -52,25 +52,19 @@ class _AddTerminalState extends State<AddTerminal> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Label(text: "KEY", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "002"),
-                  onSaved: (value) {
-                    key = value;
-                  },
+                CustomTextFeild(
+                  hint: "002",
+                  onSaved: (value) => termKey = value,
                 ),
                 Label(text: "MERCHANT ID", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Tax 02"),
-                  onSaved: (value) {
-                    merch_id = value;
-                  },
+                CustomTextFeild(
+                  hint: "Tax 002",
+                  onSaved: (value) => merch_id = value,
                 ),
                 Label(text: "DESCRIPTION", paddingOn: true),
-                TextFormField(
-                  decoration: const InputDecoration(hintText: "Dec..."),
-                  onSaved: (value) {
-                    description = value;
-                  },
+                CustomTextFeild(
+                  hint: "Desc....",
+                  onSaved: (value) => description = value,
                 ),
                 const SizedBox(
                   height: 30,
