@@ -1,16 +1,16 @@
 class PaymentData {
-  final int int_type;
-  final int is_payout;
-  final bool active;
-  final int exclude_from_cash_close_rec;
-  final String comments;
-  final String namea;
-  final String namee;
-  final String web_key;
-  final String web_url;
-  final int allow_in_sales;
+  int int_type;
+  int is_payout;
+  bool active;
+  int exclude_from_cash_close_rec;
+  String comments;
+  String namea;
+  String namee;
+  String web_key;
+  String web_url;
+  int allow_in_sales;
 
-  const PaymentData(
+  PaymentData(
       this.int_type,
       this.is_payout,
       this.active,

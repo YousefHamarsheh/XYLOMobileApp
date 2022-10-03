@@ -29,7 +29,7 @@ class _AddItemState extends State<AddItem> {
   int selectedIndex = 0;
   String upc = "upc";
   String itemName = "itemName";
-  String initQty = "initQty";
+  int initQty = 0;
   String ebt = "ebt";
   String showInPos = "showInPos";
   String modifyer = "modifyer";
@@ -96,7 +96,8 @@ class _AddItemState extends State<AddItem> {
                   buildUploadImage(),
                   Label(text: "INITIAL INVENTORY QTY"),
                   CustomTextFeild(
-                    hint: "Name",
+                    hint: "1234",
+                    textInputType: TextInputType.number,
                     onSaved: (value) => null,
                   ),
                   Label(text: "UNIT"),
@@ -168,21 +169,24 @@ class _AddItemState extends State<AddItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      buildlLabledTextField("COST", "50.25"),
-                      buildlLabledTextField("BASIC PRICE", "50.25")
+                      buildlLabledTextField("COST", "50.25", "costType"),
+                      buildlLabledTextField("BASIC PRICE", "50.25", "basicType")
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      buildlLabledTextField("LEVEL 2 PRICE", "50.25"),
-                      buildlLabledTextField("LEVEL 3 PRICE", "50.25")
+                      buildlLabledTextField(
+                          "LEVEL 2 PRICE", "50.25", "lev2Type"),
+                      buildlLabledTextField(
+                          "LEVEL 3 PRICE", "50.25", "lev3Type")
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      buildlLabledTextField("LEVEL 4 PRICE", "50.25"),
+                      buildlLabledTextField(
+                          "LEVEL 4 PRICE", "50.25", "lev4Type"),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -208,7 +212,7 @@ class _AddItemState extends State<AddItem> {
                               ],
                             ),
                           ),
-                          buildTextFeild("50.25")
+                          buildTextFeild("50.25", "fixedAmountType")
                         ],
                       ),
                     ],
@@ -235,7 +239,7 @@ class _AddItemState extends State<AddItem> {
                       ],
                     ),
                   ),
-                  buildTextFeild("50.25"),
+                  buildTextFeild("50.25", "handleType"),
                   Label(text: "FIXED FREE TYPE"),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -372,6 +376,11 @@ class _AddItemState extends State<AddItem> {
       onTap: () {
         setState(() {
           selectedIndex = index;
+          if (selectedIndex == 0) {
+            fixedFreeType = "dollar";
+          } else {
+            fixedFreeType = "percent";
+          }
         });
       },
       child: Container(
@@ -395,22 +404,39 @@ class _AddItemState extends State<AddItem> {
     );
   }
 
-  Column buildlLabledTextField(String label, String text) {
+  Column buildlLabledTextField(String label, String text, String type) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Label(text: label),
-        buildTextFeild(text),
+        buildTextFeild(text, type),
       ],
     );
   }
 
-  SizedBox buildTextFeild(String text) {
+  SizedBox buildTextFeild(String text, String type) {
     double width = MediaQuery.of(context).size.width / 2 - 50;
     return SizedBox(
       width: width,
       child: TextFormField(
-          initialValue: text,
+          onSaved: (value) {
+            if (type.compareTo("costType") == 0) {
+              cost = double.parse(value);
+            } else if (type.compareTo("basicType") == 0) {
+              basicPrice = double.parse(value);
+            } else if (type.compareTo("lev2ype") == 0) {
+              lev2Price = double.parse(value);
+            } else if (type.compareTo("lev3Type") == 0) {
+              lev3Price = double.parse(value);
+            } else if (type.compareTo("lev4Type") == 0) {
+              lev4Price = double.parse(value);
+            } else if (type.compareTo("fixedAmountType") == 0) {
+              fixedFree = double.parse(value);
+            } else if (type.compareTo("handleType") == 0) {
+              handlingShip = double.parse(value);
+            }
+          },
+          // initialValue: text,
           textAlign: TextAlign.center,
           keyboardType: TextInputType.number,
           style: const TextStyle(
@@ -420,6 +446,7 @@ class _AddItemState extends State<AddItem> {
               Icons.attach_money,
               color: Colors.grey,
             ),
+            hintText: text,
             enabledBorder: OutlineInputBorder(
               borderSide:
                   const BorderSide(color: textheadlinecolor, width: 3.0),

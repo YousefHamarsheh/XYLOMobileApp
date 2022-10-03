@@ -1,7 +1,7 @@
 class OrderData {
-  final String code;
-  final String namee;
-  final bool active;
+  String code;
+  String namee;
+  bool active;
 
-  const OrderData(this.code, this.namee, this.active);
+  OrderData(this.code, this.namee, this.active);
 }

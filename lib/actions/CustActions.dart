@@ -20,17 +20,62 @@ class CustActions extends ActionScreen {
     const api = 'cust';
     var response = await http.get(Uri.http(url, api));
     var jsonData = jsonDecode(response.body);
-
+    // print(jsonData[2]);
     for (var cust in jsonData) {
+      // print("object");
       customerItem.add(CustomerItem(
           cust['txtCode'].toString(),
-          cust['txtName'].toString(),
-          cust['txtTel1'].toString(),
-          cust['txtEmail'].toString(),
+          cust['numSeq'],
+          cust['bolAllowglacctransaction'],
+          cust['bolLegalcase'],
+          cust['datBanklgenddate'].toString(),
+          cust['datBanklgstartdate'].toString(),
+          cust['datBirthdate'].toString(),
+          cust['datCreationdate'].toString(),
+          cust['dblBanklgamt'],
+          cust['dblCustpoints'],
+          cust['dblDiscountrate'],
+          cust['dblInitcustpoints'],
+          cust['dblLattercreditamount'],
+          cust['dblMaxcreditamt'],
+          cust['dblMaxcreditday'],
+          cust['dblMaxdebitamt'],
+          cust['dblMaxuncollectchequeamt'],
+          cust['dblUsedcustpoints'],
+          cust['intCsstatus'],
+          cust['intIslocal'],
+          cust['intMaxnouncollectcheque'],
+          cust['intRowid'],
+          cust['intStatus'],
+          cust['intType'],
+          cust['txtAcccode'].toString(),
           cust['txtAddress'].toString(),
+          cust['txtAdvertisercode'].toString(),
+          cust['txtAreacode'].toString(),
+          cust['txtCardno'].toString(),
+          cust['txtCategorycode'].toString(),
+          cust['txtCelltel'].toString(),
           cust['txtCitya'].toString(),
-          cust['txtAddress'].toString(),
-          cust['txtAreacode'].toString()));
+          cust['txtCollectorcode'].toString(),
+          cust['txtComment'].toString(),
+          cust['txtCountrya'].toString(),
+          cust['txtCreditapplications'].toString(),
+          cust['txtEmail'].toString(),
+          cust['txtFax'].toString(),
+          cust['txtGroup'].toString(),
+          cust['txtManagera'].toString(),
+          cust['txtName'].toString(),
+          cust['txtPassportcopy'].toString(),
+          cust['txtRank'].toString(),
+          cust['txtRefercode'].toString(),
+          cust['txtSalesmancode'].toString(),
+          cust['txtTel1'].toString(),
+          cust['txtTel2'].toString(),
+          cust['txtTitle'].toString(),
+          cust['txtUrl'].toString(),
+          cust['txtVatno'].toString()));
+      // print(response.statusCode);
+      // print(customerItem.length);
     }
   }
 
@@ -162,12 +207,72 @@ class CustActions extends ActionScreen {
 
   void searchCustomer(String value) {
     display_cust = [];
-    // setState(() {
     for (CustomerItem cust in customerItem) {
-      if (cust.name.contains(value)) {
+      if (cust.txtName.contains(value)) {
         display_cust.add(cust);
       }
     }
+  }
+
+  Future<CustomerItem> getCustomerById(String id) async {
+    var api = 'cust/$id';
+    var response = await http.get(Uri.http(url, api));
+    var jsonData = jsonDecode(response.body);
+    // print(jsonData);
+    // var cust = jsonData[0];
+    // print(id);
+    // print(cust);
+    return CustomerItem(
+        jsonData['txtCode'],
+        jsonData['numSeq'],
+        jsonData['bolAllowglacctransaction'],
+        jsonData['bolLegalcase'],
+        jsonData['datBanklgenddate'].toString(),
+        jsonData['datBanklgstartdate'].toString(),
+        jsonData['datBirthdate'].toString(),
+        jsonData['datCreationdate'],
+        jsonData['dblBanklgamt'],
+        jsonData['dblCustpoints'],
+        jsonData['dblDiscountrate'],
+        jsonData['dblInitcustpoints'],
+        jsonData['dblLattercreditamount'],
+        jsonData['dblMaxcreditamt'],
+        jsonData['dblMaxcreditday'],
+        jsonData['dblMaxdebitamt'],
+        jsonData['dblMaxuncollectchequeamt'],
+        jsonData['dblUsedcustpoints'],
+        jsonData['intCsstatus'],
+        jsonData['intIslocal'],
+        jsonData['intMaxnouncollectcheque'],
+        jsonData['intRowid'],
+        jsonData['intStatus'].toString(),
+        jsonData['intType'],
+        jsonData['txtAcccode'].toString(),
+        jsonData['txtAddress'].toString(),
+        jsonData['txtAdvertisercode'].toString(),
+        jsonData['txtAreacode'].toString(),
+        jsonData['txtCardno'].toString(),
+        jsonData['txtCategorycode'].toString(),
+        jsonData['txtCelltel'].toString(),
+        jsonData['txtCitya'].toString(),
+        jsonData['txtCollectorcode'].toString(),
+        jsonData['txtComment'].toString(),
+        jsonData['txtCountrya'].toString(),
+        jsonData['txtCreditapplications'].toString(),
+        jsonData['txtEmail'].toString(),
+        jsonData['txtFax'].toString(),
+        jsonData['txtGroup'].toString(),
+        jsonData['txtManagera'].toString(),
+        jsonData['txtName'].toString(),
+        jsonData['txtPassportcopy'].toString(),
+        jsonData['txtRank'].toString(),
+        jsonData['txtRefercode'].toString(),
+        jsonData['txtSalesmancode'].toString(),
+        jsonData['txtTel1'].toString(),
+        jsonData['txtTel2'].toString(),
+        jsonData['txtTitle'].toString(),
+        jsonData['txtUrl'].toString(),
+        jsonData['txtVatno'].toString());
   }
 
   Future updateCustomer(
@@ -179,6 +284,9 @@ class CustActions extends ActionScreen {
       String name,
       String phonenumber,
       String id) async {
+    CustomerItem customerUpdate = await getCustomerById(id);
+    // print(customer);
+
     const api = 'cust/update';
     final response = await http.post(Uri.http(url, api),
         headers: {
@@ -187,55 +295,55 @@ class CustActions extends ActionScreen {
         },
         body: json.encode({
           "txtCode": id,
-          "numSeq": 37,
-          "bolAllowglacctransaction": 0,
-          "bolLegalcase": 0,
-          "datBanklgenddate": null,
-          "datBanklgstartdate": null,
-          "datBirthdate": null,
-          "datCreationdate": null,
-          "dblBanklgamt": 0.0,
-          "dblCustpoints": null,
-          "dblDiscountrate": 0.0,
-          "dblInitcustpoints": 0.0,
-          "dblLattercreditamount": 0.0,
-          "dblMaxcreditamt": 0.0,
-          "dblMaxcreditday": 0.0,
-          "dblMaxdebitamt": 0.0,
-          "dblMaxuncollectchequeamt": 0.0,
-          "dblUsedcustpoints": null,
-          "intCsstatus": 0,
-          "intIslocal": 0,
-          "intMaxnouncollectcheque": 0,
-          "intRowid": 0,
-          "intStatus": null,
-          "intType": 0,
-          "txtAcccode": null,
+          "numSeq": customerUpdate.numSeq,
+          "bolAllowglacctransaction": customerUpdate.bolAllowglacctransaction,
+          "bolLegalcase": customerUpdate.bolLegalcase,
+          "datBanklgenddate": customerUpdate.datBanklgenddate,
+          "datBanklgstartdate": customerUpdate.datBanklgstartdate,
+          "datBirthdate": customerUpdate.datBirthdate,
+          "datCreationdate": customerUpdate.datCreationdate,
+          "dblBanklgamt": customerUpdate.dblBanklgamt,
+          "dblCustpoints": customerUpdate.dblCustpoints,
+          "dblDiscountrate": customerUpdate.dblDiscountrate,
+          "dblInitcustpoints": customerUpdate.dblInitcustpoints,
+          "dblLattercreditamount": customerUpdate.dblLattercreditamount,
+          "dblMaxcreditamt": customerUpdate.dblMaxcreditamt,
+          "dblMaxcreditday": customerUpdate.dblMaxcreditday,
+          "dblMaxdebitamt": customerUpdate.dblMaxdebitamt,
+          "dblMaxuncollectchequeamt": customerUpdate.dblMaxuncollectchequeamt,
+          "dblUsedcustpoints": customerUpdate.dblUsedcustpoints,
+          "intCsstatus": customerUpdate.intCsstatus,
+          "intIslocal": customerUpdate.intIslocal,
+          "intMaxnouncollectcheque": customerUpdate.intMaxnouncollectcheque,
+          "intRowid": customerUpdate.intRowid,
+          "intStatus": customerUpdate.intStatus,
+          "intType": customerUpdate.intType,
+          "txtAcccode": customerUpdate.txtAcccode,
           "txtAddress": address,
-          "txtAdvertisercode": null,
+          "txtAdvertisercode": customerUpdate.txtAdvertisercode,
           "txtAreacode": zipcode,
-          "txtCardno": null,
-          "txtCategorycode": null,
-          "txtCelltel": null,
+          "txtCardno": customerUpdate.txtCardno,
+          "txtCategorycode": customerUpdate.txtCategorycode,
+          "txtCelltel": customerUpdate.txtCelltel,
           "txtCitya": selectedCityValue,
-          "txtCollectorcode": null,
-          "txtComment": null,
+          "txtCollectorcode": customerUpdate.txtCollectorcode,
+          "txtComment": customerUpdate.txtComment,
           "txtCountrya": selectedStateValue,
-          "txtCreditapplications": null,
+          "txtCreditapplications": customerUpdate.txtCreditapplications,
           "txtEmail": email,
-          "txtFax": null,
-          "txtGroup": null,
-          "txtManagera": null,
+          "txtFax": customerUpdate.txtFax,
+          "txtGroup": customerUpdate.txtGroup,
+          "txtManagera": customerUpdate.txtManagera,
           "txtName": name,
-          "txtPassportcopy": null,
-          "txtRank": null,
-          "txtRefercode": null,
-          "txtSalesmancode": null,
+          "txtPassportcopy": customerUpdate.txtPassportcopy,
+          "txtRank": customerUpdate.txtRank,
+          "txtRefercode": customerUpdate.txtRefercode,
+          "txtSalesmancode": customerUpdate.txtSalesmancode,
           "txtTel1": phonenumber,
-          "txtTel2": null,
-          "txtTitle": null,
-          "txtUrl": null,
-          "txtVatno": null
+          "txtTel2": customerUpdate.txtTel2,
+          "txtTitle": customerUpdate.txtTitle,
+          "txtUrl": customerUpdate.txtUrl,
+          "txtVatno": customerUpdate.txtVatno
         }));
     print(response.statusCode);
   }

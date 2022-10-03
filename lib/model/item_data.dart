@@ -1,49 +1,49 @@
 class ItemData {
-  final String imagePath;
-  final String txtCode;
-  final bool bolActive;
-  final int bolBatchable;
-  final int bolDonotprintprice;
-  final int bolItemizable;
-  final int bolLocal;
-  final int bolPriceincludevat;
-  final double dblCostprice;
-  final String dblCurrentqty;
-  final double dblDefaultvatrate;
-  final double dblEqv;
-  final double dblSellprice;
-  final double dblSellprice2;
-  final double dblSellprice3;
-  final double dblSellprice4;
-  final int intProducttype;
-  final int intQuantitycontrols;
-  final String txtBarcode;
-  final ProductcatTbl productcatTbl;
-  final String txtGroupreference;
-  final String txtName;
-  final String txtNotes;
-  final String txtRetsalesacccode;
-  final String txtSalesacccode;
-  final String txtStkprodno;
-  final String txtSupcode1;
-  final String txtSupcode2;
-  final String txtSupcode3;
-  final String txtUnit;
-  final String adult;
-  final String ebt;
-  final int byWeight; //??
-  final int itemSize; //??
-  final double feeMultiplier;
-  final int addToPos;
-  final String color;
-  final String taxCat;
-  final String priorityIndex;
-  final int smallLineModifier;
-  final int showinMob;
-  final int trackable;
-  final double shipping;
-  final String printTo;
-  final int express;
+  String imagePath;
+  String txtCode;
+  bool bolActive;
+  int bolBatchable;
+  int bolDonotprintprice;
+  int bolItemizable;
+  int bolLocal;
+  int bolPriceincludevat;
+  double dblCostprice;
+  String dblCurrentqty;
+  double dblDefaultvatrate;
+  double dblEqv;
+  double dblSellprice;
+  double dblSellprice2;
+  double dblSellprice3;
+  double dblSellprice4;
+  int intProducttype;
+  int intQuantitycontrols;
+  String txtBarcode;
+  ProductcatTbl productcatTbl;
+  String txtGroupreference;
+  String txtName;
+  String txtNotes;
+  String txtRetsalesacccode;
+  String txtSalesacccode;
+  String txtStkprodno;
+  String txtSupcode1;
+  String txtSupcode2;
+  String txtSupcode3;
+  String txtUnit;
+  String adult;
+  String ebt;
+  int byWeight; //??
+  int itemSize; //??
+  double feeMultiplier;
+  int addToPos;
+  String color;
+  String taxCat;
+  String priorityIndex;
+  int smallLineModifier;
+  int showinMob;
+  int trackable;
+  double shipping;
+  String printTo;
+  int express;
 
   ItemData(
       this.imagePath,
@@ -94,26 +94,26 @@ class ItemData {
 }
 
 class ProductcatTbl {
-  final String txtCode;
-  final int bolAllowdiscount;
-  final String datCreationdate;
-  final int intDeleted;
-  final String txtNamea;
-  final String txtNamee;
-  final String txtPrintername;
-  final String txtUsercode;
-  final int numIsParent;
-  final String txtParentCode;
-  final String printTo;
-  final String taxCategory;
-  final int smalllinemodifier;
-  final int addtopos;
-  final int showinmob;
-  final String color;
-  final String priorityindex;
-  final String age;
-  final int express;
-  final int ebt;
+  String txtCode;
+  int bolAllowdiscount;
+  String datCreationdate;
+  int intDeleted;
+  String txtNamea;
+  String txtNamee;
+  String txtPrintername;
+  String txtUsercode;
+  int numIsParent;
+  String txtParentCode;
+  String printTo;
+  String taxCategory;
+  int smalllinemodifier;
+  int addtopos;
+  int showinmob;
+  String color;
+  String priorityindex;
+  String age;
+  int express;
+  int ebt;
 
   ProductcatTbl(
       this.txtCode,

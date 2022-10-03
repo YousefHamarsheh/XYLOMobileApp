@@ -18,15 +18,15 @@ class _DashboardState extends State<Dashboard> {
   TextEditingController textEditingControllerSearch = TextEditingController();
   //Sample Data
   List<DashBoardItem> dashboardItem = [
-    const DashBoardItem("assets/images/label.png", "Sales", "55,500,000\$"),
-    const DashBoardItem("assets/images/deal.png", "Deals", "150"),
-    const DashBoardItem("assets/images/vendor.png", "Vendors", "750"),
-    const DashBoardItem("assets/images/customers.png", "Customers", "150"),
-    const DashBoardItem("assets/images/users.png", "Users", "55000"),
-    const DashBoardItem("assets/images/label.png", "Items", "250,000"),
-    const DashBoardItem("assets/images/label.png", "Balance", "55,500,000\$"),
-    const DashBoardItem("assets/images/label.png", "Bills", "150,000"),
-    const DashBoardItem("assets/images/reports.png", "Reports", "55023"),
+    DashBoardItem("assets/images/label.png", "Sales", "55,500,000\$"),
+    DashBoardItem("assets/images/deal.png", "Deals", "150"),
+    DashBoardItem("assets/images/vendor.png", "Vendors", "750"),
+    DashBoardItem("assets/images/customers.png", "Customers", "150"),
+    DashBoardItem("assets/images/users.png", "Users", "55000"),
+    DashBoardItem("assets/images/label.png", "Items", "250,000"),
+    DashBoardItem("assets/images/label.png", "Balance", "55,500,000\$"),
+    DashBoardItem("assets/images/label.png", "Bills", "150,000"),
+    DashBoardItem("assets/images/reports.png", "Reports", "55023"),
   ];
   @override
   Widget build(BuildContext context) {

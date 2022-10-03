@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:xid/xid.dart';
 import 'package:xylo/model/item_data.dart';
 
 import 'package:http/http.dart' as http;
@@ -117,13 +118,105 @@ class ItemActions extends ActionScreen {
   }
 
   Future<String> insertItemData(
+    String depatValue, //
+    String unitValue, //
+    String taxValue,
+    String indexValue,
+    String printValue,
+    String colorValue,
     String upc,
     String itemName,
-    String depName,
-    String initialInventoryQty,
-    String unit,
-    String printTo,
-    String itemColor,
-    String taxCategory,
-  ) {}
+    int initQty,
+    String ebt, //
+    String showInPos, //
+    String modifyer, //
+    String age, //
+    String showInMob, //
+    String trackable, //
+    double cost,
+    double basicPrice,
+    double lev2Price,
+    double lev3Price,
+    double lev4Price,
+    double fixedFree, //
+    double handlingShip, //
+    String fixedFreeType, //
+  ) async {
+    var xid = Xid();
+    String id = xid.toString().substring(0, 7);
+    const api = 'products/save';
+    final response = await http.post(Uri.http(url, api),
+        headers: {
+          "Accept": "application/json",
+          "content-type": "application/json"
+        },
+        body: json.encode({
+          "txtCode": "sB9eEtJPqNoQ3nH",
+          "bolActive": 0,
+          "bolBatchable": 0,
+          "bolDonotprintprice": 0,
+          "bolItemizable": 0,
+          "bolLocal": 0,
+          "bolPriceincludevat": 0,
+          "dblCostprice": 0.00000,
+          "dblCurrentqty": null,
+          "dblDefaultvatrate": 0.0,
+          "dblEqv": 0.0,
+          "dblSellprice": 0.0,
+          "dblSellprice2": 0.0,
+          "dblSellprice3": 0.0,
+          "dblSellprice4": 0.0,
+          "intProducttype": 0,
+          "intQuantitycontrols": 0,
+          "txtBarcode": "19999",
+          "productcatTbl": {
+            "txtCode": "sB9eEtJPqNoQ3nH",
+            "bolAllowdiscount": 0,
+            "datCreationdate": null,
+            "intDeleted": 0,
+            "txtNamea": "Ahmadw3",
+            "txtNamee": "Ahmadw3",
+            "txtPrintername": null,
+            "txtUsercode": null,
+            "numIsParent": 1,
+            "txtParentCode": null,
+            "printTo": "0",
+            "taxCategory": "10",
+            "smalllinemodifier": 0,
+            "addtopos": 1,
+            "showinmob": 0,
+            "color": "#FFFFFFFF",
+            "priorityindex": "4",
+            "age": "0",
+            "express": 1,
+            "ebt": 1
+          },
+          "txtGroupreference": null,
+          "txtName": "Ahmadw3",
+          "txtNotes": null,
+          "txtRetsalesacccode": null,
+          "txtSalesacccode": null,
+          "txtStkprodno": null,
+          "txtSupcode1": null,
+          "txtSupcode2": null,
+          "txtSupcode3": null,
+          "txtUnit": "UNIT",
+          "adult": "No",
+          "ebt": "No",
+          "byWeight": null,
+          "itemSize": null,
+          "feeMultiplier": 0.0, //fixed fee
+          "addToPos": 1,
+          "color": "#FFFFFFFF",
+          "taxCat": "01X01X01X01",
+          "priorityIndex": "1",
+          "smallLineModifier": 0,
+          "showinMob": 0,
+          "trackable": 0,
+          "shipping": 0.0,
+          "printTo": null,
+          "express": 1
+        }));
+    return id;
+  }
 }

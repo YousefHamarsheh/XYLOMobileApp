@@ -1,23 +1,23 @@
 class ShiftData {
-  final String txtKey;
-  final String datClosedate;
-  final String datCreationdate;
-  final String datOpendate;
-  final double dblLeftamount;
-  final double dblRevolvils;
-  final double dblRevolvjod;
-  final double dblRevolvusa;
-  final double intClosetype;
-  final int intHoldstatus;
-  final int intShiftcode;
-  final String status;
-  final String timClosetime;
-  final String timOpentime;
-  final String txtBranchcode;
-  final String txtComments;
-  final String txtIpaddress;
-  final String txtUsercode;
-  final String txtUsername;
+  String txtKey;
+  String datClosedate;
+  String datCreationdate;
+  String datOpendate;
+  double dblLeftamount;
+  double dblRevolvils;
+  double dblRevolvjod;
+  double dblRevolvusa;
+  double intClosetype;
+  int intHoldstatus;
+  int intShiftcode;
+  String status;
+  String timClosetime;
+  String timOpentime;
+  String txtBranchcode;
+  String txtComments;
+  String txtIpaddress;
+  String txtUsercode;
+  String txtUsername;
 
   ShiftData(
       this.txtKey,

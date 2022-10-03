@@ -1,21 +1,21 @@
 class DepartItem {
-  final String id;
-  final String dep_name; //namea
-  final String print_to;
-  final String name_display_on_screen; //namee
-  final String priority_index;
-  final String parent_dep;
-  final String restrict_age;
-  final String dep_image;
-  final String dep_color;
-  final String tax_category;
-  final int show_in_pos; // add or show??
-  final int show_in_mob;
-  final int ebt_eligibal;
-  final int modifier;
-  final int express_btn;
+  String id;
+  String dep_name; //namea
+  String print_to;
+  String name_display_on_screen; //namee
+  String priority_index;
+  String parent_dep;
+  String restrict_age;
+  String dep_image;
+  String dep_color;
+  String tax_category;
+  int show_in_pos; // add or show??
+  int show_in_mob;
+  int ebt_eligibal;
+  int modifier;
+  int express_btn;
 
-  const DepartItem(
+  DepartItem(
       this.id,
       this.dep_name,
       this.print_to,

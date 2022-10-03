@@ -1,22 +1,14 @@
 class VendorItem {
-  final String id;
-  final String vendor_name;
-  final String contact_name;
-  final String phonenumber;
-  final String email;
-  final String address;
-  final String city;
-  final String state;
-  final String zipcode;
+  String id;
+  String vendor_name;
+  String contact_name;
+  String phonenumber;
+  String email;
+  String address;
+  String city;
+  String state;
+  String zipcode;
 
-  const VendorItem(
-      this.id,
-      this.vendor_name,
-      this.contact_name,
-      this.phonenumber,
-      this.email,
-      this.address,
-      this.city,
-      this.state,
-      this.zipcode);
+  VendorItem(this.id, this.vendor_name, this.contact_name, this.phonenumber,
+      this.email, this.address, this.city, this.state, this.zipcode);
 }

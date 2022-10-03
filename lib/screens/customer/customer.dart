@@ -39,7 +39,7 @@ class _CustomerPageState extends State<CustomerPage> {
     custActions.display_cust = [];
     setState(() {
       for (CustomerItem cust in custActions.customerItem) {
-        if (cust.name.toLowerCase().contains(value)) {
+        if (cust.txtName.toLowerCase().contains(value)) {
           custActions.display_cust.add(cust);
         }
       }
@@ -64,18 +64,18 @@ class _CustomerPageState extends State<CustomerPage> {
                   itemCount: custActions.display_cust.length,
                   itemBuilder: (context, index) {
                     return CustomCard(
-                      text: custActions.display_cust[index].name,
-                      value: custActions.display_cust[index].phonenumber,
+                      text: custActions.display_cust[index].txtName,
+                      value: custActions.display_cust[index].txtTel1,
                       option: () => buildOptionPopup(
                           context,
-                          custActions.display_cust[index].name,
-                          custActions.display_cust[index].phonenumber,
-                          custActions.display_cust[index].id,
-                          custActions.display_cust[index].email,
-                          custActions.display_cust[index].address,
-                          custActions.display_cust[index].city,
-                          custActions.display_cust[index].state,
-                          custActions.display_cust[index].zipcode),
+                          custActions.display_cust[index].txtName,
+                          custActions.display_cust[index].txtTel1,
+                          custActions.display_cust[index].txtCode,
+                          custActions.display_cust[index].txtEmail,
+                          custActions.display_cust[index].txtAddress,
+                          custActions.display_cust[index].txtCitya,
+                          custActions.display_cust[index].txtCountrya,
+                          custActions.display_cust[index].txtAreacode),
                     );
                   },
                 );
