@@ -19,7 +19,7 @@ import '../../config.dart';
 import '../../model/category_data .dart';
 
 class CategoryPage extends StatelessWidget {
-  CategoryPage({Key key}) : super(key: key);
+  CategoryPage({Key? key}) : super(key: key);
 
   CategActions categActions = CategActions();
 
@@ -45,7 +45,12 @@ class CategoryPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                SearchFeild(controller: null, width: width, hint: "Search"),
+                SearchFeild(
+                  controller: null,
+                  width: width,
+                  hint: "Search",
+                  onChanged: (String) {},
+                ),
                 FiltterButton(onPress: () {}),
                 SortButton(onPress: () {}),
               ],

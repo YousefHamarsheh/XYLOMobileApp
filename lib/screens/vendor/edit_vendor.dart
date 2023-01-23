@@ -10,7 +10,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class EditVendor extends StatefulWidget {
-  const EditVendor({Key key}) : super(key: key);
+  const EditVendor({Key? key}) : super(key: key);
 
   @override
   State<EditVendor> createState() => _EditVendorState();

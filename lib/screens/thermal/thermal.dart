@@ -20,7 +20,7 @@ import '../../model/thermal_data.dart';
 import 'compononts/thermal.dart';
 
 class ThermalPage extends StatelessWidget {
-  ThermalPage({Key key}) : super(key: key);
+  ThermalPage({Key? key}) : super(key: key);
 
   TermActions termActions = TermActions();
   @override

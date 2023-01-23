@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../config.dart';
 
 class OptionButton extends StatelessWidget {
-  final Function onPress;
-   double padding;
-   OptionButton({Key key, @required this.onPress, this.padding=40}) : super(key: key);
+  Function onPress;
+  double padding;
+  OptionButton({Key? key, required this.onPress, this.padding = 40})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

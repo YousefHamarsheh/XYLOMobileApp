@@ -9,7 +9,7 @@ import '../../compononts/custom_drpdown.dart';
 import '../../config.dart';
 
 class ViewUser extends StatefulWidget {
-  const ViewUser({Key key}) : super(key: key);
+  const ViewUser({Key? key}) : super(key: key);
 
   @override
   State<ViewUser> createState() => _ViewUserState();
@@ -315,7 +315,7 @@ class _ViewUserState extends State<ViewUser> {
   Row buildRadioLabled(int index, String text) {
     return Row(
       children: [
-        Checkbox(value: radioValue[index], onChanged: (bool value) {}),
+        Checkbox(value: radioValue[index], onChanged: (bool? value) {}),
         Text(
           " $text",
           style: TextStyle(

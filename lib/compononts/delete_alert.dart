@@ -7,8 +7,9 @@ import 'package:http/http.dart' as http;
 import '../config.dart';
 
 class AlertDelete extends StatelessWidget {
-  final String name, id;
-  const AlertDelete({Key key, @required this.name, this.id}) : super(key: key);
+  String name;
+  String? id;
+  AlertDelete({Key? key, required this.name, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,32 +58,38 @@ class AlertDelete extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0)),
-                      height: 50,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    height:
+                        50, //Check if it gives the same output as putting it in style below
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                        ),
+                      ),
+                      onPressed: () => Navigator.pop(context),
                       child: Text(
                         "NO, CANCEL",
                         maxLines: 1,
                         style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                            fontSize:
-                                ResponsiveFlutter.of(context).fontSize(1.8)),
-                      )),
-                ),
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                        ),
+                      ),
+                    )),
                 const SizedBox(
                   width: 4,
                 ),
                 SizedBox(
-                  child: FlatButton(
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0)),
-                      height: 50,
+                    height:
+                        50, //Check if it gives the same output as putting it in style below
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                        ),
+                      ),
                       onPressed: () async {
                         var url = Uri.parse(
                             'http://5.161.97.142:9001/cust/delete/$id');
@@ -114,8 +121,8 @@ class AlertDelete extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontSize:
                                 ResponsiveFlutter.of(context).fontSize(1.8)),
-                      )),
-                ),
+                      ),
+                    )),
               ],
             ),
           )

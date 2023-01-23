@@ -18,7 +18,7 @@ import '../../model/payment_data.dart';
 import 'compononts/paymentCard.dart';
 
 class PaymentPage extends StatelessWidget {
-  PaymentPage({Key key}) : super(key: key);
+  PaymentPage({Key? key}) : super(key: key);
 
   PaymentActions paymentActions = PaymentActions();
   @override

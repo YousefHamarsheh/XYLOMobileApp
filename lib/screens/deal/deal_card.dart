@@ -12,11 +12,11 @@ class DealCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const DealCard(
-      {Key key,
-      @required this.dealData,
-      @required this.optionOnTap,
-      @required this.screenHeight,
-      @required this.optionButton})
+      {Key? key,
+      required this.dealData,
+      required this.optionOnTap,
+      required this.screenHeight,
+      required this.optionButton})
       : super(key: key);
 
   @override

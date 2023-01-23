@@ -11,7 +11,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddCategory extends StatefulWidget {
-  const AddCategory({Key key}) : super(key: key);
+  const AddCategory({Key? key}) : super(key: key);
 
   @override
   State<AddCategory> createState() => _AddCategoryState();
@@ -30,9 +30,9 @@ class _AddCategoryState extends State<AddCategory> {
   final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState.validate();
+    final validation = _keyForm.currentState!.validate();
     if (validation) {
-      _keyForm.currentState.save();
+      _keyForm.currentState!.save();
     } else {
       return;
     }
@@ -69,7 +69,7 @@ class _AddCategoryState extends State<AddCategory> {
                 CustomTextFeild(
                   hint: "Value",
                   textInputType: TextInputType.number,
-                  onSaved: (value1) => categValue = value1,
+                  onSaved: (value1) => categValue = value1 as double,
                 ),
                 const SizedBox(
                   height: 30,
@@ -80,7 +80,7 @@ class _AddCategoryState extends State<AddCategory> {
                         value: percent,
                         onChanged: (val) {
                           setState(() {
-                            percent = val;
+                            percent = val!;
                           });
                         }),
                     const Text(

@@ -4,16 +4,16 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 import '../config.dart';
 
 class SearchFeild extends StatelessWidget {
-  final TextEditingController controller;
-  final double width;
-  final String hint;
-  final Function onChanged;
-  const SearchFeild(
-      {Key key,
-      @required this.controller,
-      @required this.width,
-      @required this.hint,
-      @required this.onChanged})
+  TextEditingController? controller;
+  double width;
+  String hint;
+  Function(String)? onChanged;
+  SearchFeild(
+      {Key? key,
+      this.controller,
+      required this.width,
+      required this.hint,
+      this.onChanged})
       : super(key: key);
 
   @override

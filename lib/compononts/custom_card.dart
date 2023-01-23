@@ -10,10 +10,7 @@ class CustomCard extends StatelessWidget {
   final String text, value;
   final Function option;
   const CustomCard(
-      {Key key,
-      @required this.text,
-      @required this.value,
-      @required this.option})
+      {Key? key, required this.text, required this.value, required this.option})
       : super(key: key);
 
   @override

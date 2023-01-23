@@ -11,11 +11,11 @@ class CreditCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const CreditCard(
-      {Key key,
-      this.cardData,
-      this.optionOnTap,
-      @required this.screenHeight,
-      @required this.optionButton})
+      {Key? key,
+      required this.cardData,
+      required this.optionOnTap,
+      required this.screenHeight,
+      required this.optionButton})
       : super(key: key);
 
   @override

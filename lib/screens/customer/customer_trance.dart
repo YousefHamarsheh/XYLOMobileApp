@@ -14,10 +14,10 @@ import '../../model/transactions/Transaction.dart';
 class CustomerTrance extends StatefulWidget {
   final String title, value, cust_id;
   const CustomerTrance(
-      {Key key,
-      @required this.title,
-      @required this.value,
-      @required this.cust_id})
+      {Key? key,
+      required this.title,
+      required this.value,
+      required this.cust_id})
       : super(key: key);
 
   @override
@@ -104,27 +104,26 @@ class _CustomerTranceState extends State<CustomerTrance> {
     double width = ((MediaQuery.of(context).size.width) - 100);
     return Center(
       child: SizedBox(
-        width: width,
-        height: 50,
-        // ignore: deprecated_member_use
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          color: Colors.white,
-          shape: const RoundedRectangleBorder(
-              side: BorderSide(color: Colors.grey),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
-          child: Text(
-            "CLOSE",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
-              fontWeight: FontWeight.w500,
+          width: width,
+          height: 50,
+          // ignore: deprecated_member_use
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              shape: const RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.grey),
+                  borderRadius: BorderRadius.all(Radius.circular(8))),
             ),
-          ),
-        ),
-      ),
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              "CLOSE",
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          )),
     );
   }
 
@@ -155,9 +154,11 @@ class _CustomerTranceState extends State<CustomerTrance> {
               Row(
                 children: [
                   SearchFeild(
-                      controller: null,
-                      width: ((MediaQuery.of(context).size.width) * 0.6),
-                      hint: 'Search'),
+                    controller: null,
+                    width: ((MediaQuery.of(context).size.width) * 0.6),
+                    hint: 'Search',
+                    onChanged: (String) {},
+                  ),
                   const SizedBox(
                     width: 4,
                   ),

@@ -11,7 +11,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddVendor extends StatefulWidget {
-  const AddVendor({Key key}) : super(key: key);
+  const AddVendor({Key? key}) : super(key: key);
 
   @override
   State<AddVendor> createState() => _AddVendorState();
@@ -31,9 +31,9 @@ class _AddVendorState extends State<AddVendor> {
 
   final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState.validate();
+    final validation = _keyForm.currentState!.validate();
     if (validation) {
-      _keyForm.currentState.save();
+      _keyForm.currentState!.save();
     } else {
       return;
     }

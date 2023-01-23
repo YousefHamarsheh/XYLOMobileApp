@@ -5,18 +5,19 @@ import 'package:xylo/compononts/delete_alert.dart';
 import '../config.dart';
 
 class BottomActionPanel extends StatelessWidget {
-  final Function tranceactionOnTap;
-  final Function editOnTap;
-  final Function boxOnTap;
-  final Function viewOnTap;
-  final Function deleteOnTap;
-  final String name, text;
+  final Function()? tranceactionOnTap;
+  final Function()? editOnTap;
+  final Function()? boxOnTap;
+  final Function()? viewOnTap;
+  final Function()? deleteOnTap;
+  final String name;
+  final String text;
   const BottomActionPanel(
-      {Key key,
+      {Key? key,
       this.tranceactionOnTap,
       this.boxOnTap,
-      @required this.name,
-      this.text,
+      required this.name,
+      required this.text,
       this.editOnTap,
       this.deleteOnTap,
       this.viewOnTap})

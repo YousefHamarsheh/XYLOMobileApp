@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import '../config.dart';
 
 class CustomTextFeild extends StatelessWidget {
-  final String hint;
-  final TextInputType textInputType;
-  final Function onValidator;
-  final Function onSaved;
-  final String initValue;
-  TextEditingController controller = TextEditingController();
+  final String? hint;
+  final TextInputType? textInputType;
+  final Function()? onValidator;
+  final Function(String)? onSaved;
+  final String? initValue;
+  TextEditingController? controller = TextEditingController();
   bool editatbale;
   int maxLLine;
 
   CustomTextFeild({
-    Key key,
+    Key? key,
     this.hint,
     this.textInputType,
     this.onValidator,
@@ -29,9 +29,9 @@ class CustomTextFeild extends StatelessWidget {
     return TextFormField(
       initialValue: initValue,
       controller: controller,
-      onSaved: (value) => onSaved(value),
+      onSaved: (value) => onSaved!(value!),
       keyboardType: textInputType,
-      validator: onValidator == null ? null : onValidator(),
+      validator: onValidator == null ? null : onValidator!(),
       maxLines: maxLLine,
       enabled: editatbale,
       style: const TextStyle(

@@ -3,32 +3,33 @@ import 'package:flutter/material.dart';
 import '../config.dart';
 
 class CustomDropDown extends StatelessWidget {
-  final List<String> items;
-  final String value;
-  final ValueChanged<dynamic> onChanged;
-  final String hint;
+  List<String> items;
+  String value;
+  ValueChanged<dynamic> onChanged;
+  String? hint;
   bool editatbale;
-   CustomDropDown(
-      {Key key,
-      @required this.items,
-      @required this.value,
-      @required this.onChanged,
+  CustomDropDown(
+      {Key? key,
+      required this.items,
+      required this.value,
+      required this.onChanged,
       this.hint,
-      this.editatbale=true})
+      this.editatbale = true})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
         value: value,
-        
-        onChanged: editatbale? (newValue) {
-          onChanged(newValue);
-        }:null,
-        decoration:  InputDecoration(
-          hintText: hint??hint,
+        onChanged: editatbale
+            ? (newValue) {
+                onChanged(newValue);
+              }
+            : null,
+        decoration: InputDecoration(
+          hintText: hint ?? hint,
           enabled: editatbale,
-          hintStyle:const TextStyle(
+          hintStyle: const TextStyle(
             color: kPrymeryColor2,
             fontWeight: FontWeight.bold,
             fontSize: 18,

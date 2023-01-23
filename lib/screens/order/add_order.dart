@@ -10,7 +10,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddOrder extends StatefulWidget {
-  const AddOrder({Key key}) : super(key: key);
+  const AddOrder({Key? key}) : super(key: key);
 
   @override
   State<AddOrder> createState() => _AddOrderState();
@@ -23,9 +23,9 @@ class _AddOrderState extends State<AddOrder> {
   bool active = false;
   final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState.validate();
+    final validation = _keyForm.currentState!.validate();
     if (validation) {
-      _keyForm.currentState.save();
+      _keyForm.currentState!.save();
     } else {
       return;
     }
@@ -68,7 +68,7 @@ class _AddOrderState extends State<AddOrder> {
                         value: active,
                         onChanged: (val) {
                           setState(() {
-                            active = val;
+                            active = val!;
                           });
                         }),
                     const Text(

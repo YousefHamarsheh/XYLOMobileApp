@@ -12,11 +12,11 @@ class ClockCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const ClockCard(
-      {Key key,
-      this.clockData,
-      this.optionOnTap,
-      @required this.screenHeight,
-      @required this.optionButton})
+      {Key? key,
+      required this.clockData,
+      required this.optionOnTap,
+      required this.screenHeight,
+      required this.optionButton})
       : super(key: key);
 
   @override

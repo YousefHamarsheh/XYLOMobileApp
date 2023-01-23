@@ -8,7 +8,7 @@ import 'inventory/inventory.dart';
 import 'vendor/vendors.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({Key key}) : super(key: key);
+  const NavBar({Key? key}) : super(key: key);
 
   @override
   _NavBarState createState() => _NavBarState();

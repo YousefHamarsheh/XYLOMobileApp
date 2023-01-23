@@ -11,11 +11,11 @@ class ShiftCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const ShiftCard(
-      {Key key,
-      this.shiftData,
-      this.optionOnTap,
-      @required this.screenHeight,
-      @required this.optionButton})
+      {Key? key,
+      required this.shiftData,
+      required this.optionOnTap,
+      required this.screenHeight,
+      required this.optionButton})
       : super(key: key);
 
   @override

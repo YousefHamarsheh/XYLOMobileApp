@@ -13,7 +13,7 @@ import '../../../compononts/toggle_btn.dart';
 import '../../../config.dart';
 
 class ViewDepart extends StatefulWidget {
-  const ViewDepart({Key key}) : super(key: key);
+  const ViewDepart({Key? key}) : super(key: key);
 
   @override
   State<ViewDepart> createState() => _ViewDepartState();
@@ -25,7 +25,7 @@ class _ViewDepartState extends State<ViewDepart> {
   String selectedAgeValue = "21 Years Old";
   String selectedIndexValue = "5 is normal";
   String selectedPrinterValue = "HP Printer";
-  String selectedColorValue;
+  late String selectedColorValue;
 
   @override
   Widget build(BuildContext context) {

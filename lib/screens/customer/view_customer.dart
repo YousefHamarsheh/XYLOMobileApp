@@ -10,7 +10,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class ViewCustomer extends StatefulWidget {
-  const ViewCustomer({Key key}) : super(key: key);
+  const ViewCustomer({Key? key}) : super(key: key);
 
   @override
   State<ViewCustomer> createState() => _ViewCustomerState();

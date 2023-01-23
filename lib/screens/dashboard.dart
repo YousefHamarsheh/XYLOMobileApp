@@ -8,7 +8,7 @@ import '../config.dart';
 import '../model/dashbord_data.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key key}) : super(key: key);
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();

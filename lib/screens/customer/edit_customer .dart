@@ -13,15 +13,15 @@ import '../../config.dart';
 class EditCustomer extends StatefulWidget {
   final String name, id, phonenumber, email, address, city, state, zipcode;
   const EditCustomer(
-      {Key key,
-      @required this.name,
-      @required this.id,
-      @required this.phonenumber,
-      @required this.email,
-      @required this.address,
-      @required this.city,
-      @required this.state,
-      @required this.zipcode})
+      {Key? key,
+      required this.name,
+      required this.id,
+      required this.phonenumber,
+      required this.email,
+      required this.address,
+      required this.city,
+      required this.state,
+      required this.zipcode})
       : super(key: key);
 
   @override
@@ -40,9 +40,9 @@ class _EditCustomerState extends State<EditCustomer> {
   final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState.validate();
+    final validation = _keyForm.currentState!.validate();
     if (validation) {
-      _keyForm.currentState.save();
+      _keyForm.currentState!.save();
     } else {
       return;
     }

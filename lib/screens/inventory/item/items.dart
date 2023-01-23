@@ -19,7 +19,7 @@ import '../../../model/item_data.dart';
 import 'view_item.dart';
 
 class ItemPage extends StatelessWidget {
-  ItemPage({Key key}) : super(key: key);
+  ItemPage({Key? key}) : super(key: key);
 
   ItemActions itemActions = ItemActions();
 

@@ -11,7 +11,7 @@ import '../../../model/item_inbox_list_data.dart';
 
 class ItemInBox extends StatefulWidget {
   final ItemData itemData;
-  const ItemInBox({Key key, @required this.itemData}) : super(key: key);
+  const ItemInBox({Key? key, required this.itemData}) : super(key: key);
 
   @override
   State<ItemInBox> createState() => _ItemInBoxState();

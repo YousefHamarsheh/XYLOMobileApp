@@ -21,7 +21,7 @@ import '../../config.dart';
 import '../../model/deals_data.dart';
 
 class Deals extends StatefulWidget {
-  const Deals({Key key}) : super(key: key);
+  const Deals({Key? key}) : super(key: key);
 
   @override
   State<Deals> createState() => _DealsState();
@@ -215,7 +215,7 @@ class _DealsState extends State<Deals> {
   Widget buildTextFeild(String hint, double width) {
     return InkWell(
       onTap: () async {
-        final DateTime picked = await showDatePicker(
+        final DateTime? picked = await showDatePicker(
             context: context,
             initialDate: DateTime.now(),
             firstDate: DateTime(2015, 8),

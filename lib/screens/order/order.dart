@@ -18,7 +18,7 @@ import '../../model/order_data.dart';
 import 'compononts/orderCard.dart';
 
 class OrderPage extends StatelessWidget {
-  OrderPage({Key key}) : super(key: key);
+  OrderPage({Key? key}) : super(key: key);
 
   OrderActions orderActions = OrderActions();
 

@@ -11,7 +11,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddPayment extends StatefulWidget {
-  const AddPayment({Key key}) : super(key: key);
+  const AddPayment({Key? key}) : super(key: key);
 
   @override
   State<AddPayment> createState() => _AddPaymentState();
@@ -28,9 +28,9 @@ class _AddPaymentState extends State<AddPayment> {
   bool active = false, pay_out = false;
   final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState.validate();
+    final validation = _keyForm.currentState!.validate();
     if (validation) {
-      _keyForm.currentState.save();
+      _keyForm.currentState!.save();
     } else {
       return;
     }
@@ -79,7 +79,7 @@ class _AddPaymentState extends State<AddPayment> {
                         value: active,
                         onChanged: (val) {
                           setState(() {
-                            active = val;
+                            active = val!;
                           });
                         }),
                     const Text(
@@ -96,7 +96,7 @@ class _AddPaymentState extends State<AddPayment> {
                         value: pay_out,
                         onChanged: (val) {
                           setState(() {
-                            pay_out = val;
+                            pay_out = val!;
                           });
                         }),
                     const Text(

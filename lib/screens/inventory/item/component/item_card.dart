@@ -13,11 +13,11 @@ class ItemCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const ItemCard(
-      {Key key,
-      @required this.itemData,
-      @required this.optionOnTap,
-      @required this.screenHeight,
-      @required this.optionButton})
+      {Key? key,
+      required this.itemData,
+      required this.optionOnTap,
+      required this.screenHeight,
+      required this.optionButton})
       : super(key: key);
 
   @override

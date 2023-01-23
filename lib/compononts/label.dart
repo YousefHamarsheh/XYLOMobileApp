@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../config.dart';
 
 class Label extends StatelessWidget {
-  final String text;
+  String text;
   bool visibleStar;
-   bool paddingOn;
+  bool paddingOn;
   Label(
-      {Key key,
-      @required this.text,
+      {Key? key,
+      required this.text,
       this.visibleStar = true,
-       this.paddingOn=true})
+      this.paddingOn = true})
       : super(key: key);
 
   @override

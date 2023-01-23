@@ -11,7 +11,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class ViewVendor extends StatefulWidget {
-  const ViewVendor({Key key}) : super(key: key);
+  const ViewVendor({Key? key}) : super(key: key);
 
   @override
   State<ViewVendor> createState() => _ViewVendorState();
