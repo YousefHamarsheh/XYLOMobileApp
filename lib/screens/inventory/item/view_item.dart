@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_textfeild.dart';
 import 'package:xylo/compononts/custom_drpdown.dart';
 import 'package:xylo/compononts/custom_toggle.dart';

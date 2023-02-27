@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_card_col.dart';
 import 'package:xylo/model/clock_data.dart';
 
@@ -108,13 +108,13 @@ class ClockCard extends StatelessWidget {
                 "Status",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 clockData.status,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
                     color:
                         clockData.status == "Out" ? Colors.red : Colors.green),
               ),

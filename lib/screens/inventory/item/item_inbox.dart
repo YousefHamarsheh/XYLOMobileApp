@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/side_menu.dart';
 import 'package:xylo/config.dart';
@@ -103,7 +103,7 @@ class _ItemInBoxState extends State<ItemInBox> {
                 'SHOW CHANGES',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -124,7 +124,7 @@ class _ItemInBoxState extends State<ItemInBox> {
                 'CANCEL',
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
                     fontWeight: FontWeight.bold),
               ),
             ),

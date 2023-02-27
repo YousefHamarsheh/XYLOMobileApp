@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../../../compononts/option.dart';
 import '../../../config.dart';
@@ -78,13 +78,13 @@ class CreditCard extends StatelessWidget {
                 "Comm. Percentage",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 cardData.commissionPercentage.toString(),
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -96,7 +96,7 @@ class CreditCard extends StatelessWidget {
                 "Merchant Afford",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(

@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/DealsActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
@@ -132,7 +132,7 @@ class _DealsState extends State<Deals> {
                   padding: const EdgeInsets.only(top: 20, left: 10),
                   child: Text("Apply Filters",
                       style: TextStyle(
-                          fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                           fontWeight: FontWeight.w500)),
                 ),
                 Padding(
@@ -140,7 +140,7 @@ class _DealsState extends State<Deals> {
                   child: Text(
                     "Date",
                     style: TextStyle(
-                        fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                        // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                         color: Colors.grey),
                   ),
                 ),
@@ -186,7 +186,7 @@ class _DealsState extends State<Deals> {
                   padding: const EdgeInsets.only(top: 20, left: 10),
                   child: Text("Sort By",
                       style: TextStyle(
-                          fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                           fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
@@ -235,8 +235,9 @@ class _DealsState extends State<Deals> {
         height: 50,
         child: TextFormField(
           enabled: false,
-          style:
-              TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(2.2)),
+          style: TextStyle(
+              // fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+              ),
           decoration: InputDecoration(
               hintText: hint,
               hintStyle: const TextStyle(
@@ -283,7 +284,7 @@ class _DealsState extends State<Deals> {
           "Last Added",
           style: TextStyle(
             color: Colors.grey,
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w400,
           ),
         ),

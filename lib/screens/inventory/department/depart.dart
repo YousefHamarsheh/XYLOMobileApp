@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/DepActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/option.dart';
@@ -82,8 +82,7 @@ class Department extends StatelessWidget {
             data.dep_name,
             style: TextStyle(
               color: textheadlinecolor,
-              fontSize: ResponsiveFlutter.of(context)
-                  .fontSize(screenHeight > 890 ? 1.5 : 1.7),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(screenHeight > 890 ? 1.5 : 1.7),
             ),
           ),
         ],
@@ -136,16 +135,14 @@ class Department extends StatelessWidget {
             Text(
               data.dep_name,
               style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context)
-                      .fontSize(screenHeight > 890 ? 2.3 : 2.5),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(screenHeight > 890 ? 2.3 : 2.5),
                   color: kPrymeryColor2,
                   fontWeight: FontWeight.bold),
             ),
             Text(
               data.id,
               style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context)
-                      .fontSize(screenHeight > 890 ? 1.3 : 1.5),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(screenHeight > 890 ? 1.3 : 1.5),
                   color: textheadlinecolor),
             ),
           ],

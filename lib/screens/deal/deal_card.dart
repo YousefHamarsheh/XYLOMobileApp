@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/model/deals_data.dart';
 
 import '../../../compononts/option.dart';
@@ -72,13 +72,13 @@ class DealCard extends StatelessWidget {
                 "Department",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 dealData.name,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                     color: textheadlinecolor),
               ),
             ],
@@ -90,13 +90,13 @@ class DealCard extends StatelessWidget {
                 "From Date",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 dealData.from_date,
                 style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                   color: textheadlinecolor,
                 ),
               ),
@@ -109,13 +109,13 @@ class DealCard extends StatelessWidget {
                 "To Date",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 dealData.to_date,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                     color: textheadlinecolor),
               ),
             ],

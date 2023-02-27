@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/actions/UserActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
@@ -88,12 +88,12 @@ class _UserTrans extends State<UserTrans> {
               Text(widget.name,
                   style: TextStyle(
                       color: kPrymeryColor2,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                       fontWeight: FontWeight.bold)),
               Text(widget.phonenumber,
                   style: TextStyle(
                       color: textheadlinecolor,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                       fontWeight: FontWeight.bold)),
             ],
           ),
@@ -121,7 +121,7 @@ class _UserTrans extends State<UserTrans> {
               "CLOSE",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                 fontWeight: FontWeight.w500,
               ),
             ),

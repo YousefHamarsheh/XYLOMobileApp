@@ -1,7 +1,7 @@
 // ignore_for_file: missing_return
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 class BottomBackButton extends StatelessWidget {
   const BottomBackButton({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class BottomBackButton extends StatelessWidget {
             'Close',
             style: TextStyle(
                 color: Colors.grey,
-                fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
+                // fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
                 fontWeight: FontWeight.bold),
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/model/shift_data.dart';
 
 import '../../../compononts/option.dart';
@@ -83,13 +83,13 @@ class PaymentCard extends StatelessWidget {
                 "Note",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 paymentData.int_type.toString(),
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -101,7 +101,7 @@ class PaymentCard extends StatelessWidget {
                 "Active",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(
@@ -120,7 +120,7 @@ class PaymentCard extends StatelessWidget {
                 "Pay Out",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(

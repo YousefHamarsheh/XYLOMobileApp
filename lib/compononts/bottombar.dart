@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../config.dart';
 
@@ -53,7 +53,7 @@ Widget buildCancelbtn(BuildContext context) {
             "Cancel",
             style: TextStyle(
               color: Colors.grey,
-              fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -73,7 +73,7 @@ Widget buildAddbtn(BuildContext context, Function() onPress, bool isEdit) {
             isEdit ? "Edit" : "ADD",
             style: TextStyle(
               color: Colors.white,
-              fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(2.3),
               fontWeight: FontWeight.w500,
             ),
           ),

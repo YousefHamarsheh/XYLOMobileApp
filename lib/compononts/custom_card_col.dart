@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../config.dart';
 
@@ -17,13 +17,13 @@ class CustomColText extends StatelessWidget {
           lable,
           style: TextStyle(
               color: Colors.grey,
-              fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
               fontWeight: FontWeight.w500),
         ),
         Text(
           text,
           style: TextStyle(
-              fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(1.4),
               color: textheadlinecolor),
         ),
       ],

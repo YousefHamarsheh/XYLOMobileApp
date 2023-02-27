@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../config.dart';
 
@@ -40,13 +40,13 @@ class TransCard extends StatelessWidget {
                   "Document Date",
                   style: TextStyle(
                       color: Colors.grey,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
                   date,
                   style: TextStyle(
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                       color: textheadlinecolor,
                       fontWeight: FontWeight.w500),
                 ),
@@ -62,13 +62,13 @@ class TransCard extends StatelessWidget {
                   "Document Num",
                   style: TextStyle(
                       color: Colors.grey,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
                   number,
                   style: TextStyle(
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                       color: textheadlinecolor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -84,13 +84,13 @@ class TransCard extends StatelessWidget {
                   "Amount",
                   style: TextStyle(
                       color: Colors.grey,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                       fontWeight: FontWeight.w500),
                 ),
                 Text(
                   amount,
                   style: TextStyle(
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                       color: Colors.red,
                       fontWeight: FontWeight.bold),
                 ),

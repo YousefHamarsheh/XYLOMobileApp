@@ -10,7 +10,7 @@ class VendorActions extends ActionScreen {
   List<VendorItem> vendorItem = [];
 
   Future getVendorData() async {
-    const url = '5.161.97.142:9001';
+    const url = 'x1002.asdnova.com:9001';
     const api = 'supplier';
     var response = await http.get(Uri.http(url, api));
     var jsonData = jsonDecode(response.body);

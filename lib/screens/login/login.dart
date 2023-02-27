@@ -101,8 +101,8 @@ class _LoginState extends State<Login> {
             //     ],
             //   ),
             // ),
-            TextButton(
-          style: TextButton.styleFrom(
+            ElevatedButton(
+          style: ElevatedButton.styleFrom(
             foregroundColor: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -172,13 +172,15 @@ class _LoginState extends State<Login> {
             //     ],
             //   ),
             // ),
-            TextButton(
-          style: TextButton.styleFrom(
+            ElevatedButton(
+          style: ElevatedButton.styleFrom(
             foregroundColor: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
             shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(7),
-                    bottomRight: Radius.circular(7))),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(7),
+                bottomRight: Radius.circular(7),
+              ),
+            ),
           ),
           onPressed: () => setState(() {
             isUserMode = false;
@@ -270,26 +272,27 @@ class _LoginState extends State<Login> {
   Widget login() {
     return Center(
       child: SizedBox(
-          width: 350,
-          height: 50,
-          // ignore: deprecated_member_use
-          child: TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: kPrymeryColor2,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5))),
+        width: 350,
+        height: 50,
+        // ignore: deprecated_member_use
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: kPrymeryColor2,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5))),
+          ),
+          onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const NavBar())),
+          child: const Text(
+            "LOGIN",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
             ),
-            onPressed: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const NavBar())),
-            child: const Text(
-              "LOGIN",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 

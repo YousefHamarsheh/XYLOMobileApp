@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../../../compononts/option.dart';
 import '../../../config.dart';
@@ -70,13 +70,13 @@ class CategoryCard extends StatelessWidget {
                 "Name",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 categoryData.name,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -88,13 +88,13 @@ class CategoryCard extends StatelessWidget {
                 "Value",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 categoryData.percent.toString(),
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -106,7 +106,7 @@ class CategoryCard extends StatelessWidget {
                 "Percentage",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/filtter_btn.dart';
@@ -86,12 +86,12 @@ class _CustomerTranceState extends State<CustomerTrance> {
               Text(widget.title,
                   style: TextStyle(
                       color: kPrymeryColor2,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                       fontWeight: FontWeight.bold)),
               Text(widget.value,
                   style: TextStyle(
                       color: textheadlinecolor,
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                       fontWeight: FontWeight.bold)),
             ],
           ),
@@ -119,7 +119,7 @@ class _CustomerTranceState extends State<CustomerTrance> {
               "CLOSE",
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                 fontWeight: FontWeight.w500,
               ),
             ),

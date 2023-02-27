@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/VendorActions.dart';
 import 'package:xylo/compononts/action_panel.dart';
 import 'package:xylo/compononts/bottombar.dart';
@@ -90,7 +90,7 @@ class _VendorState extends State<Vender> {
                   padding: const EdgeInsets.only(top: 20, left: 10),
                   child: Text("Apply Filters",
                       style: TextStyle(
-                          fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                           fontWeight: FontWeight.w500)),
                 ),
                 Padding(
@@ -98,7 +98,7 @@ class _VendorState extends State<Vender> {
                   child: Text(
                     "Date",
                     style: TextStyle(
-                        fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                        // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                         color: Colors.grey),
                   ),
                 ),
@@ -116,7 +116,7 @@ class _VendorState extends State<Vender> {
                   child: Text(
                     "Amount",
                     style: TextStyle(
-                        fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                        // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                         color: Colors.grey),
                   ),
                 ),
@@ -154,7 +154,7 @@ class _VendorState extends State<Vender> {
                   padding: const EdgeInsets.only(top: 20, left: 10),
                   child: Text("Sort By",
                       style: TextStyle(
-                          fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                           fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
@@ -186,7 +186,7 @@ class _VendorState extends State<Vender> {
           "Last Added",
           style: TextStyle(
             color: Colors.grey,
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -203,7 +203,7 @@ class _VendorState extends State<Vender> {
       height: 50,
       child: TextFormField(
         controller: textEditingControllerAmount,
-        style: TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(2.2)),
+        // style: TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(2.2)),
         decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(
@@ -255,8 +255,9 @@ class _VendorState extends State<Vender> {
           controller: hint == "Form"
               ? textEditingControllerForm
               : textEditingControllerTo,
-          style:
-              TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(2.2)),
+          style: TextStyle(
+              // fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+              ),
           enabled: false,
           decoration: InputDecoration(
               hintText: hint,

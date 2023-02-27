@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/model/shift_data.dart';
 
 import '../../../compononts/option.dart';
@@ -70,13 +70,13 @@ class ShiftCard extends StatelessWidget {
                 "Open Date",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 shiftData.datOpendate,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -88,13 +88,13 @@ class ShiftCard extends StatelessWidget {
                 "Open Time",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 shiftData.timOpentime,
                 style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                   color: textheadlinecolor,
                 ),
               ),
@@ -107,13 +107,13 @@ class ShiftCard extends StatelessWidget {
                 "Status",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 shiftData.status,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: shiftData.status == "Closed"
                         ? Colors.red
                         : Colors.green),

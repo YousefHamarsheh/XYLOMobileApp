@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 
 import '../compononts/searchfeild.dart';
@@ -106,12 +106,12 @@ class _DashboardState extends State<Dashboard> {
             child: Text(text,
                 style: TextStyle(
                     color: const Color(0xff1fa5cf),
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2.8),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2.8),
                     fontWeight: FontWeight.bold)),
           ),
           Text(value,
               style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
                   fontWeight: FontWeight.bold)),
         ],
       ),

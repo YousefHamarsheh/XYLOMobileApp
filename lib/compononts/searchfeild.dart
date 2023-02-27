@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../config.dart';
 
@@ -31,8 +31,9 @@ class SearchFeild extends StatelessWidget {
             hintText: hint,
             prefixIcon: const Icon(Icons.search),
             hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: ResponsiveFlutter.of(context).fontSize(1.7)),
+              color: Colors.grey,
+              // fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+            ),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none),

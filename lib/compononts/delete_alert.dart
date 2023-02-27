@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:http/http.dart' as http;
 
 import '../config.dart';
@@ -34,7 +34,7 @@ class AlertDelete extends StatelessWidget {
             style: TextStyle(
               color: kPrymeryColor2,
               fontWeight: FontWeight.bold,
-              fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+              // fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
             ),
           ),
           Padding(
@@ -47,7 +47,7 @@ class AlertDelete extends StatelessWidget {
                 style: TextStyle(
                   color: textheadlinecolor,
                   fontWeight: FontWeight.bold,
-                  fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
                 ),
               ),
             ),
@@ -73,7 +73,7 @@ class AlertDelete extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
-                          fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                         ),
                       ),
                     )),
@@ -117,10 +117,10 @@ class AlertDelete extends StatelessWidget {
                         "YES, DELETE",
                         maxLines: 1,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize:
-                                ResponsiveFlutter.of(context).fontSize(1.8)),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                        ),
                       ),
                     )),
               ],

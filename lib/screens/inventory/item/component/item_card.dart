@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../../../../compononts/option.dart';
 import '../../../../config.dart';
@@ -101,13 +101,13 @@ class ItemCard extends StatelessWidget {
                 "Department",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 itemData.productcatTbl.txtNamee,
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],
@@ -119,13 +119,13 @@ class ItemCard extends StatelessWidget {
                 "In-Stock",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 itemData.intProducttype.toString(),
                 style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                   color: textheadlinecolor,
                 ),
               ),
@@ -138,13 +138,13 @@ class ItemCard extends StatelessWidget {
                 "Price",
                 style: TextStyle(
                     color: Colors.grey,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     fontWeight: FontWeight.w500),
               ),
               Text(
                 itemData.dblCostprice.toString(),
                 style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                    // fontSize: ResponsiveFlutter.of(context).fontSize(2),
                     color: textheadlinecolor),
               ),
             ],

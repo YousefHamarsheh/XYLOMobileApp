@@ -1,7 +1,7 @@
 // This widget for Vendor, Customer, User list card
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../config.dart';
 import 'option.dart';
@@ -40,7 +40,7 @@ class CustomCard extends StatelessWidget {
                 child: Text(text,
                     style: TextStyle(
                         color: const Color(0xff1fa5cf),
-                        fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
+                        // fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                         fontWeight: FontWeight.bold)),
               ),
               Padding(
@@ -48,7 +48,7 @@ class CustomCard extends StatelessWidget {
                 child: Text(value,
                     style: TextStyle(
                         color: textheadlinecolor,
-                        fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                        // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                         fontWeight: FontWeight.bold)),
               ),
             ],

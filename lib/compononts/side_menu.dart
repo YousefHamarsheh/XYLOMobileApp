@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/config.dart';
 import 'package:xylo/screens/card/card.dart';
 import 'package:xylo/screens/category/category.dart';
@@ -101,7 +101,7 @@ class SideMenu extends StatelessWidget {
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
-                fontSize: ResponsiveFlutter.of(context).fontSize(3.8),
+                // fontSize: ResponsiveFlutter.of(context).fontSize(3.8),
               )),
           InkWell(
             onTap: () {
@@ -130,7 +130,7 @@ class SideMenu extends StatelessWidget {
         label,
         style: TextStyle(
             color: Colors.white,
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.8),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.8),
             fontWeight: FontWeight.bold),
       ),
       onTap: onTap,

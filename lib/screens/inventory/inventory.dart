@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/compononts/custom_appbar.dart';
 import 'package:xylo/compononts/searchfeild.dart';
 import 'package:xylo/screens/inventory/department/add_depart.dart';
@@ -105,7 +105,7 @@ class _InventoryState extends State<Inventory> {
                     padding: const EdgeInsets.only(top: 20, left: 10),
                     child: Text("Apply Filters",
                         style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                            // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                             fontWeight: FontWeight.w500)),
                   ),
                   const SizedBox(
@@ -138,7 +138,7 @@ class _InventoryState extends State<Inventory> {
       title: Text(
         "Have Expired Items",
         style: TextStyle(
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w500,
             color: Colors.grey),
       ),
@@ -157,7 +157,7 @@ class _InventoryState extends State<Inventory> {
       title: Text(
         "Has No Items",
         style: TextStyle(
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w500,
             color: Colors.grey),
       ),
@@ -183,7 +183,7 @@ class _InventoryState extends State<Inventory> {
                     padding: const EdgeInsets.only(top: 20, left: 10),
                     child: Text("Sort By",
                         style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(3),
+                            // fontSize: ResponsiveFlutter.of(context).fontSize(3),
                             fontWeight: FontWeight.w500)),
                   ),
                   const SizedBox(
@@ -217,7 +217,7 @@ class _InventoryState extends State<Inventory> {
           "Last Added",
           style: TextStyle(
             color: Colors.grey,
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -236,7 +236,7 @@ class _InventoryState extends State<Inventory> {
           "Last Modified",
           style: TextStyle(
             color: Colors.grey,
-            fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+            // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
             fontWeight: FontWeight.w400,
           ),
         ),
@@ -285,8 +285,9 @@ class _InventoryState extends State<Inventory> {
               child: Text(
                 "Department",
                 style: TextStyle(
-                    color: index == 0 ? Colors.white : textheadlinecolor,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),
+                  color: index == 0 ? Colors.white : textheadlinecolor,
+                  // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                ),
               ),
             ),
           )),
@@ -316,8 +317,9 @@ class _InventoryState extends State<Inventory> {
             child: Text(
               "Items",
               style: TextStyle(
-                  color: index == 1 ? Colors.white : textheadlinecolor,
-                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),
+                color: index == 1 ? Colors.white : textheadlinecolor,
+                // fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+              ),
             ),
           ),
         ),
