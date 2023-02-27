@@ -22,7 +22,7 @@ import 'package:http/http.dart' as http;
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class Department extends StatelessWidget {
-  Department({Key? key}) : super(key: key);
+  Department({Key key}) : super(key: key);
 
   DepActions depActions = DepActions();
 

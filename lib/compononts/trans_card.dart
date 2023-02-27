@@ -5,12 +5,7 @@ import '../config.dart';
 
 class TransCard extends StatelessWidget {
   final String date, number, amount;
-  const TransCard(
-      {Key? key,
-      required this.date,
-      required this.number,
-      required this.amount})
-      : super(key: key);
+  const TransCard({Key key, @required this.date, @required this.number, @required this.amount}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +13,7 @@ class TransCard extends StatelessWidget {
         45); //Get device width for card size
     return Container(
       width: width,
+      
       margin: const EdgeInsets.only(bottom: 12, left: 2, right: 2),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7),

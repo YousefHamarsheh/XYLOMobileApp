@@ -11,11 +11,11 @@ class ThermalCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const ThermalCard(
-      {Key? key,
-      required this.thermalData,
-      required this.optionOnTap,
-      required this.screenHeight,
-      required this.optionButton})
+      {Key key,
+      this.thermalData,
+      this.optionOnTap,
+      @required this.screenHeight,
+      @required this.optionButton})
       : super(key: key);
 
   @override

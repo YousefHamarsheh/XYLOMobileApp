@@ -10,7 +10,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddTerminal extends StatefulWidget {
-  const AddTerminal({Key? key}) : super(key: key);
+  const AddTerminal({Key key}) : super(key: key);
 
   @override
   State<AddTerminal> createState() => _AddTerminalState();
@@ -26,9 +26,9 @@ class _AddTerminalState extends State<AddTerminal> {
   final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState!.validate();
+    final validation = _keyForm.currentState.validate();
     if (validation) {
-      _keyForm.currentState!.save();
+      _keyForm.currentState.save();
     } else {
       return;
     }
@@ -75,7 +75,7 @@ class _AddTerminalState extends State<AddTerminal> {
                         value: active,
                         onChanged: (val) {
                           setState(() {
-                            active = val!;
+                            active = val;
                           });
                         }),
                     const Text(

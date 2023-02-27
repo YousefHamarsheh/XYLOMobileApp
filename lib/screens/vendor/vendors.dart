@@ -26,7 +26,7 @@ import '../../model/vendors_data.dart';
 import 'add_vendor.dart';
 
 class Vender extends StatefulWidget {
-  const Vender({Key? key}) : super(key: key);
+  const Vender({Key key}) : super(key: key);
 
   @override
   State<Vender> createState() => _VendorState();
@@ -233,7 +233,7 @@ class _VendorState extends State<Vender> {
   Widget buildTextFeild(String hint, double width) {
     return InkWell(
       onTap: () async {
-        final DateTime? picked = await showDatePicker(
+        final DateTime picked = await showDatePicker(
             context: context,
             initialDate: DateTime.now(),
             firstDate: DateTime(2015, 8),

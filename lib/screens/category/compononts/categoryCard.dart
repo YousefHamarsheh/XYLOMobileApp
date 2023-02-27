@@ -11,11 +11,11 @@ class CategoryCard extends StatelessWidget {
   final double screenHeight;
   final bool optionButton;
   const CategoryCard(
-      {Key? key,
-      required this.categoryData,
-      required this.optionOnTap,
-      required this.screenHeight,
-      required this.optionButton})
+      {Key key,
+      this.categoryData,
+      this.optionOnTap,
+      @required this.screenHeight,
+      @required this.optionButton})
       : super(key: key);
 
   @override

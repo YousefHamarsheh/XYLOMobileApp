@@ -22,7 +22,7 @@ import 'report.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class Inventory extends StatefulWidget {
-  const Inventory({Key? key}) : super(key: key);
+  const Inventory({Key key}) : super(key: key);
 
   @override
   State<Inventory> createState() => _InventoryState();
@@ -144,9 +144,9 @@ class _InventoryState extends State<Inventory> {
       ),
       controlAffinity: ListTileControlAffinity.leading,
       value: isActive1,
-      onChanged: (bool? newValue1) {
+      onChanged: (bool newValue1) {
         setState(() {
-          isActive1 = newValue1!;
+          isActive1 = newValue1;
         });
       },
     );
@@ -163,7 +163,7 @@ class _InventoryState extends State<Inventory> {
       ),
       controlAffinity: ListTileControlAffinity.leading,
       value: isActive2,
-      onChanged: (bool? newValue2) {},
+      onChanged: (bool newValue2) {},
     );
   }
 
@@ -223,9 +223,9 @@ class _InventoryState extends State<Inventory> {
         ),
         value: !isActiveRadio,
         groupValue: isActiveRadio,
-        onChanged: (bool? value) {
+        onChanged: (bool value) {
           setState(() {
-            isActiveRadio = value!;
+            isActiveRadio = value;
           });
         });
   }
@@ -242,9 +242,9 @@ class _InventoryState extends State<Inventory> {
         ),
         value: isActiveRadio,
         groupValue: isActiveRadio,
-        onChanged: (bool? value) {
+        onChanged: (bool value) {
           setState(() {
-            isActiveRadio = value!;
+            isActiveRadio = value;
           });
         });
   }

@@ -11,7 +11,7 @@ import 'package:xylo/config.dart';
 import '../../../compononts/bottombar.dart';
 
 class EditItem extends StatefulWidget {
-  const EditItem({Key? key}) : super(key: key);
+  const EditItem({Key key}) : super(key: key);
 
   @override
   State<EditItem> createState() => _EditItemState();
@@ -22,8 +22,8 @@ class _EditItemState extends State<EditItem> {
       unitValue = "QTY",
       taxValue = "Tax",
       indexValue = "5 is normal",
-      printValue = "HP";
-  late String colorValue;
+      printValue = "HP",
+      colorValue;
   int selectedIndex = 0;
 
   @override

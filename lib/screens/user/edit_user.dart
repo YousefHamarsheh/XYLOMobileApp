@@ -10,7 +10,7 @@ import '../../compononts/custom_drpdown.dart';
 import '../../config.dart';
 
 class EditUser extends StatefulWidget {
-  const EditUser({Key? key}) : super(key: key);
+  const EditUser({Key key}) : super(key: key);
 
   @override
   State<EditUser> createState() => _EditUserState();
@@ -346,9 +346,9 @@ class _EditUserState extends State<EditUser> {
       children: [
         Checkbox(
             value: radioValue[index],
-            onChanged: (bool? value) {
+            onChanged: (bool value) {
               setState(() {
-                radioValue[index] = value!;
+                radioValue[index] = value;
               });
             }),
         Text(

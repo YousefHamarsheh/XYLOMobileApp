@@ -15,7 +15,7 @@ import '../../model/clock_data.dart';
 import 'compononts/clockCard.dart';
 
 class ClockPage extends StatelessWidget {
-  ClockPage({Key? key}) : super(key: key);
+  ClockPage({Key key}) : super(key: key);
 
   ClockActions clockActions = ClockActions();
 
@@ -32,12 +32,7 @@ class ClockPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                SearchFeild(
-                  controller: null,
-                  width: width,
-                  hint: "Search",
-                  onChanged: (String) {},
-                ),
+                SearchFeild(controller: null, width: width, hint: "Search"),
                 FiltterButton(onPress: () {}),
                 SortButton(onPress: () {}),
               ],

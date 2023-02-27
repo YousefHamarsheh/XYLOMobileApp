@@ -15,7 +15,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddCustomer extends StatefulWidget {
-  const AddCustomer({Key? key}) : super(key: key);
+  const AddCustomer({Key key}) : super(key: key);
 
   @override
   State<AddCustomer> createState() => _AddCustomerState();
@@ -27,6 +27,8 @@ class _AddCustomerState extends State<AddCustomer> {
   String email = "password";
   String phonenumber = "12345";
   String address = "address";
+  // String city = "city";
+  // String state = "state";
   String zipcode = "zip_code";
 
   String selectedCityValue = "Califonia";
@@ -36,9 +38,9 @@ class _AddCustomerState extends State<AddCustomer> {
   final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState!.validate();
+    final validation = _keyForm.currentState.validate();
     if (validation) {
-      _keyForm.currentState!.save();
+      _keyForm.currentState.save();
     } else {
       //hjgjh
       return;

@@ -12,7 +12,7 @@ import '../../../compononts/close_btn.dart';
 import '../../../compononts/bottombar.dart';
 
 class ViewItem extends StatefulWidget {
-  const ViewItem({Key? key}) : super(key: key);
+  const ViewItem({Key key}) : super(key: key);
 
   @override
   State<ViewItem> createState() => _ViewItemState();
@@ -23,8 +23,8 @@ class _ViewItemState extends State<ViewItem> {
       unitValue = "QTY",
       taxValue = "Tax",
       indexValue = "5 is normal",
-      printValue = "HP";
-  late String colorValue;
+      printValue = "HP",
+      colorValue;
   int selectedIndex = 0;
 
   @override

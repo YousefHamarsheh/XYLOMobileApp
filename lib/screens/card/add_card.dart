@@ -10,7 +10,7 @@ import '../../compononts/side_menu.dart';
 import '../../config.dart';
 
 class AddCard extends StatefulWidget {
-  const AddCard({Key? key}) : super(key: key);
+  const AddCard({Key key}) : super(key: key);
 
   @override
   State<AddCard> createState() => _AddCardState();
@@ -26,9 +26,9 @@ class _AddCardState extends State<AddCard> {
   CardActions cardActions = CardActions();
   final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState!.validate();
+    final validation = _keyForm.currentState.validate();
     if (validation) {
-      _keyForm.currentState!.save();
+      _keyForm.currentState.save();
     } else {
       return;
     }
@@ -65,7 +65,7 @@ class _AddCardState extends State<AddCard> {
                 CustomTextFeild(
                   hint: "0.3",
                   textInputType: TextInputType.number,
-                  onSaved: (value) => comPercent = value as double,
+                  onSaved: (value) => comPercent = value,
                 ),
                 const SizedBox(
                   height: 30,
@@ -76,7 +76,7 @@ class _AddCardState extends State<AddCard> {
                         value: merch_afford,
                         onChanged: (val) {
                           setState(() {
-                            merch_afford = val!;
+                            merch_afford = val;
                           });
                         }),
                     const Text(

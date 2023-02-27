@@ -16,7 +16,7 @@ import 'package:xylo/config.dart';
 // import '../../config.dart';
 
 class EditDepart extends StatefulWidget {
-  const EditDepart({Key? key}) : super(key: key);
+  const EditDepart({Key key}) : super(key: key);
 
   @override
   State<EditDepart> createState() => _EditDepartState();
@@ -28,7 +28,7 @@ class _EditDepartState extends State<EditDepart> {
   String selectedAgeValue = "21 Years Old";
   String selectedIndexValue = "5 is normal";
   String selectedPrinterValue = "HP Printer";
-  late String selectedColorValue;
+  String selectedColorValue;
 
   @override
   Widget build(BuildContext context) {

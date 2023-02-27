@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:xylo/config.dart';
 
 class ToggleButton extends StatelessWidget {
   ValueChanged<dynamic> onToggle;
   final bool value;
-  ToggleButton({Key? key, required this.value, required this.onToggle})
+  ToggleButton({Key key, @required this.value, @required this.onToggle})
       : super(key: key);
 
   @override

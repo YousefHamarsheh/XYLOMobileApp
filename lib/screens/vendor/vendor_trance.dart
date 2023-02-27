@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:xylo/actions/CustActions.dart';
 import 'package:xylo/actions/UserActions.dart';
 import 'package:xylo/actions/VendorActions.dart';
@@ -16,9 +16,9 @@ import '../../model/transactions/Transaction.dart';
 class VendorTrance extends StatefulWidget {
   final String title, value;
   const VendorTrance({
-    Key? key,
-    required this.title,
-    required this.value,
+    Key key,
+    @required this.title,
+    @required this.value,
     // @required this.user_id
   }) : super(key: key);
 
@@ -90,12 +90,12 @@ class _VendorTrance extends State<VendorTrance> {
               Text(widget.title,
                   style: TextStyle(
                       color: kPrymeryColor2,
-                      // fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
+                      fontSize: ResponsiveFlutter.of(context).fontSize(2.5),
                       fontWeight: FontWeight.bold)),
               Text(widget.value,
                   style: TextStyle(
                       color: textheadlinecolor,
-                      // fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                      fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                       fontWeight: FontWeight.bold)),
             ],
           ),
@@ -108,26 +108,27 @@ class _VendorTrance extends State<VendorTrance> {
     double width = ((MediaQuery.of(context).size.width) - 100);
     return Center(
       child: SizedBox(
-          width: width,
-          height: 50,
-          // ignore: deprecated_member_use
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
-              shape: const RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.all(Radius.circular(8))),
+        width: width,
+        height: 50,
+        // ignore: deprecated_member_use
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          color: Colors.white,
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+          child: Text(
+            "CLOSE",
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
+              fontWeight: FontWeight.w500,
             ),
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              "CLOSE",
-              style: TextStyle(
-                color: Colors.grey,
-                // fontSize: ResponsiveFlutter.of(context).fontSize(2.4),
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 

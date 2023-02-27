@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Splash extends StatelessWidget {
-  const Splash({Key? key}) : super(key: key);
+  const Splash({Key key}) : super(key: key);
 
   Widget mainImage(BuildContext context) {
     return Container(

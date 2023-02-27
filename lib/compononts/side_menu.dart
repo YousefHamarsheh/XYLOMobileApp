@@ -14,7 +14,7 @@ import '../screens/order/order.dart';
 import '../screens/user/user.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({Key? key}) : super(key: key);
+  const SideMenu({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +119,7 @@ class SideMenu extends StatelessWidget {
   }
 
   ListTile buildButton(BuildContext context,
-      {required String label, IconData? icon, Function()? onTap}) {
+      {String label, IconData icon, Function onTap}) {
     return ListTile(
       leading: Icon(
         icon,

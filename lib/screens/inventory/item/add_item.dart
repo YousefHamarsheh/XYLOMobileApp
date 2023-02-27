@@ -13,7 +13,7 @@ import 'package:xylo/config.dart';
 import '../../../compononts/bottombar.dart';
 
 class AddItem extends StatefulWidget {
-  const AddItem({Key? key}) : super(key: key);
+  const AddItem({Key key}) : super(key: key);
 
   @override
   State<AddItem> createState() => _AddItemState();
@@ -24,8 +24,8 @@ class _AddItemState extends State<AddItem> {
       unitValue = "QTY",
       taxValue = "Tax",
       indexValue = "5 is normal",
-      printValue = "HP";
-  late String colorValue;
+      printValue = "HP",
+      colorValue;
   int selectedIndex = 0;
   String upc = "upc";
   String itemName = "itemName";
@@ -36,7 +36,7 @@ class _AddItemState extends State<AddItem> {
   String age = "age";
   String showInMob = "showInMob";
   String trackable = "trackable";
-  late double cost,
+  double cost,
       basicPrice,
       lev2Price,
       lev3Price,
@@ -44,14 +44,14 @@ class _AddItemState extends State<AddItem> {
       fixedFree,
       handlingShip;
   String fixedFreeType = "fixedFreeType";
-  late File imageFile;
-  late String imageDataEn;
+  File imageFile;
+  String imageDataEn;
   String uploadCheck = "Upload";
   final _keyForm = GlobalKey<FormState>();
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState!.validate();
+    final validation = _keyForm.currentState.validate();
     if (validation) {
-      _keyForm.currentState!.save();
+      _keyForm.currentState.save();
     } else {
       return;
     }
@@ -421,19 +421,19 @@ class _AddItemState extends State<AddItem> {
       child: TextFormField(
           onSaved: (value) {
             if (type.compareTo("costType") == 0) {
-              cost = double.parse(value!);
+              cost = double.parse(value);
             } else if (type.compareTo("basicType") == 0) {
-              basicPrice = double.parse(value!);
+              basicPrice = double.parse(value);
             } else if (type.compareTo("lev2ype") == 0) {
-              lev2Price = double.parse(value!);
+              lev2Price = double.parse(value);
             } else if (type.compareTo("lev3Type") == 0) {
-              lev3Price = double.parse(value!);
+              lev3Price = double.parse(value);
             } else if (type.compareTo("lev4Type") == 0) {
-              lev4Price = double.parse(value!);
+              lev4Price = double.parse(value);
             } else if (type.compareTo("fixedAmountType") == 0) {
-              fixedFree = double.parse(value!);
+              fixedFree = double.parse(value);
             } else if (type.compareTo("handleType") == 0) {
-              handlingShip = double.parse(value!);
+              handlingShip = double.parse(value);
             }
           },
           // initialValue: text,

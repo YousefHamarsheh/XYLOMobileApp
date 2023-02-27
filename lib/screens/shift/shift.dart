@@ -16,7 +16,7 @@ import '../../compononts/sort_button.dart';
 import '../../config.dart';
 
 class ShiftPage extends StatelessWidget {
-  ShiftPage({Key? key}) : super(key: key);
+  ShiftPage({Key key}) : super(key: key);
 
   ShiftActions shiftActions = ShiftActions();
   @override

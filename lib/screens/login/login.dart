@@ -6,7 +6,7 @@ import '../bottom_navbar.dart';
 
 // ignore: camel_case_types
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
@@ -66,146 +66,80 @@ class _LoginState extends State<Login> {
 
   Widget userbtn() {
     return SizedBox(
-        width: 150,
-        height: 50,
-        // ignore: deprecated_member_use
-        child:
-            //  FlatButton(
-            //   onPressed: () {
-            //     setState(() {
-            //       isUserMode = true;
-            //     });
-            //   },
-            //   color: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-            //   shape: const RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(7), bottomLeft: Radius.circular(7))),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Icon(
-            //         Icons.keyboard,
-            //         color: isUserMode ? Colors.white : textheadlinecolor,
-            //       ),
-            //       const SizedBox(
-            //         width: 10,
-            //       ),
-            //       Text(
-            //         "User",
-            //         style: TextStyle(
-            //           color: isUserMode ? Colors.white : textheadlinecolor,
-            //           fontSize: 20,
-            //           fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(7),
-                    bottomLeft: Radius.circular(7))),
-          ),
-          onPressed: () => setState(() {
+      width: 150,
+      height: 50,
+      // ignore: deprecated_member_use
+      child: FlatButton(
+        onPressed: () {
+          setState(() {
             isUserMode = true;
-          }),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.keyboard,
+          });
+        },
+        color: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(7), bottomLeft: Radius.circular(7))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.keyboard,
+              color: isUserMode ? Colors.white : textheadlinecolor,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              "User",
+              style: TextStyle(
                 color: isUserMode ? Colors.white : textheadlinecolor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                "User",
-                style: TextStyle(
-                  color: isUserMode ? Colors.white : textheadlinecolor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget pinbtn() {
     return SizedBox(
-        width: 150,
-        height: 50,
-        // ignore: deprecated_member_use
-        child:
-            // FlatButton(
-            //   onPressed: () {
-            //     setState(() {
-            //       isUserMode = false;
-            //     });
-            //   },
-            //   color: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-            //   shape: const RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.only(
-            //           topRight: Radius.circular(7), bottomRight: Radius.circular(7))),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Icon(
-            //         Icons.keyboard,
-            //         color: !isUserMode ? Colors.white : textheadlinecolor,
-            //       ),
-            //       const SizedBox(
-            //         width: 10,
-            //       ),
-            //       Text(
-            //         "Pin",
-            //         style: TextStyle(
-            //           color: !isUserMode ? Colors.white : textheadlinecolor,
-            //           fontSize: 20,
-            //           fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(7),
-                bottomRight: Radius.circular(7),
+      width: 150,
+      height: 50,
+      // ignore: deprecated_member_use
+      child: FlatButton(
+        onPressed: () {
+          setState(() {
+            isUserMode = false;
+          });
+        },
+        color: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(7), bottomRight: Radius.circular(7))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.keyboard,
+              color: !isUserMode ? Colors.white : textheadlinecolor,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              "Pin",
+              style: TextStyle(
+                color: !isUserMode ? Colors.white : textheadlinecolor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          onPressed: () => setState(() {
-            isUserMode = false;
-          }),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.keyboard,
-                color: !isUserMode ? Colors.white : textheadlinecolor,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Pin",
-                style: TextStyle(
-                  color: !isUserMode ? Colors.white : textheadlinecolor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ));
+          ],
+        ),
+      ),
+    );
   }
 
   Widget email() {
@@ -275,14 +209,14 @@ class _LoginState extends State<Login> {
         width: 350,
         height: 50,
         // ignore: deprecated_member_use
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: kPrymeryColor2,
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-          ),
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const NavBar())),
+        child: FlatButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const NavBar()));
+          },
+          color: kPrymeryColor2,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5))),
           child: const Text(
             "LOGIN",
             style: TextStyle(

@@ -18,7 +18,7 @@ import '../../model/card_data.dart';
 import 'compononts/crditCard.dart';
 
 class CardPage extends StatelessWidget {
-  CardPage({Key? key}) : super(key: key);
+  CardPage({Key key}) : super(key: key);
 
   CardActions cardActions = CardActions();
 
@@ -44,12 +44,7 @@ class CardPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                SearchFeild(
-                  width: width,
-                  hint: "Search",
-                  onChanged: (String) {},
-                  controller: null,
-                ),
+                SearchFeild(controller: null, width: width, hint: "Search"),
                 FiltterButton(onPress: () {}),
                 SortButton(onPress: () {}),
               ],

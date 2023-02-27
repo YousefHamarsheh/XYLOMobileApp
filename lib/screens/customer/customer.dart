@@ -24,7 +24,7 @@ import '../../config.dart';
 import '../../model/customer_data.dart';
 
 class CustomerPage extends StatefulWidget {
-  const CustomerPage({Key? key}) : super(key: key);
+  const CustomerPage({Key key}) : super(key: key);
 
   @override
   State<CustomerPage> createState() => _CustomerPageState();

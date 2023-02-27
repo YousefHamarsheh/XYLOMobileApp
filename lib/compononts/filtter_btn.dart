@@ -1,10 +1,12 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../config.dart';
 
 class FiltterButton extends StatelessWidget {
-  Function() onPress;
-  FiltterButton({Key? key, required this.onPress}) : super(key: key);
+  final Function onPress;
+  const FiltterButton({Key key, @required this.onPress}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +16,11 @@ class FiltterButton extends StatelessWidget {
         width: 50,
         height: 50,
         // ignore: deprecated_member_use
-        child: TextButton(
-          style: TextButton.styleFrom(
-            foregroundColor: kPrymeryColor1,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(7),
-              ),
-            ),
-          ),
+        child: FlatButton(
           onPressed: onPress,
+          color: kPrymeryColor1,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(7))),
           child: const Icon(
             Icons.filter_list_outlined,
             color: textheadlinecolor,

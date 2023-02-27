@@ -18,7 +18,7 @@ import 'package:xylo/config.dart';
 // import '../../config.dart';
 
 class AddDEpart extends StatefulWidget {
-  const AddDEpart({Key? key}) : super(key: key);
+  const AddDEpart({Key key}) : super(key: key);
 
   @override
   State<AddDEpart> createState() => _AddDEpartState();
@@ -30,21 +30,21 @@ class _AddDEpartState extends State<AddDEpart> {
   String selectedAgeValue = "21 Years Old";
   String selectedIndexValue = "5 is normal";
   String selectedPrinterValue = "HP Printer";
-  late String selectedColorValue;
+  String selectedColorValue;
   String depName = "depName";
   String depParent = "depParent";
   String depDisplay = "depDisplay";
-  late File imageFile;
-  late String imageDataEn;
+  File imageFile;
+  String imageDataEn;
   String uploadCheck = "Upload";
   DepActions depActions = DepActions();
 
   final _keyForm = GlobalKey<FormState>();
 
   Future<void> _savingData() async {
-    final validation = _keyForm.currentState!.validate();
+    final validation = _keyForm.currentState.validate();
     if (validation) {
-      _keyForm.currentState!.save();
+      _keyForm.currentState.save();
     } else {
       return;
     }

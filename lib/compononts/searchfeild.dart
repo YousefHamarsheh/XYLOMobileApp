@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import '../config.dart';
 
 class SearchFeild extends StatelessWidget {
-  TextEditingController? controller;
-  double width;
-  String hint;
-  Function(String)? onChanged;
-  SearchFeild(
-      {Key? key,
-      this.controller,
-      required this.width,
-      required this.hint,
-      this.onChanged})
+  final TextEditingController controller;
+  final double width;
+  final String hint;
+  final Function onChanged;
+  const SearchFeild(
+      {Key key,
+      @required this.controller,
+      @required this.width,
+      @required this.hint,
+      @required this.onChanged})
       : super(key: key);
 
   @override
