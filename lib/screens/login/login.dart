@@ -69,16 +69,18 @@ class _LoginState extends State<Login> {
       width: 150,
       height: 50,
       // ignore: deprecated_member_use
-      child: FlatButton(
+      child: ElevatedButton(
         onPressed: () {
           setState(() {
             isUserMode = true;
           });
         },
-        color: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(7), bottomLeft: Radius.circular(7))),
+        style: ElevatedButton.styleFrom(
+          primary: isUserMode ? kPrymeryColor2 : kPrymeryColor1,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(7), bottomLeft: Radius.circular(7))),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -108,16 +110,19 @@ class _LoginState extends State<Login> {
       width: 150,
       height: 50,
       // ignore: deprecated_member_use
-      child: FlatButton(
+      child: ElevatedButton(
         onPressed: () {
           setState(() {
             isUserMode = false;
           });
         },
-        color: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(7), bottomRight: Radius.circular(7))),
+        style: ElevatedButton.styleFrom(
+          primary: !isUserMode ? kPrymeryColor2 : kPrymeryColor1,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(7),
+                  bottomRight: Radius.circular(7))),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -209,14 +214,16 @@ class _LoginState extends State<Login> {
         width: 350,
         height: 50,
         // ignore: deprecated_member_use
-        child: FlatButton(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const NavBar()));
           },
-          color: kPrymeryColor2,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5))),
+          style: ElevatedButton.styleFrom(
+            primary: kPrymeryColor2,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(5))),
+          ),
           child: const Text(
             "LOGIN",
             style: TextStyle(

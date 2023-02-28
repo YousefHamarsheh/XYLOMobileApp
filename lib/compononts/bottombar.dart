@@ -39,13 +39,15 @@ Widget buildCancelbtn(BuildContext context) {
       width: width,
       height: 50,
       // ignore: deprecated_member_use
-      child: FlatButton(
+      child: ElevatedButton(
         onPressed: () {
           Navigator.pop(context);
         },
-        color: kPrymeryColor1,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+        style: ElevatedButton.styleFrom(
+          primary: kPrymeryColor1,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+        ),
         child: Text(
           "CANCEL",
           style: TextStyle(
@@ -66,13 +68,15 @@ Widget buildAddbtn(BuildContext context, Function onPress, bool isEdit) {
       width: width,
       height: 50,
       // ignore: deprecated_member_use
-      child: FlatButton(
+      child: ElevatedButton(
         onPressed: onPress,
-        color: kPrymeryColor2,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
+        style: ElevatedButton.styleFrom(
+          primary: kPrymeryColor2,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+        ),
         child: Text(
-        isEdit? "Edit" : "ADD",
+          isEdit ? "Edit" : "ADD",
           style: TextStyle(
             color: Colors.white,
             fontSize: ResponsiveFlutter.of(context).fontSize(2.3),

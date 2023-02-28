@@ -111,14 +111,16 @@ class _VendorTrance extends State<VendorTrance> {
         width: width,
         height: 50,
         // ignore: deprecated_member_use
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          color: Colors.white,
-          shape: const RoundedRectangleBorder(
-              side: BorderSide(color: Colors.grey),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            shape: const RoundedRectangleBorder(
+                side: BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.all(Radius.circular(8))),
+          ),
           child: Text(
             "CLOSE",
             style: TextStyle(

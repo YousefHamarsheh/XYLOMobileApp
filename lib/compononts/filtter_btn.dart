@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../config.dart';
@@ -16,11 +14,13 @@ class FiltterButton extends StatelessWidget {
         width: 50,
         height: 50,
         // ignore: deprecated_member_use
-        child: FlatButton(
+        child: ElevatedButton(
           onPressed: onPress,
-          color: kPrymeryColor1,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(7))),
+          style: ElevatedButton.styleFrom(
+            primary: kPrymeryColor1,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(7))),
+          ),
           child: const Icon(
             Icons.filter_list_outlined,
             color: textheadlinecolor,

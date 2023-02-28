@@ -57,10 +57,13 @@ class AlertDelete extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0)),
-                      height: 50,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(50, 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6.0)),
+                        // height: 50,
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -78,11 +81,14 @@ class AlertDelete extends StatelessWidget {
                   width: 4,
                 ),
                 SizedBox(
-                  child: FlatButton(
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0)),
-                      height: 50,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(50, 50),
+                        primary: Colors.red,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6.0)),
+                      ),
+                      // height: 50,
                       onPressed: () async {
                         var url = Uri.parse(
                             'http://5.161.97.142:9001/cust/delete/$id');
